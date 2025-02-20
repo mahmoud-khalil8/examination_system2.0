@@ -11,6 +11,8 @@ namespace WindowsFormsApp1.Models
 
         public int QID { get; set; }
         public string Options { get; set; }
+        public int OptionIndex { get; set; }
+
 
     }
 }

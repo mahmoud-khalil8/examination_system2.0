@@ -59,6 +59,35 @@ namespace WindowsFormsApp1.DataAccess
             conn.Close();
             return result;
         }
+        public static object ExecuteScalar(string query, SqlParameter[] parameters)
+        {
+            using (SqlConnection connection = new SqlConnection(GetConnectionString()))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddRange(parameters);
+                    connection.Open();
+                    return command.ExecuteScalar();
+                }
+            }
+        }
+
+        public static int ExecuteStoredProcedure(string procedureName, SqlParameter[] parameters = null)
+        {
+            using (SqlConnection conn = GetConnection())
+            {
+                using (SqlCommand cmd = new SqlCommand(procedureName, conn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    if (parameters != null)
+                    {
+                        cmd.Parameters.AddRange(parameters);
+                    }
+                    return cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
 
     }
 }

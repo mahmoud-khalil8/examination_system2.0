@@ -18,8 +18,7 @@ namespace WindowsFormsApp1.Forms
         DataTable questions;
         PracticeExam practiceExam;
         string fullName;
-        private Timer examTimer;
-        private DateTime examEndTime;
+       
         int questionCounter = 0;
         private AnswerListModel studentAnswers;
         int examTotalQuestions;
@@ -128,6 +127,16 @@ namespace WindowsFormsApp1.Forms
             int questionId = Convert.ToInt32(question["QID"]);
             string savedAnswer = studentAnswers.GetStudentAnswer(questionId);
 
+
+            // Display the student's answer in the label
+            if (!string.IsNullOrEmpty(savedAnswer))
+            {
+                studentAnswerLbl.Text = $" {savedAnswer}";
+            }
+            else
+            {
+                studentAnswerLbl.Text = "No answer provided.";
+            }
             //get question Answer
 
             DataTable dataTable = BusinessLogic.ExamManager.GetCorrectAnswers(questionId);

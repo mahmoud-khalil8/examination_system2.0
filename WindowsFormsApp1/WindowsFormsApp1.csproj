@@ -161,6 +161,12 @@
     <Compile Include="UserControls\ExamQuestions.Designer.cs">
       <DependentUpon>ExamQuestions.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\successSubmit.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\successSubmit.Designer.cs">
+      <DependentUpon>successSubmit.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Forms\intro.resx">
       <DependentUpon>intro.cs</DependentUpon>
     </EmbeddedResource>
@@ -187,6 +193,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\ExamQuestions.resx">
       <DependentUpon>ExamQuestions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\successSubmit.resx">
+      <DependentUpon>successSubmit.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="appSettings.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

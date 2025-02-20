@@ -1,4 +1,7 @@
-﻿namespace WindowsFormsApp1.Forms
+﻿using System.Drawing;
+using System.Windows.Forms;
+
+namespace WindowsFormsApp1.Forms
 {
     partial class StudentExam
     {
@@ -35,18 +38,20 @@
             this.ExamNameLabel = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.TotalMarksLabel = new System.Windows.Forms.Label();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.optionsPanel = new System.Windows.Forms.Panel();
             this.questionLabel = new System.Windows.Forms.Label();
             this.nextbtn = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.prevbtn = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.SubmitBtn = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.backgroundPanel = new System.Windows.Forms.Panel();
+            this.showAnswersBtn = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.panel1.SuspendLayout();
-            this.flowLayoutPanel1.SuspendLayout();
+            this.backgroundPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // RemainingTimeLabel
             // 
+            this.RemainingTimeLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.RemainingTimeLabel.AutoSize = true;
             this.RemainingTimeLabel.Font = new System.Drawing.Font("JetBrains Mono Light", 11.78182F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RemainingTimeLabel.ForeColor = System.Drawing.Color.White;
@@ -58,6 +63,7 @@
             // 
             // totalTimeLabel
             // 
+            this.totalTimeLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.totalTimeLabel.AutoSize = true;
             this.totalTimeLabel.Font = new System.Drawing.Font("JetBrains Mono Light", 11.78182F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.totalTimeLabel.ForeColor = System.Drawing.Color.White;
@@ -69,6 +75,7 @@
             // 
             // questionNumberLabel
             // 
+            this.questionNumberLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.questionNumberLabel.AutoSize = true;
             this.questionNumberLabel.Font = new System.Drawing.Font("JetBrains Mono Light", 11.78182F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.questionNumberLabel.ForeColor = System.Drawing.Color.White;
@@ -80,6 +87,7 @@
             // 
             // totalQuestionLabel
             // 
+            this.totalQuestionLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.totalQuestionLabel.AutoSize = true;
             this.totalQuestionLabel.Font = new System.Drawing.Font("JetBrains Mono Light", 11.78182F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.totalQuestionLabel.ForeColor = System.Drawing.Color.White;
@@ -91,10 +99,11 @@
             // 
             // ExamNameLabel
             // 
+            this.ExamNameLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.ExamNameLabel.AutoSize = true;
             this.ExamNameLabel.Font = new System.Drawing.Font("JetBrains Mono", 12.74545F);
             this.ExamNameLabel.ForeColor = System.Drawing.Color.White;
-            this.ExamNameLabel.Location = new System.Drawing.Point(516, 9);
+            this.ExamNameLabel.Location = new System.Drawing.Point(505, 9);
             this.ExamNameLabel.Name = "ExamNameLabel";
             this.ExamNameLabel.Size = new System.Drawing.Size(108, 26);
             this.ExamNameLabel.TabIndex = 14;
@@ -102,6 +111,8 @@
             // 
             // panel1
             // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.panel1.Controls.Add(this.TotalMarksLabel);
             this.panel1.Controls.Add(this.ExamNameLabel);
@@ -109,14 +120,14 @@
             this.panel1.Controls.Add(this.totalQuestionLabel);
             this.panel1.Controls.Add(this.totalTimeLabel);
             this.panel1.Controls.Add(this.questionNumberLabel);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1205, 161);
+            this.panel1.Size = new System.Drawing.Size(1205, 179);
             this.panel1.TabIndex = 19;
             // 
             // TotalMarksLabel
             // 
+            this.TotalMarksLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.TotalMarksLabel.AutoSize = true;
             this.TotalMarksLabel.Font = new System.Drawing.Font("JetBrains Mono Light", 11.78182F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TotalMarksLabel.ForeColor = System.Drawing.Color.White;
@@ -126,23 +137,17 @@
             this.TotalMarksLabel.TabIndex = 19;
             this.TotalMarksLabel.Text = "Total Marks: 100";
             // 
-            // flowLayoutPanel1
-            // 
-            this.flowLayoutPanel1.Controls.Add(this.optionsPanel);
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(79, 253);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(997, 317);
-            this.flowLayoutPanel1.TabIndex = 23;
-            // 
             // optionsPanel
             // 
-            this.optionsPanel.Location = new System.Drawing.Point(3, 3);
+            this.optionsPanel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.optionsPanel.Location = new System.Drawing.Point(79, 253);
             this.optionsPanel.Name = "optionsPanel";
             this.optionsPanel.Size = new System.Drawing.Size(1060, 323);
             this.optionsPanel.TabIndex = 0;
             // 
             // questionLabel
             // 
+            this.questionLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.questionLabel.AutoSize = true;
             this.questionLabel.Font = new System.Drawing.Font("JetBrains Mono", 12.78182F, System.Drawing.FontStyle.Bold);
             this.questionLabel.ForeColor = System.Drawing.Color.Black;
@@ -154,8 +159,8 @@
             // 
             // nextbtn
             // 
-            this.nextbtn.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.nextbtn.Location = new System.Drawing.Point(979, 585);
+            this.nextbtn.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.nextbtn.Location = new System.Drawing.Point(976, 585);
             this.nextbtn.Name = "nextbtn";
             this.nextbtn.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.nextbtn.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -216,8 +221,8 @@
             // 
             // prevbtn
             // 
-            this.prevbtn.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.prevbtn.Location = new System.Drawing.Point(62, 585);
+            this.prevbtn.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.prevbtn.Location = new System.Drawing.Point(79, 585);
             this.prevbtn.Name = "prevbtn";
             this.prevbtn.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.prevbtn.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -278,8 +283,8 @@
             // 
             // SubmitBtn
             // 
-            this.SubmitBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.SubmitBtn.Location = new System.Drawing.Point(521, 585);
+            this.SubmitBtn.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.SubmitBtn.Location = new System.Drawing.Point(510, 585);
             this.SubmitBtn.Name = "SubmitBtn";
             this.SubmitBtn.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.SubmitBtn.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -339,25 +344,97 @@
             this.SubmitBtn.Visible = false;
             this.SubmitBtn.Click += new System.EventHandler(this.SubmitBtn_Click);
             // 
+            // backgroundPanel
+            // 
+            this.backgroundPanel.Controls.Add(this.showAnswersBtn);
+            this.backgroundPanel.Controls.Add(this.SubmitBtn);
+            this.backgroundPanel.Controls.Add(this.optionsPanel);
+            this.backgroundPanel.Controls.Add(this.prevbtn);
+            this.backgroundPanel.Controls.Add(this.nextbtn);
+            this.backgroundPanel.Controls.Add(this.questionLabel);
+            this.backgroundPanel.Location = new System.Drawing.Point(0, 0);
+            this.backgroundPanel.Name = "backgroundPanel";
+            this.backgroundPanel.Size = new System.Drawing.Size(1205, 659);
+            this.backgroundPanel.TabIndex = 26;
+            // 
+            // showAnswersBtn
+            // 
+            this.showAnswersBtn.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.showAnswersBtn.Location = new System.Drawing.Point(474, 602);
+            this.showAnswersBtn.Name = "showAnswersBtn";
+            this.showAnswersBtn.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.showAnswersBtn.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.showAnswersBtn.OverrideDefault.Back.ColorAngle = 45F;
+            this.showAnswersBtn.OverrideDefault.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.showAnswersBtn.OverrideDefault.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.showAnswersBtn.OverrideDefault.Border.ColorAngle = 45F;
+            this.showAnswersBtn.OverrideDefault.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.showAnswersBtn.OverrideDefault.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
+            this.showAnswersBtn.OverrideDefault.Border.Rounding = 10;
+            this.showAnswersBtn.OverrideDefault.Border.Width = 1;
+            this.showAnswersBtn.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
+            this.showAnswersBtn.Size = new System.Drawing.Size(303, 42);
+            this.showAnswersBtn.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.showAnswersBtn.StateCommon.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.showAnswersBtn.StateCommon.Back.ColorAngle = 45F;
+            this.showAnswersBtn.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.showAnswersBtn.StateCommon.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.showAnswersBtn.StateCommon.Border.ColorAngle = 45F;
+            this.showAnswersBtn.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.showAnswersBtn.StateCommon.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
+            this.showAnswersBtn.StateCommon.Border.Rounding = 10;
+            this.showAnswersBtn.StateCommon.Border.Width = 1;
+            this.showAnswersBtn.StateCommon.Content.Padding = new System.Windows.Forms.Padding(-1, -1, -1, 1);
+            this.showAnswersBtn.StateCommon.Content.ShortText.Color1 = System.Drawing.Color.White;
+            this.showAnswersBtn.StateCommon.Content.ShortText.Color2 = System.Drawing.Color.White;
+            this.showAnswersBtn.StateCommon.Content.ShortText.Font = new System.Drawing.Font("JetBrains Mono", 11.12727F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.showAnswersBtn.StatePressed.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.showAnswersBtn.StatePressed.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.showAnswersBtn.StatePressed.Back.ColorAngle = 135F;
+            this.showAnswersBtn.StatePressed.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.showAnswersBtn.StatePressed.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.showAnswersBtn.StatePressed.Border.ColorAngle = 135F;
+            this.showAnswersBtn.StatePressed.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.showAnswersBtn.StatePressed.Border.Rounding = 10;
+            this.showAnswersBtn.StatePressed.Border.Width = 1;
+            this.showAnswersBtn.StateTracking.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(49)))), ((int)(((byte)(49)))));
+            this.showAnswersBtn.StateTracking.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(49)))), ((int)(((byte)(49)))));
+            this.showAnswersBtn.StateTracking.Back.ColorAngle = 45F;
+            this.showAnswersBtn.StateTracking.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.showAnswersBtn.StateTracking.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.showAnswersBtn.StateTracking.Border.ColorAngle = 45F;
+            this.showAnswersBtn.StateTracking.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.showAnswersBtn.StateTracking.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
+            this.showAnswersBtn.StateTracking.Border.Rounding = 10;
+            this.showAnswersBtn.StateTracking.Border.Width = 1;
+            this.showAnswersBtn.TabIndex = 26;
+            this.showAnswersBtn.Values.Text = "Show Answers";
+            this.showAnswersBtn.Visible = false;
+            this.showAnswersBtn.Click += new System.EventHandler(this.showAnswersBtn_Click);
+            // 
             // StudentExam
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1205, 656);
-            this.Controls.Add(this.SubmitBtn);
-            this.Controls.Add(this.prevbtn);
-            this.Controls.Add(this.flowLayoutPanel1);
-            this.Controls.Add(this.questionLabel);
-            this.Controls.Add(this.nextbtn);
             this.Controls.Add(this.panel1);
+            this.Controls.Add(this.backgroundPanel);
             this.Name = "StudentExam";
             this.Text = "StudentExam";
             this.Load += new System.EventHandler(this.StudentExam_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.flowLayoutPanel1.ResumeLayout(false);
+            this.backgroundPanel.ResumeLayout(false);
+            this.backgroundPanel.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -369,12 +446,13 @@
         private System.Windows.Forms.Label totalQuestionLabel;
         private System.Windows.Forms.Label ExamNameLabel;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Label questionLabel;
         private ComponentFactory.Krypton.Toolkit.KryptonButton nextbtn;
         private System.Windows.Forms.Label TotalMarksLabel;
         private ComponentFactory.Krypton.Toolkit.KryptonButton prevbtn;
         private System.Windows.Forms.Panel optionsPanel;
         private ComponentFactory.Krypton.Toolkit.KryptonButton SubmitBtn;
+        private Panel backgroundPanel;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton showAnswersBtn;
     }
 }

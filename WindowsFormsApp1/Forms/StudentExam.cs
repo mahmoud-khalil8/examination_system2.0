@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -15,6 +16,7 @@ namespace WindowsFormsApp1.Forms
     public partial class StudentExam : Form
     {
         DataTable questions;
+        Exam exam;
         PracticeExam practiceExam;
         string fullName;
         private Timer examTimer;
@@ -23,10 +25,12 @@ namespace WindowsFormsApp1.Forms
         int studentId= 0;
         private AnswerListModel studentAnswers = new AnswerListModel();
         int examTotalQuestions;
+        UserControls.successSubmit successSubmit;
 
-        public StudentExam(PracticeExam practiceExam,string fullName,int studentId)
+        
+        public StudentExam(Exam exam,string fullName,int studentId)
         {
-            this.practiceExam= practiceExam;
+            this.exam= exam;
             this.fullName = fullName;
             this.studentId = studentId;
             InitializeComponent();
@@ -41,32 +45,39 @@ namespace WindowsFormsApp1.Forms
                 #region Loading ExamData
 
 
-                if (practiceExam == null)
+                if (exam == null)
                 {
                     throw new InvalidOperationException("Practice Exam not found.");
                 }
-                int examID = practiceExam.ExamID;
-                string examName = practiceExam.ExamName;
+                int examID = exam.ExamID;
+                string examName = exam.ExamName;
                 DateTime examDate;
 
-                if (!DateTime.TryParse(practiceExam.StartTime.ToString(), out examDate))
+                if (!DateTime.TryParse(exam.StartTime.ToString(), out examDate))
                 {
                     throw new InvalidOperationException("Invalid date format in the database.");
                 }
                 TimeSpan examDuration;
 
-                if (!TimeSpan.TryParse(practiceExam.Time.ToString(), out examDuration))
+                if (!TimeSpan.TryParse(exam.Time.ToString(), out examDuration))
                 {
                     throw new InvalidOperationException("Invalid time format in the database.");
                 }
 
 
-                 examTotalQuestions = practiceExam.NumberOfQuestions;
-                int examTotalMarks = practiceExam.Marks;
+                 examTotalQuestions = exam.NumberOfQuestions;
+                int examTotalMarks = exam.Marks;
                 ExamNameLabel.Text = examName;
                 totalQuestionLabel.Text = "Total Questions: " + examTotalQuestions;
                 TotalMarksLabel.Text = "Total Marks: " + examTotalMarks;
                 totalTimeLabel.Text = "Exam Duration: " + examDuration.ToString(@"hh\:mm\:ss");
+
+                if(exam is PracticeExam)
+                {
+                    RemainingTimeLabel.Text = "Remaining Time : --:--:--";
+                }
+                else
+                {
 
                 examEndTime = examDate.Add(examDuration);
 
@@ -75,7 +86,9 @@ namespace WindowsFormsApp1.Forms
                 examTimer.Tick += new EventHandler(UpdateRemainingTime);
                 examTimer.Start();
 
+
                 UpdateRemainingTime(null, null);
+                }
 
 
                 #endregion
@@ -119,7 +132,14 @@ namespace WindowsFormsApp1.Forms
             else
             {
                 RemainingTimeLabel.Text = "Exam Time Over";
+
                 examTimer.Stop();
+                //MessageBox.Show("Time Over! Your answers will be submitted automatically.", "Time Over", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                
+               // SubmitBtn.Visible = true;
+                //SubmitBtn.PerformClick();
+
+                
             }
         }
         public void LoadQuestion(DataRow question)
@@ -184,7 +204,7 @@ namespace WindowsFormsApp1.Forms
         private void nextbtn_Click(object sender, EventArgs e)
         {
 
-            SaveStudentAnswer();
+           SaveStudentAnswer();
             if (questionCounter < questions.Rows.Count - 1)
             {
                 questionCounter++;
@@ -259,24 +279,64 @@ namespace WindowsFormsApp1.Forms
             string studentAnswersString = "";
             foreach (var answer in studentAnswers.getStudentAnswers())
             {
+
+                //save answer in database student_answer table
+                if(exam is FinalExam)
+                {
+
+                     BusinessLogic.ExamManager.StoreStudentAnswer(studentId, exam.ExamID, answer.Key, answer.Value.StudentAnswer, answer.Value.ISCorrect, answer.Value.Stud_Marks);
+                }
                 studentAnswersString += $"Question ID: {answer.Key}, Answer: {answer.Value.StudentAnswer}, Is Correct: {answer.Value.ISCorrect}\n";
             }
             MessageBox.Show(studentAnswersString, "Student Answers", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            
+
+            
+            
             int totalMarks = studentAnswers.CalculateTotalMarks();
             MessageBox.Show($"Exam Completed! Your Total Score: {totalMarks}", "Exam Submission", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            DialogResult result = MessageBox.Show(
-                  $"Exam Completed!\nYour Total Score: {totalMarks}\n\nClick 'Show Results' to see detailed feedback.",
-                  "Exam Submission",
-                  MessageBoxButtons.OKCancel,
-                  MessageBoxIcon.Information
-              );
-
-            // If user clicks OK, open results screen
-            if (result == DialogResult.OK)
+            if(exam is FinalExam)
             {
-                ShowResults();
+
+             BusinessLogic.ExamManager.saveExamStudent(studentId, exam.ExamID, totalMarks);
             }
+
+
+
+            backgroundPanel.Controls.Clear();
+
+            panel1.Controls.Clear();
+            panel1.Visible = false;
+            successSubmit = new UserControls.successSubmit();
+            backgroundPanel.Controls.Add(successSubmit);
+
+            backgroundPanel.Controls.Add(showAnswersBtn);
+            showAnswersBtn.BringToFront();
+            showAnswersBtn.Visible = true;
+
+
+
+
+
+
+
+            //if (exam is PracticeExam)
+            //{
+            //    DialogResult result = MessageBox.Show(
+            //      $"Exam Completed!\nYour Total Score: {totalMarks}\n\nClick 'Show Results' to see detailed feedback.",
+            //      "Exam Submission",
+            //      MessageBoxButtons.OKCancel,
+            //      MessageBoxIcon.Information
+            //  );
+
+            //    // If user clicks OK, open results screen
+            //    if (result == DialogResult.OK)
+            //    {
+            //        ShowResults();
+            //    }
+            //}
+
 
 
             // Optionally save answers to the database
@@ -313,6 +373,11 @@ namespace WindowsFormsApp1.Forms
 
             PracticeExamAnswers practiceExamAnswers = new PracticeExamAnswers(practiceExam, studentAnswers, fullName);
             practiceExamAnswers.Show();
+        }
+
+        private void showAnswersBtn_Click(object sender, EventArgs e)
+        {
+            ShowResults();
         }
     }
 }
