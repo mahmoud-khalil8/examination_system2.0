@@ -191,6 +191,51 @@ namespace WindowsFormsApp1.Forms
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(1034, 247);
             this.dataGridView1.TabIndex = 13;
+            this.dataGridView1.RowTemplate.Height = 40; // Set a fixed row height
+            this.dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.None; // Prevent auto-resizing
+            this.dataGridView1.DefaultCellStyle.Padding = new Padding(0); // Remove extra padding
+            this.dataGridView1.DefaultCellStyle.WrapMode = DataGridViewTriState.False; // Prevent text wrapping
+
+
+            // General DataGridView settings
+            this.dataGridView1.BackgroundColor = Color.White;
+            this.dataGridView1.BorderStyle = BorderStyle.None;
+            this.dataGridView1.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            this.dataGridView1.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            this.dataGridView1.EnableHeadersVisualStyles = false;
+            this.dataGridView1.GridColor = Color.FromArgb(230, 230, 230);
+            this.dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView1.MultiSelect = false;
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.RowHeadersVisible = false;
+            this.dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+            // Alternating rows style (light gray for alternate rows)
+            this.dataGridView1.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(248, 248, 248);
+
+            // Header style
+            this.dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(240, 240, 240);
+            this.dataGridView1.ColumnHeadersDefaultCellStyle.ForeColor = Color.FromArgb(60, 60, 60);
+            this.dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
+            this.dataGridView1.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.FromArgb(210, 210, 210);
+            this.dataGridView1.ColumnHeadersHeight = 40;
+
+            // Cell style
+            this.dataGridView1.DefaultCellStyle.BackColor = Color.White;
+            this.dataGridView1.DefaultCellStyle.ForeColor = Color.FromArgb(80, 80, 80);
+            this.dataGridView1.DefaultCellStyle.Font = new Font("Segoe UI", 10F);
+            this.dataGridView1.DefaultCellStyle.SelectionBackColor = Color.FromArgb(200, 220, 240);
+            this.dataGridView1.DefaultCellStyle.SelectionForeColor = Color.FromArgb(60, 60, 60);
+            this.dataGridView1.DefaultCellStyle.Padding = new Padding(5);
+
+            // Row style
+            this.dataGridView1.RowTemplate.Height = 35;
+            this.dataGridView1.RowTemplate.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+
+            // Grid color for subtle borders
+            this.dataGridView1.GridColor = Color.FromArgb(230, 230, 230);
+
+
             // 
             // startFinalBtn
             // 

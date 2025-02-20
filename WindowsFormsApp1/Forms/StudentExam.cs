@@ -235,7 +235,7 @@ namespace WindowsFormsApp1.Forms
             }
             else
             {
-                MessageBox.Show("No more questions available.");
+                MessageBox.Show("You have Reached the beggining of questions.");
             }
         }
 
@@ -268,8 +268,18 @@ namespace WindowsFormsApp1.Forms
             // Check if the answer is correct (simplified for now)
             bool isCorrect = BusinessLogic.ExamManager.ValidateAnswer(questionId, studentAnswer);
 
+            if (isCorrect) {
+
+                DataTable questionMark = BusinessLogic.ExamManager.getQuestionMarks(questionId);
+                int mark = Convert.ToInt32(questionMark.Rows[0]["Marks"]);
+                studentAnswers.AddOrUpdateAnswer(questionId, studentAnswer, isCorrect, mark);
+            }
+            else
+            {
+                studentAnswers.AddOrUpdateAnswer(questionId, studentAnswer, isCorrect,0);
+            }
             // Store the answer
-            studentAnswers.AddOrUpdateAnswer(questionId, studentAnswer, isCorrect);
+//            studentAnswers.AddOrUpdateAnswer(questionId, studentAnswer, isCorrect);
         }
 
         private void SubmitBtn_Click(object sender, EventArgs e)
@@ -284,17 +294,17 @@ namespace WindowsFormsApp1.Forms
                 if(exam is FinalExam)
                 {
 
-                     BusinessLogic.ExamManager.StoreStudentAnswer(studentId, exam.ExamID, answer.Key, answer.Value.StudentAnswer, answer.Value.ISCorrect, answer.Value.Stud_Marks);
+                     BusinessLogic.ExamManager.StoreStudentAnswer(studentId, exam.ExamID, answer.Key, answer.Value.StudentAnswer, answer.Value.ISCorrect, answer.Value.Stud_Marks.Value);
                 }
                 studentAnswersString += $"Question ID: {answer.Key}, Answer: {answer.Value.StudentAnswer}, Is Correct: {answer.Value.ISCorrect}\n";
             }
-            MessageBox.Show(studentAnswersString, "Student Answers", MessageBoxButtons.OK, MessageBoxIcon.Information);
+          //  MessageBox.Show(studentAnswersString, "Student Answers", MessageBoxButtons.OK, MessageBoxIcon.Information);
             
 
             
             
             int totalMarks = studentAnswers.CalculateTotalMarks();
-            MessageBox.Show($"Exam Completed! Your Total Score: {totalMarks}", "Exam Submission", MessageBoxButtons.OK, MessageBoxIcon.Information);
+//            MessageBox.Show($"Exam Completed! Your Total Score: {totalMarks}", "Exam Submission", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             if(exam is FinalExam)
             {
@@ -311,9 +321,18 @@ namespace WindowsFormsApp1.Forms
             successSubmit = new UserControls.successSubmit();
             backgroundPanel.Controls.Add(successSubmit);
 
-            backgroundPanel.Controls.Add(showAnswersBtn);
-            showAnswersBtn.BringToFront();
-            showAnswersBtn.Visible = true;
+            if(exam is PracticeExam)
+            {
+
+                backgroundPanel.Controls.Add(showAnswersBtn);
+                showAnswersBtn.BringToFront();
+                showAnswersBtn.Visible = true;
+            }
+            else
+            {
+                showAnswersBtn.Visible = false;
+
+            }
 
 
 
@@ -378,6 +397,11 @@ namespace WindowsFormsApp1.Forms
         private void showAnswersBtn_Click(object sender, EventArgs e)
         {
             ShowResults();
+        }
+
+        private void backgroundPanel_Paint(object sender, PaintEventArgs e)
+        {
+            
         }
     }
 }

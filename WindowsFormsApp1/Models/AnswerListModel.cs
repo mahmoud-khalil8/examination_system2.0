@@ -13,14 +13,15 @@ namespace WindowsFormsApp1.Models
         public Dictionary<int, AnswerModel> Answers { get; set; } = new Dictionary<int, AnswerModel>();
 
         // add or update the answer of the student
-        public void AddOrUpdateAnswer(int questionId, string studentAnswer, bool isCorrect)
+        public void AddOrUpdateAnswer(int questionId, string studentAnswer, bool isCorrect,int mark)
         {
             // if the answer is already exists update it else add it
             if (Answers.ContainsKey(questionId))
             {
                 Answers[questionId].StudentAnswer = studentAnswer;
                 Answers[questionId].ISCorrect = isCorrect;
-                
+                Answers[questionId].Stud_Marks = mark;
+
             }
             else
             {
@@ -28,7 +29,10 @@ namespace WindowsFormsApp1.Models
                 {
                     Ques_ID = questionId,
                     StudentAnswer = studentAnswer,
-                    ISCorrect = isCorrect
+                    ISCorrect = isCorrect,
+                    Stud_Marks = mark
+
+
                 };
             }
         }

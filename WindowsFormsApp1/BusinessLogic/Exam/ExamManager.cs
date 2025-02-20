@@ -198,12 +198,22 @@ namespace WindowsFormsApp1.BusinessLogic
 
 
 
-            public static DataTable GetAvailableExams(string examType)
+        public static DataTable GetAvailableExams(string examType)
         {
-            string query = "SELECT * FROM Exam WHERE ExamType = @ExamType AND Mode IN ('Queued', 'Started')";
+            string query = "SELECT *  FROM Exam WHERE ExamType = @ExamType AND Mode IN ('Queued', 'Started')";
             SqlParameter[] parameters =
             {
                new SqlParameter("@ExamType", examType)
+            };
+            return DatabaseHelper.ExecuteQuery(query, parameters);
+        }
+        public static DataTable checkExamTaken(int studentId, int examId)
+        {
+            string query = "SELECT * FROM STUD_EXAM WHERE Stud_ID = @StudentID AND Exam_ID = @ExamID";
+            SqlParameter[] parameters =
+            {
+                new SqlParameter("@StudentID", studentId),
+                new SqlParameter("@ExamID", examId)
             };
             return DatabaseHelper.ExecuteQuery(query, parameters);
         }

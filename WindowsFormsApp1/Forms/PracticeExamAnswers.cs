@@ -131,7 +131,7 @@ namespace WindowsFormsApp1.Forms
             // Display the student's answer in the label
             if (!string.IsNullOrEmpty(savedAnswer))
             {
-                studentAnswerLbl.Text = $" {savedAnswer}";
+                studentAnswerLbl.Text = $"{savedAnswer}";
             }
             else
             {

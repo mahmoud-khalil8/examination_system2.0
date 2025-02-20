@@ -16,7 +16,8 @@ namespace WindowsFormsApp1.Forms
         UserModel student ;
         PracticeExam PracticeExam;
         FinalExam finalExam;
-        private int selectedExamID = 0; 
+        int selectedExamID = 0;
+        
 
         public Student( UserModel student)
         {
@@ -37,6 +38,7 @@ namespace WindowsFormsApp1.Forms
 
             //fill the datagridview with the exams
             DataTable exams = BusinessLogic.ExamManager.GetAvailableExams("final");
+            
 
             if (exams.Rows.Count == 0)
             {
@@ -51,7 +53,13 @@ namespace WindowsFormsApp1.Forms
                 dataGridView1.DataSource = exams;
 
 
-            dataGridView1.CellClick += dataGridView1_CellClick;
+                dataGridView1.CellClick += dataGridView1_CellClick;
+                dataGridView1.Columns["Exam_ID"].Visible = false;
+                dataGridView1.Columns["mode"].Visible = false;
+                dataGridView1.Columns["examType"].Visible = false;
+                dataGridView1.Columns["subject_id"].Visible = false;
+                dataGridView1.Columns["teacher_id"].Visible = false;
+                dataGridView1.ReadOnly = true;
 
             }
         }
@@ -94,6 +102,7 @@ namespace WindowsFormsApp1.Forms
             if (e.RowIndex >= 0 && dataGridView1.Rows[e.RowIndex].Cells["exam_id"].Value != null && e.RowIndex< dataGridView1.Rows.Count-1)
             {
                 int examId = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells["exam_id"].Value);
+                selectedExamID = examId;
                 startFinalBtn.Visible = true;
                 startFinalBtn.Enabled = true;
                 
@@ -116,6 +125,14 @@ namespace WindowsFormsApp1.Forms
 
         private void startFinalBtn_Click(object sender, EventArgs e)
         {
+
+            DataTable checkExamTaken = BusinessLogic.ExamManager.checkExamTaken(student.UserID, selectedExamID);
+
+            if (checkExamTaken.Rows.Count > 0)
+            {
+                MessageBox.Show("You have already taken this exam.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
             DataTable exam = BusinessLogic.ExamManager.GetAvailableExams("final");
 

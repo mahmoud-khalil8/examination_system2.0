@@ -356,6 +356,7 @@ namespace WindowsFormsApp1.Forms
             this.backgroundPanel.Name = "backgroundPanel";
             this.backgroundPanel.Size = new System.Drawing.Size(1205, 659);
             this.backgroundPanel.TabIndex = 26;
+            this.backgroundPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.backgroundPanel_Paint);
             // 
             // showAnswersBtn
             // 
