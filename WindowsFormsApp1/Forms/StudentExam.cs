@@ -1,0 +1,318 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using WindowsFormsApp1.Models;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TaskbarClock;
+
+namespace WindowsFormsApp1.Forms
+{
+    public partial class StudentExam : Form
+    {
+        DataTable questions;
+        PracticeExam practiceExam;
+        string fullName;
+        private Timer examTimer;
+        private DateTime examEndTime;
+        int questionCounter = 0;
+        int studentId= 0;
+        private AnswerListModel studentAnswers = new AnswerListModel();
+        int examTotalQuestions;
+
+        public StudentExam(PracticeExam practiceExam,string fullName,int studentId)
+        {
+            this.practiceExam= practiceExam;
+            this.fullName = fullName;
+            this.studentId = studentId;
+            InitializeComponent();
+        }
+
+
+
+        private void StudentExam_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                #region Loading ExamData
+
+
+                if (practiceExam == null)
+                {
+                    throw new InvalidOperationException("Practice Exam not found.");
+                }
+                int examID = practiceExam.ExamID;
+                string examName = practiceExam.ExamName;
+                DateTime examDate;
+
+                if (!DateTime.TryParse(practiceExam.StartTime.ToString(), out examDate))
+                {
+                    throw new InvalidOperationException("Invalid date format in the database.");
+                }
+                TimeSpan examDuration;
+
+                if (!TimeSpan.TryParse(practiceExam.Time.ToString(), out examDuration))
+                {
+                    throw new InvalidOperationException("Invalid time format in the database.");
+                }
+
+
+                 examTotalQuestions = practiceExam.NumberOfQuestions;
+                int examTotalMarks = practiceExam.Marks;
+                ExamNameLabel.Text = examName;
+                totalQuestionLabel.Text = "Total Questions: " + examTotalQuestions;
+                TotalMarksLabel.Text = "Total Marks: " + examTotalMarks;
+                totalTimeLabel.Text = "Exam Duration: " + examDuration.ToString(@"hh\:mm\:ss");
+
+                examEndTime = examDate.Add(examDuration);
+
+                examTimer = new Timer();
+                examTimer.Interval = 1000;  
+                examTimer.Tick += new EventHandler(UpdateRemainingTime);
+                examTimer.Start();
+
+                UpdateRemainingTime(null, null);
+
+
+                #endregion
+
+
+
+                #region LoadQuestion
+
+
+
+
+
+
+                // Load Questions
+                questions = BusinessLogic.ExamManager.getExamQuestions(examID);
+                if (questions.Rows.Count == 0)
+                {
+                    throw new InvalidOperationException("No questions found for the exam.");
+                }
+
+                LoadQuestion(questions.Rows[questionCounter]);
+                #endregion
+
+
+            }
+            catch (Exception ex)
+            {
+                // Log the error and show a message to the user
+                MessageBox.Show("An error occurred while loading the exam: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void UpdateRemainingTime(object sender, EventArgs e)
+        {
+            TimeSpan remainingTime = examEndTime - DateTime.Now;
+
+            if (remainingTime.TotalSeconds > 0)
+            {
+                RemainingTimeLabel.Text = "Remaining Time: " + remainingTime.ToString(@"hh\:mm\:ss");
+            }
+            else
+            {
+                RemainingTimeLabel.Text = "Exam Time Over";
+                examTimer.Stop();
+            }
+        }
+        public void LoadQuestion(DataRow question)
+        {
+            // Set the question text
+            questionLabel.Text = question["body"].ToString();
+            questionNumberLabel.Text = "Question " + (questionCounter + 1) + " of " + examTotalQuestions;
+
+            // Get the question type
+            string questionType = question["QType"].ToString();
+
+            // Get question options
+            DataTable options = BusinessLogic.ExamManager.getQuestionOptions(Convert.ToInt32(question["QID"]));
+            if (options.Rows.Count == 0)
+            {
+                throw new InvalidOperationException("No options found for the question.");
+            }
+
+            // Clear existing options
+            optionsPanel.Controls.Clear();
+
+            // Get the stored answer for this question (if exists)
+            int questionId = Convert.ToInt32(question["QID"]);
+            string savedAnswer = studentAnswers.GetStudentAnswer(questionId);
+
+            for (int i = 0; i < options.Rows.Count; i++)
+            {
+                string optionText = options.Rows[i]["options"].ToString();
+
+                if (questionType.ToLower() == "true/false" || questionType.ToLower() == "choose one")
+                {
+                    RadioButton option = new RadioButton
+                    {
+                        Text = optionText,
+                        Name = "option" + i,
+                        AutoSize = true,
+                        Font = new Font("Jetbrains Mono", 17),
+                        Location = new Point(10, 10 + i * 30),
+                        Checked = (optionText == savedAnswer) // Restore saved selection
+                    };
+
+                    optionsPanel.Controls.Add(option);
+                }
+                else if (questionType.ToLower() == "choose multiple")
+                {
+                    CheckBox option = new CheckBox
+                    {
+                        Text = optionText,
+                        Name = "option" + i,
+                        AutoSize = true,
+                        Font = new Font("Jetbrains Mono", 17),
+                        Location = new Point(10, 10 + i * 30),
+                        Checked = savedAnswer.Split(',').Contains(optionText) // Restore saved selections
+                    };
+
+                    optionsPanel.Controls.Add(option);
+                }
+            }
+        }
+
+
+        private void nextbtn_Click(object sender, EventArgs e)
+        {
+
+            SaveStudentAnswer();
+            if (questionCounter < questions.Rows.Count - 1)
+            {
+                questionCounter++;
+                LoadQuestion(questions.Rows[questionCounter]);
+            }
+            else
+            {
+                
+               
+
+                SubmitBtn.Visible = true;
+
+                MessageBox.Show("No more questions available.");
+            }
+
+        }
+
+        private void prevbtn_Click(object sender, EventArgs e)
+        {
+            SubmitBtn.Visible = false;
+
+
+            if (questionCounter > 0)
+            {
+
+                questionCounter--;
+                LoadQuestion(questions.Rows[questionCounter]);
+            }
+            else
+            {
+                MessageBox.Show("No more questions available.");
+            }
+        }
+
+        private void SaveStudentAnswer()
+        {
+
+            DataRow currentQuestion = questions.Rows[questionCounter];
+            int questionId = Convert.ToInt32(currentQuestion["QID"]);
+            string questionType = currentQuestion["QType"].ToString();
+            string studentAnswer = "";
+
+            // Loop through the controls in optionsPanel to get selected answers
+            foreach (Control control in optionsPanel.Controls)
+            {
+                if (control is RadioButton radioButton && radioButton.Checked)
+                {
+                    studentAnswer = radioButton.Text;
+                }
+                else if (control is CheckBox checkBox && checkBox.Checked)
+                {
+                    studentAnswer += checkBox.Text + ",";
+                }
+            }
+
+            if (questionType.ToLower() == "choose multiple" && studentAnswer.EndsWith(","))
+            {
+                studentAnswer = studentAnswer.TrimEnd(','); // Remove last comma
+
+            }
+            // Check if the answer is correct (simplified for now)
+            bool isCorrect = BusinessLogic.ExamManager.ValidateAnswer(questionId, studentAnswer);
+
+            // Store the answer
+            studentAnswers.AddOrUpdateAnswer(questionId, studentAnswer, isCorrect);
+        }
+
+        private void SubmitBtn_Click(object sender, EventArgs e)
+        {
+
+            //print student answers in message box
+            string studentAnswersString = "";
+            foreach (var answer in studentAnswers.getStudentAnswers())
+            {
+                studentAnswersString += $"Question ID: {answer.Key}, Answer: {answer.Value.StudentAnswer}, Is Correct: {answer.Value.ISCorrect}\n";
+            }
+            MessageBox.Show(studentAnswersString, "Student Answers", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            int totalMarks = studentAnswers.CalculateTotalMarks();
+            MessageBox.Show($"Exam Completed! Your Total Score: {totalMarks}", "Exam Submission", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            DialogResult result = MessageBox.Show(
+                  $"Exam Completed!\nYour Total Score: {totalMarks}\n\nClick 'Show Results' to see detailed feedback.",
+                  "Exam Submission",
+                  MessageBoxButtons.OKCancel,
+                  MessageBoxIcon.Information
+              );
+
+            // If user clicks OK, open results screen
+            if (result == DialogResult.OK)
+            {
+                ShowResults();
+            }
+
+
+            // Optionally save answers to the database
+            // BusinessLogic.ExamManager.SaveStudentAnswers(studentAnswers);
+
+        }
+
+        private void ShowResults()
+        {
+
+            DataTable exam = BusinessLogic.ExamManager.getUserPracticeExam(studentId);
+
+            if (exam.Rows.Count > 0)
+            {
+                DataRow row = exam.Rows[0];
+
+                TimeSpan examDuration = TimeSpan.Parse(row["duration"].ToString());
+                int numberOfQuestions = Convert.ToInt32(row["ques_num"]);
+                string mode = row["mode"].ToString();
+                string examName = row["examName"].ToString();
+                string examType = row["examType"].ToString();
+                int examID = Convert.ToInt32(row["exam_id"]);
+                int marks = Convert.ToInt32(row["exam_marks"]);
+                int subjectId = Convert.ToInt32(row["subject_id"]);
+                int teacherId = Convert.ToInt32(row["teacher_id"]);
+                DateTime startTime = Convert.ToDateTime(row["start_time"]);
+
+                // Create PracticeExam instance
+                practiceExam = new PracticeExam(examDuration, numberOfQuestions, mode, examName, examType, examID, marks, subjectId, teacherId, startTime);
+
+            }
+
+
+
+            PracticeExamAnswers practiceExamAnswers = new PracticeExamAnswers(practiceExam, studentAnswers, fullName);
+            practiceExamAnswers.Show();
+        }
+    }
+}
