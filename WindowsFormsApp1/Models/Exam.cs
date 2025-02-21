@@ -17,6 +17,18 @@ namespace WindowsFormsApp1.Models
         public int TeacherId { get; set; }
         public DateTime StartTime { get; set; }
 
+
+        public delegate void ExamStartHandler(string examName, DateTime startTime);
+
+
+        public static event Action<string, DateTime> ExamStarted;
+
+        // Method to trigger the event
+        public static void NotifyExamStart(string examName, DateTime startTime)
+        {
+            ExamStarted?.Invoke(examName, startTime);
+        }
+
         // Use Dictionary<int, object> to avoid object key issues (int -> QuestionID)
         public Dictionary<int, object> QuestionAnswers { get; set; }
 
@@ -33,6 +45,7 @@ namespace WindowsFormsApp1.Models
             TeacherId = teacherId;
             StartTime = startTime;
             QuestionAnswers = new Dictionary<int, object>(); // Prevent NullReferenceException
+            NotifyExamStart(ExamName, StartTime);
         }
 
         public abstract void ShowExam();
@@ -43,6 +56,7 @@ namespace WindowsFormsApp1.Models
         public PracticeExam(TimeSpan time, int numberOfQuestions, string mode, string examName, string examType, int examID, int marks, int subjectId, int teacherId, DateTime startTime)
             : base(time, numberOfQuestions, mode, examName, "practiceExam", examID, marks, subjectId, teacherId, startTime)
         {
+
         }
 
         public override void ShowExam()

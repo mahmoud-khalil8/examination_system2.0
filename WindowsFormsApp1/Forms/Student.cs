@@ -62,6 +62,8 @@ namespace WindowsFormsApp1.Forms
                 dataGridView1.ReadOnly = true;
 
             }
+            PracticeExam.ExamStarted += OnExamStarted;
+            FinalExam.ExamStarted += OnExamStarted;
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -176,5 +178,53 @@ namespace WindowsFormsApp1.Forms
 
             studentExam.Show();
         }
+        private void OnExamStarted(string examName, DateTime startTime)
+        {
+            if (this.InvokeRequired)
+            {
+                this.Invoke(new Action(() =>
+                    MessageBox.Show($"The exam '{examName}' has started at {startTime}.",
+                                    "Exam Notification",
+                                    MessageBoxButtons.OK,
+                                    MessageBoxIcon.Information)
+                ));
+            }
+            else
+            {
+                MessageBox.Show($"The exam '{examName}' has started at {startTime}.",
+                                "Exam Notification",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Information);
+            }
+        }
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            base.OnFormClosing(e);
+
+            // Unsubscribe to avoid memory leaks
+            PracticeExam.ExamStarted -= OnExamStarted;
+            FinalExam.ExamStarted -= OnExamStarted;
+        }
+
+        private void refreshBtn_Click(object sender, EventArgs e)
+        {
+            DataTable finalExams = BusinessLogic.ExamManager.GetAvailableExams("final");
+
+            
+
+            // Check Final Exams
+            foreach (DataRow row in finalExams.Rows)
+            {
+                DateTime startTime = Convert.ToDateTime(row["start_time"]);
+                string examName = row["examName"].ToString();
+
+                if (startTime <= DateTime.Now && startTime.Add(TimeSpan.Parse(row["duration"].ToString())) > DateTime.Now)
+                {
+                    // Trigger the event for final exams
+                    Exam.NotifyExamStart(examName, startTime);
+                }
+            }
+        }
+
     }
 }

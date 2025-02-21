@@ -49,9 +49,14 @@ namespace WindowsFormsApp1.Forms
                 {
                     throw new InvalidOperationException("Practice Exam not found.");
                 }
+
+                
+               
                 int examID = exam.ExamID;
                 string examName = exam.ExamName;
-                DateTime examDate;
+                DateTime examDate=exam.StartTime;
+
+                // Notify students when the exam starts
 
                 if (!DateTime.TryParse(exam.StartTime.ToString(), out examDate))
                 {
@@ -119,6 +124,11 @@ namespace WindowsFormsApp1.Forms
                 // Log the error and show a message to the user
                 MessageBox.Show("An error occurred while loading the exam: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void Exam_ExamStarted(string examName, DateTime startTime)
+        {
+            throw new NotImplementedException();
         }
 
         private void UpdateRemainingTime(object sender, EventArgs e)
@@ -407,5 +417,7 @@ namespace WindowsFormsApp1.Forms
         {
             
         }
+       
+        
     }
 }
