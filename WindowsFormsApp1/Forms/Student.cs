@@ -134,7 +134,10 @@ namespace WindowsFormsApp1.Forms
                 return;
             }
 
-            DataTable exam = BusinessLogic.ExamManager.GetAvailableExams("final");
+
+
+
+            DataTable exam = BusinessLogic.ExamManager.getFinalExam(selectedExamID);
 
             if (exam.Rows.Count > 0)
             {
@@ -151,11 +154,22 @@ namespace WindowsFormsApp1.Forms
                 int teacherId = Convert.ToInt32(row["teacher_id"]);
                 DateTime startTime = Convert.ToDateTime(row["start_time"]);
 
-                // Create PracticeExam instance
+                if(startTime > DateTime.Now)
+                {
+                    MessageBox.Show("Exam has not started yet.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                else if(startTime.Add(examDuration) < DateTime.Now)
+                {
+                    MessageBox.Show("Exam has ended.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                // Create FinalExam instance
                 finalExam = new FinalExam(examDuration, numberOfQuestions, mode, examName, examType, examID, marks, subjectId, teacherId, startTime);
 
             }
-
+            
 
 
             StudentExam studentExam = new StudentExam(finalExam, student.FullName, student.UserID);

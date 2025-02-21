@@ -136,8 +136,8 @@ namespace WindowsFormsApp1.Forms
                 examTimer.Stop();
                 //MessageBox.Show("Time Over! Your answers will be submitted automatically.", "Time Over", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 
-               // SubmitBtn.Visible = true;
-                //SubmitBtn.PerformClick();
+                SubmitBtn.Visible = true;
+                SubmitBtn.PerformClick();
 
                 
             }
@@ -157,7 +157,11 @@ namespace WindowsFormsApp1.Forms
             {
                 throw new InvalidOperationException("No options found for the question.");
             }
+            headerlbl.Text = question["header"].ToString();
+            questionNumlbl.Text = $"{questionCounter+1})";
 
+            DataTable subjects = BusinessLogic.ExamManager.getSubjects(exam.ExamID);
+            subjectNameLbl.Text =$"Subject Name: {subjects.Rows[0]["subject_name"].ToString()}";
             // Clear existing options
             optionsPanel.Controls.Clear();
 
@@ -176,8 +180,8 @@ namespace WindowsFormsApp1.Forms
                         Text = optionText,
                         Name = "option" + i,
                         AutoSize = true,
-                        Font = new Font("Jetbrains Mono", 17),
-                        Location = new Point(10, 10 + i * 30),
+                        Font = new Font("Jetbrains Mono", 14),
+                        Location = new Point(10, 10 + i * 50),
                         Checked = (optionText == savedAnswer) // Restore saved selection
                     };
 
@@ -190,8 +194,8 @@ namespace WindowsFormsApp1.Forms
                         Text = optionText,
                         Name = "option" + i,
                         AutoSize = true,
-                        Font = new Font("Jetbrains Mono", 17),
-                        Location = new Point(10, 10 + i * 30),
+                        Font = new Font("Jetbrains Mono", 14),
+                        Location = new Point(10, 10 + i * 50),
                         Checked = savedAnswer.Split(',').Contains(optionText) // Restore saved selections
                     };
 

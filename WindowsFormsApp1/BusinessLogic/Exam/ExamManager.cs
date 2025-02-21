@@ -83,6 +83,16 @@ namespace WindowsFormsApp1.BusinessLogic
 
         }
 
+        public static DataTable getSubjects(int examId)
+        {
+
+            string query = "SELECT * FROM Subject s join Exam e on s.sub_id=e.subject_id where e.Exam_ID=@examId";
+            SqlParameter[] parameters =
+            {
+                new SqlParameter("@examId", examId)
+            };
+            return DatabaseHelper.ExecuteQuery(query, parameters);
+        }
         public static DataTable GetCorrectAnswers(int questionId)
         {
             string query = "SELECT options as correctAnswer FROM Question_CorrectAns qc  join Ques_Options q" +
@@ -136,65 +146,7 @@ namespace WindowsFormsApp1.BusinessLogic
 
             DatabaseHelper.ExecuteStoredProcedure("StoreStudentAnswer", parameters);
         }
-            //public static int SubmitAnswer(int studentId, int examId, int questionId, List<int> selectedAnswers)
-            //{
-            //    if (selectedAnswers == null || selectedAnswers.Count == 0)
-            //        return 0;
 
-            //    int totalMarks = 0;
-
-            //    string correctAnswersQuery = "SELECT CorrectAnswer FROM Question_CorrectAns WHERE QID = @QuestionID";
-            //    SqlParameter[] correctParams = { new SqlParameter("@QuestionID", questionId) };
-            //    DataTable correctAnswersTable = DatabaseHelper.ExecuteQuery(correctAnswersQuery, correctParams);
-
-            //    HashSet<int> correctAnswers = new HashSet<int>();
-            //    foreach (DataRow row in correctAnswersTable.Rows)
-            //    {
-            //        correctAnswers.Add(Convert.ToInt32(row["CorrectAnswer"]));
-            //    }
-
-            //    int correctSelections = selectedAnswers.Count(answer => correctAnswers.Contains(answer));
-            //    int totalCorrectAnswers = correctAnswers.Count;
-
-            //    string marksQuery = "SELECT Marks FROM Questions WHERE QID = @QuestionID";
-            //    DataTable marksTable = DatabaseHelper.ExecuteQuery(marksQuery, correctParams);
-            //    int questionMarks = marksTable.Rows.Count > 0 ? Convert.ToInt32(marksTable.Rows[0]["Marks"]) : 0;
-
-            //    int studentMarks = (int)Math.Round(((double)correctSelections / totalCorrectAnswers) * questionMarks);
-
-            //    foreach (int answerId in selectedAnswers)
-            //    {
-            //        string insertQuery = "INSERT INTO STUD_EXAM_ANS (Stud_ID, Exam_ID, Ques_ID, Ans_ID) VALUES (@StudentID, @ExamID, @QuestionID, @AnswerID)";
-            //        SqlParameter[] insertParams =
-            //        {
-            //    new SqlParameter("@StudentID", studentId),
-            //    new SqlParameter("@ExamID", examId),
-            //    new SqlParameter("@QuestionID", questionId),
-            //    new SqlParameter("@AnswerID", answerId)
-            //};
-            //        DatabaseHelper.ExecuteNonQuery(insertQuery, insertParams);
-            //    }
-
-            //    return studentMarks;
-            //}
-
-
-            //public static void AutoSubmitExam(int studentId, int examId, Dictionary<int, List<int>> studentAnswers)
-            //{
-            //    foreach (var questionId in studentAnswers.Keys)
-            //    {
-            //        List<int> selectedAnswers = studentAnswers[questionId];
-            //        SubmitAnswer(studentId, examId, questionId, selectedAnswers);
-            //    }
-
-            //    string submitQuery = "UPDATE STUD_EXAM SET ExamStatus = 'Completed' WHERE Stud_ID = @StudentID AND Exam_ID = @ExamID";
-            //    SqlParameter[] parameters =
-            //    {
-            //     new SqlParameter("@StudentID", studentId),
-            //     new SqlParameter("@ExamID", examId)
-            //     };
-            //    DatabaseHelper.ExecuteNonQuery(submitQuery, parameters);
-            //}
 
 
 
@@ -218,5 +170,14 @@ namespace WindowsFormsApp1.BusinessLogic
             return DatabaseHelper.ExecuteQuery(query, parameters);
         }
 
+        public static DataTable getFinalExam(int examId)
+        {
+            string query = "SELECT * FROM Exam WHERE Exam_ID = @ExamID";
+            SqlParameter[] parameters =
+            {
+                new SqlParameter("@ExamID", examId)
+            };
+            return DatabaseHelper.ExecuteQuery(query, parameters);
+        }
     }
 }
