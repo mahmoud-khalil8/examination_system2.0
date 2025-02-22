@@ -23,13 +23,11 @@ namespace WindowsFormsApp1.Models
 
         public static event Action<string, DateTime> ExamStarted;
 
-        // Method to trigger the event
         public static void NotifyExamStart(string examName, DateTime startTime)
         {
             ExamStarted?.Invoke(examName, startTime);
         }
 
-        // Use Dictionary<int, object> to avoid object key issues (int -> QuestionID)
         public Dictionary<int, object> QuestionAnswers { get; set; }
 
         public Exam(TimeSpan time, int numberOfQuestions, string mode, string examName, string examType, int examID, int marks, int subjectId, int teacherId, DateTime startTime)
