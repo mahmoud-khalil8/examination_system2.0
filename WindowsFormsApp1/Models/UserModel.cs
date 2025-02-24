@@ -21,5 +21,8 @@ namespace WindowsFormsApp1.Models
         public int? Age { get; set; }
         public int? CreatedBy { get; set; }
         public int? SupervisedBy { get; set; }
+
+
+
     }
 }

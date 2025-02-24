@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsApp1.DataAccess;
 using WindowsFormsApp1.Models;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace WindowsFormsApp1.BusinessLogic
 {
@@ -178,6 +179,18 @@ namespace WindowsFormsApp1.BusinessLogic
                 new SqlParameter("@ExamID", examId)
             };
             return DatabaseHelper.ExecuteQuery(query, parameters);
+        }
+        public static DataTable getStudent(string email, string password)
+        {
+            string query = "select * from users where Email=@email and password=@password";
+            SqlParameter[] param = new SqlParameter[]
+            {
+                new SqlParameter("@email",email),
+                new SqlParameter("@password",password)
+
+            };
+            return DataAccess.DatabaseHelper.ExecuteQuery(query, param);
+
         }
     }
 }

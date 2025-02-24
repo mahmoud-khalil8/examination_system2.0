@@ -105,10 +105,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BusinessLogic\Admin\UserManager.cs" />
     <Compile Include="BusinessLogic\Exam\ExamManager.cs" />
-    <Compile Include="BusinessLogic\Student\StudentManager.cs" />
-    <Compile Include="BusinessLogic\Teacher\TeacherManager.cs" />
+    <Compile Include="BusinessLogic\StudentBLL.cs" />
+    <Compile Include="BusinessLogic\TeacherBLL.cs" />
     <Compile Include="DataAccess\DatabaseHelper.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -140,6 +139,24 @@
     <Compile Include="Forms\StudentExam.Designer.cs">
       <DependentUpon>StudentExam.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Teacher\Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Teacher\Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Teacher\StudentForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Teacher\StudentForm.Designer.cs">
+      <DependentUpon>StudentForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Teacher\TeacherForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Teacher\TeacherForm.Designer.cs">
+      <DependentUpon>TeacherForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\AnswerListModel.cs" />
     <Compile Include="Models\AnswerModel.cs" />
     <Compile Include="Models\Exam.cs" />
@@ -161,11 +178,47 @@
     <Compile Include="UserControls\ExamQuestions.Designer.cs">
       <DependentUpon>ExamQuestions.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\StdUC\AddStd.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\StdUC\AddStd.Designer.cs">
+      <DependentUpon>AddStd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\StdUC\RemoveStd.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\StdUC\RemoveStd.Designer.cs">
+      <DependentUpon>RemoveStd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\StdUC\UpdateStdUc.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\StdUC\UpdateStdUc.Designer.cs">
+      <DependentUpon>UpdateStdUc.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\successSubmit.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UserControls\successSubmit.Designer.cs">
       <DependentUpon>successSubmit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\TeacherUC\AddTeacherUc.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\TeacherUC\AddTeacherUc.Designer.cs">
+      <DependentUpon>AddTeacherUc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\TeacherUC\DeleteTeacherUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\TeacherUC\DeleteTeacherUC.Designer.cs">
+      <DependentUpon>DeleteTeacherUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\TeacherUC\UpdTeacherUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\TeacherUC\UpdTeacherUC.Designer.cs">
+      <DependentUpon>UpdTeacherUC.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Forms\intro.resx">
       <DependentUpon>intro.cs</DependentUpon>
@@ -178,6 +231,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\StudentExam.resx">
       <DependentUpon>StudentExam.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Teacher\Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Teacher\StudentForm.resx">
+      <DependentUpon>StudentForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Teacher\TeacherForm.resx">
+      <DependentUpon>TeacherForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -194,8 +256,26 @@
     <EmbeddedResource Include="UserControls\ExamQuestions.resx">
       <DependentUpon>ExamQuestions.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\StdUC\AddStd.resx">
+      <DependentUpon>AddStd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\StdUC\RemoveStd.resx">
+      <DependentUpon>RemoveStd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\StdUC\UpdateStdUc.resx">
+      <DependentUpon>UpdateStdUc.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\successSubmit.resx">
       <DependentUpon>successSubmit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\TeacherUC\AddTeacherUc.resx">
+      <DependentUpon>AddTeacherUc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\TeacherUC\DeleteTeacherUC.resx">
+      <DependentUpon>DeleteTeacherUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\TeacherUC\UpdTeacherUC.resx">
+      <DependentUpon>UpdTeacherUC.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="appSettings.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

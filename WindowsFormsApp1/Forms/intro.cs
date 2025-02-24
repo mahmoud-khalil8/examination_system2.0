@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApp1.BusinessLogic;
 using WindowsFormsApp1.Models;
 
 namespace WindowsFormsApp1.Forms
@@ -32,7 +33,7 @@ namespace WindowsFormsApp1.Forms
             string password = passwordtb.Text;
 
 
-            DataTable studentInformation = BusinessLogic.StudentManager.getStudent(email,password);
+            DataTable studentInformation = ExamManager.getStudent(email,password);
 
             if (studentInformation.Rows.Count > 0)
             {
@@ -51,6 +52,12 @@ namespace WindowsFormsApp1.Forms
 
                     Student studentForm = new Student(student);
                     studentForm.Show();
+                }
+                else if (studentRole == "Teacher")
+                {
+
+                    Teacher.Form1 form1 = new Teacher.Form1();
+                    form1.Show();
                 }
                 
                 
