@@ -33,31 +33,56 @@ namespace WindowsFormsApp1.Forms
             string password = passwordtb.Text;
 
 
-            DataTable studentInformation = ExamManager.getStudent(email,password);
+            DataTable userInformation = ExamManager.getStudent(email,password);
 
-            if (studentInformation.Rows.Count > 0)
+            if (userInformation.Rows.Count > 0)
             {
                 WrongStatement.Visible = false;
 
-                string studentRole = studentInformation.Rows[0]["Role"].ToString();
-                if (studentRole == "Student")
+                string userRole = userInformation.Rows[0]["Role"].ToString();
+                if (userRole.ToLower() == "student")
                 {
                     UserModel student = new UserModel();
-                    student.UserID = Convert.ToInt32(studentInformation.Rows[0]["UserID"]);
-                    student.Email = studentInformation.Rows[0]["Email"].ToString();
-                    student.Password = studentInformation.Rows[0]["Password"].ToString();
-                    student.Role = studentInformation.Rows[0]["Role"].ToString();
-                    student.FullName = studentInformation.Rows[0]["FullName"].ToString();
-                    student.UserName = studentInformation.Rows[0]["Username"].ToString();
+                    student.UserID = Convert.ToInt32(userInformation.Rows[0]["UserID"]);
+                    student.Email = userInformation.Rows[0]["Email"].ToString();
+                    student.Password = userInformation.Rows[0]["Password"].ToString();
+                    student.Role = userInformation.Rows[0]["Role"].ToString();
+                    student.FullName = userInformation.Rows[0]["FullName"].ToString();
+                    student.UserName = userInformation.Rows[0]["Username"].ToString();
 
                     Student studentForm = new Student(student);
                     studentForm.Show();
                 }
-                else if (studentRole == "Teacher")
+                else if (userRole.ToLower() == "admin")
                 {
 
-                    Teacher.Form1 form1 = new Teacher.Form1();
+                    UserModel admin = new UserModel();
+                    admin.UserID = Convert.ToInt32(userInformation.Rows[0]["UserID"]);
+                    admin.Email = userInformation.Rows[0]["Email"].ToString();
+                    admin.Password = userInformation.Rows[0]["Password"].ToString();
+                    admin.Role = userInformation.Rows[0]["Role"].ToString();
+                    admin.FullName = userInformation.Rows[0]["FullName"].ToString();
+                    admin.UserName = userInformation.Rows[0]["Username"].ToString();
+
+
+                    admin.Form1 form1 = new admin.Form1(admin);
                     form1.Show();
+                }
+                else if(userRole.ToLower() == "teacher")
+                {
+
+                    UserModel teacher = new UserModel();
+                    teacher.UserID = Convert.ToInt32(userInformation.Rows[0]["UserID"]);
+                    teacher.Email = userInformation.Rows[0]["Email"].ToString();
+                    teacher.Password = userInformation.Rows[0]["Password"].ToString();
+                    teacher.Role = userInformation.Rows[0]["Role"].ToString();
+                    teacher.FullName = userInformation.Rows[0]["FullName"].ToString();
+                    teacher.UserName = userInformation.Rows[0]["Username"].ToString();
+
+
+                    TeacherDashoard teacherDashoard = new TeacherDashoard(teacher);
+                    teacherDashoard.Show();
+
                 }
                 
                 

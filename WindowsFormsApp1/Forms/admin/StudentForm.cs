@@ -8,15 +8,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApp1.Models;
 using WindowsFormsApp1.UserControls.StdUC;
 
-namespace WindowsFormsApp1.Forms.Teacher
+namespace WindowsFormsApp1.Forms.admin
 {
     public partial class StudentForm : Form
     {
-        public StudentForm()
+
+        UserModel admin;
+        public StudentForm(UserModel _admin)
         {
+
             InitializeComponent();
+            this.admin = _admin;
         }
 
         
@@ -67,7 +72,7 @@ namespace WindowsFormsApp1.Forms.Teacher
         private void OutStdBtn_Click(object sender, EventArgs e)
         {
             //this.Hide();
-            Form1 form = new Form1();
+            admin.Form1 form = new admin.Form1(admin);
             form.Show();
         }
 

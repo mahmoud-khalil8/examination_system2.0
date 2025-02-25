@@ -8,15 +8,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApp1.Models;
 using WindowsFormsApp1.UserControls.TeacherUC;
 
-namespace WindowsFormsApp1.Forms.Teacher
+namespace WindowsFormsApp1.Forms.admin
 {
     public partial class TeacherForm : Form
     {
-        public TeacherForm()
+        UserModel admin;
+        public TeacherForm(UserModel admin)
         {
             InitializeComponent();
+            this.admin = admin;
         }
 
         private void AddTchBtn_Click(object sender, EventArgs e)
@@ -31,7 +34,7 @@ namespace WindowsFormsApp1.Forms.Teacher
         private void OutTchBtn_Click(object sender, EventArgs e)
         {
             //this.Hide();
-            Form1 form1 = new Form1();
+            Form1 form1 = new Form1(admin);
             form1.Show();
         }
 

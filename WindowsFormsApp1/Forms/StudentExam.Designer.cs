@@ -38,6 +38,7 @@ namespace WindowsFormsApp1.Forms
             this.totalQuestionLabel = new System.Windows.Forms.Label();
             this.ExamNameLabel = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.subjectNameLbl = new System.Windows.Forms.Label();
             this.TotalMarksLabel = new System.Windows.Forms.Label();
             this.optionsPanel = new System.Windows.Forms.Panel();
             this.questionLabel = new System.Windows.Forms.Label();
@@ -45,11 +46,10 @@ namespace WindowsFormsApp1.Forms
             this.prevbtn = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.SubmitBtn = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.backgroundPanel = new System.Windows.Forms.Panel();
-            this.showAnswersBtn = new ComponentFactory.Krypton.Toolkit.KryptonButton();
-            this.headerlbl = new System.Windows.Forms.Label();
-            this.questionNumlbl = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.subjectNameLbl = new System.Windows.Forms.Label();
+            this.questionNumlbl = new System.Windows.Forms.Label();
+            this.headerlbl = new System.Windows.Forms.Label();
+            this.showAnswersBtn = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.panel1.SuspendLayout();
             this.backgroundPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -61,7 +61,7 @@ namespace WindowsFormsApp1.Forms
             this.RemainingTimeLabel.AutoSize = true;
             this.RemainingTimeLabel.Font = new System.Drawing.Font("JetBrains Mono Light", 11.78182F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RemainingTimeLabel.ForeColor = System.Drawing.Color.White;
-            this.RemainingTimeLabel.Location = new System.Drawing.Point(894, 116);
+            this.RemainingTimeLabel.Location = new System.Drawing.Point(1014, 116);
             this.RemainingTimeLabel.Name = "RemainingTimeLabel";
             this.RemainingTimeLabel.Size = new System.Drawing.Size(276, 25);
             this.RemainingTimeLabel.TabIndex = 18;
@@ -73,7 +73,7 @@ namespace WindowsFormsApp1.Forms
             this.totalTimeLabel.AutoSize = true;
             this.totalTimeLabel.Font = new System.Drawing.Font("JetBrains Mono Light", 11.78182F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.totalTimeLabel.ForeColor = System.Drawing.Color.White;
-            this.totalTimeLabel.Location = new System.Drawing.Point(894, 77);
+            this.totalTimeLabel.Location = new System.Drawing.Point(1014, 77);
             this.totalTimeLabel.Name = "totalTimeLabel";
             this.totalTimeLabel.Size = new System.Drawing.Size(199, 25);
             this.totalTimeLabel.TabIndex = 17;
@@ -85,7 +85,7 @@ namespace WindowsFormsApp1.Forms
             this.questionNumberLabel.AutoSize = true;
             this.questionNumberLabel.Font = new System.Drawing.Font("JetBrains Mono Light", 11.78182F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.questionNumberLabel.ForeColor = System.Drawing.Color.White;
-            this.questionNumberLabel.Location = new System.Drawing.Point(15, 77);
+            this.questionNumberLabel.Location = new System.Drawing.Point(135, 77);
             this.questionNumberLabel.Name = "questionNumberLabel";
             this.questionNumberLabel.Size = new System.Drawing.Size(210, 25);
             this.questionNumberLabel.TabIndex = 16;
@@ -97,7 +97,7 @@ namespace WindowsFormsApp1.Forms
             this.totalQuestionLabel.AutoSize = true;
             this.totalQuestionLabel.Font = new System.Drawing.Font("JetBrains Mono Light", 11.78182F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.totalQuestionLabel.ForeColor = System.Drawing.Color.White;
-            this.totalQuestionLabel.Location = new System.Drawing.Point(15, 38);
+            this.totalQuestionLabel.Location = new System.Drawing.Point(135, 38);
             this.totalQuestionLabel.Name = "totalQuestionLabel";
             this.totalQuestionLabel.Size = new System.Drawing.Size(210, 25);
             this.totalQuestionLabel.TabIndex = 15;
@@ -109,7 +109,7 @@ namespace WindowsFormsApp1.Forms
             this.ExamNameLabel.AutoSize = true;
             this.ExamNameLabel.Font = new System.Drawing.Font("JetBrains Mono", 12.74545F);
             this.ExamNameLabel.ForeColor = System.Drawing.Color.White;
-            this.ExamNameLabel.Location = new System.Drawing.Point(505, 9);
+            this.ExamNameLabel.Location = new System.Drawing.Point(625, 9);
             this.ExamNameLabel.Name = "ExamNameLabel";
             this.ExamNameLabel.Size = new System.Drawing.Size(108, 26);
             this.ExamNameLabel.TabIndex = 14;
@@ -129,8 +129,20 @@ namespace WindowsFormsApp1.Forms
             this.panel1.Controls.Add(this.questionNumberLabel);
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1205, 179);
+            this.panel1.Size = new System.Drawing.Size(1444, 179);
             this.panel1.TabIndex = 19;
+            // 
+            // subjectNameLbl
+            // 
+            this.subjectNameLbl.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.subjectNameLbl.AutoSize = true;
+            this.subjectNameLbl.Font = new System.Drawing.Font("JetBrains Mono Light", 11.78182F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.subjectNameLbl.ForeColor = System.Drawing.Color.White;
+            this.subjectNameLbl.Location = new System.Drawing.Point(1014, 28);
+            this.subjectNameLbl.Name = "subjectNameLbl";
+            this.subjectNameLbl.Size = new System.Drawing.Size(210, 25);
+            this.subjectNameLbl.TabIndex = 20;
+            this.subjectNameLbl.Text = "Subject Name: name";
             // 
             // TotalMarksLabel
             // 
@@ -138,7 +150,7 @@ namespace WindowsFormsApp1.Forms
             this.TotalMarksLabel.AutoSize = true;
             this.TotalMarksLabel.Font = new System.Drawing.Font("JetBrains Mono Light", 11.78182F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TotalMarksLabel.ForeColor = System.Drawing.Color.White;
-            this.TotalMarksLabel.Location = new System.Drawing.Point(15, 116);
+            this.TotalMarksLabel.Location = new System.Drawing.Point(135, 116);
             this.TotalMarksLabel.Name = "TotalMarksLabel";
             this.TotalMarksLabel.Size = new System.Drawing.Size(188, 25);
             this.TotalMarksLabel.TabIndex = 19;
@@ -147,9 +159,9 @@ namespace WindowsFormsApp1.Forms
             // optionsPanel
             // 
             this.optionsPanel.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.optionsPanel.Location = new System.Drawing.Point(79, 285);
+            this.optionsPanel.Location = new System.Drawing.Point(83, 292);
             this.optionsPanel.Name = "optionsPanel";
-            this.optionsPanel.Size = new System.Drawing.Size(1060, 283);
+            this.optionsPanel.Size = new System.Drawing.Size(1207, 334);
             this.optionsPanel.TabIndex = 0;
             // 
             // questionLabel
@@ -158,7 +170,7 @@ namespace WindowsFormsApp1.Forms
             this.questionLabel.AutoSize = true;
             this.questionLabel.Font = new System.Drawing.Font("JetBrains Mono", 12.78182F, System.Drawing.FontStyle.Bold);
             this.questionLabel.ForeColor = System.Drawing.Color.Black;
-            this.questionLabel.Location = new System.Drawing.Point(74, 246);
+            this.questionLabel.Location = new System.Drawing.Point(112, 253);
             this.questionLabel.Name = "questionLabel";
             this.questionLabel.Size = new System.Drawing.Size(120, 26);
             this.questionLabel.TabIndex = 20;
@@ -167,7 +179,7 @@ namespace WindowsFormsApp1.Forms
             // nextbtn
             // 
             this.nextbtn.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.nextbtn.Location = new System.Drawing.Point(976, 585);
+            this.nextbtn.Location = new System.Drawing.Point(1127, 694);
             this.nextbtn.Name = "nextbtn";
             this.nextbtn.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.nextbtn.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -229,7 +241,7 @@ namespace WindowsFormsApp1.Forms
             // prevbtn
             // 
             this.prevbtn.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.prevbtn.Location = new System.Drawing.Point(79, 585);
+            this.prevbtn.Location = new System.Drawing.Point(83, 694);
             this.prevbtn.Name = "prevbtn";
             this.prevbtn.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.prevbtn.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -291,7 +303,7 @@ namespace WindowsFormsApp1.Forms
             // SubmitBtn
             // 
             this.SubmitBtn.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.SubmitBtn.Location = new System.Drawing.Point(510, 585);
+            this.SubmitBtn.Location = new System.Drawing.Point(579, 694);
             this.SubmitBtn.Name = "SubmitBtn";
             this.SubmitBtn.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.SubmitBtn.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -353,6 +365,7 @@ namespace WindowsFormsApp1.Forms
             // 
             // backgroundPanel
             // 
+            this.backgroundPanel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.backgroundPanel.BackColor = System.Drawing.Color.White;
             this.backgroundPanel.Controls.Add(this.pictureBox1);
             this.backgroundPanel.Controls.Add(this.questionNumlbl);
@@ -365,14 +378,48 @@ namespace WindowsFormsApp1.Forms
             this.backgroundPanel.Controls.Add(this.questionLabel);
             this.backgroundPanel.Location = new System.Drawing.Point(0, 0);
             this.backgroundPanel.Name = "backgroundPanel";
-            this.backgroundPanel.Size = new System.Drawing.Size(1205, 659);
+            this.backgroundPanel.Size = new System.Drawing.Size(1444, 768);
             this.backgroundPanel.TabIndex = 26;
             this.backgroundPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.backgroundPanel_Paint);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(11, 200);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(33, 18);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 29;
+            this.pictureBox1.TabStop = false;
+            // 
+            // questionNumlbl
+            // 
+            this.questionNumlbl.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.questionNumlbl.AutoSize = true;
+            this.questionNumlbl.Font = new System.Drawing.Font("JetBrains Mono", 12.78182F, System.Drawing.FontStyle.Bold);
+            this.questionNumlbl.ForeColor = System.Drawing.Color.Black;
+            this.questionNumlbl.Location = new System.Drawing.Point(78, 253);
+            this.questionNumlbl.Name = "questionNumlbl";
+            this.questionNumlbl.Size = new System.Drawing.Size(36, 26);
+            this.questionNumlbl.TabIndex = 28;
+            this.questionNumlbl.Text = "1)";
+            // 
+            // headerlbl
+            // 
+            this.headerlbl.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.headerlbl.AutoSize = true;
+            this.headerlbl.Font = new System.Drawing.Font("JetBrains Mono", 12.12727F);
+            this.headerlbl.ForeColor = System.Drawing.Color.Black;
+            this.headerlbl.Location = new System.Drawing.Point(45, 197);
+            this.headerlbl.Name = "headerlbl";
+            this.headerlbl.Size = new System.Drawing.Size(177, 25);
+            this.headerlbl.TabIndex = 27;
+            this.headerlbl.Text = "Question Header";
             // 
             // showAnswersBtn
             // 
             this.showAnswersBtn.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.showAnswersBtn.Location = new System.Drawing.Point(474, 602);
+            this.showAnswersBtn.Location = new System.Drawing.Point(523, 713);
             this.showAnswersBtn.Name = "showAnswersBtn";
             this.showAnswersBtn.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.showAnswersBtn.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -432,59 +479,15 @@ namespace WindowsFormsApp1.Forms
             this.showAnswersBtn.Visible = false;
             this.showAnswersBtn.Click += new System.EventHandler(this.showAnswersBtn_Click);
             // 
-            // headerlbl
-            // 
-            this.headerlbl.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.headerlbl.AutoSize = true;
-            this.headerlbl.Font = new System.Drawing.Font("JetBrains Mono", 12.12727F);
-            this.headerlbl.ForeColor = System.Drawing.Color.Black;
-            this.headerlbl.Location = new System.Drawing.Point(40, 198);
-            this.headerlbl.Name = "headerlbl";
-            this.headerlbl.Size = new System.Drawing.Size(177, 25);
-            this.headerlbl.TabIndex = 27;
-            this.headerlbl.Text = "Question Header";
-            // 
-            // questionNumlbl
-            // 
-            this.questionNumlbl.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.questionNumlbl.AutoSize = true;
-            this.questionNumlbl.Font = new System.Drawing.Font("JetBrains Mono", 12.78182F, System.Drawing.FontStyle.Bold);
-            this.questionNumlbl.ForeColor = System.Drawing.Color.Black;
-            this.questionNumlbl.Location = new System.Drawing.Point(40, 246);
-            this.questionNumlbl.Name = "questionNumlbl";
-            this.questionNumlbl.Size = new System.Drawing.Size(36, 26);
-            this.questionNumlbl.TabIndex = 28;
-            this.questionNumlbl.Text = "1)";
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(11, 200);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(33, 18);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 29;
-            this.pictureBox1.TabStop = false;
-            // 
-            // subjectNameLbl
-            // 
-            this.subjectNameLbl.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.subjectNameLbl.AutoSize = true;
-            this.subjectNameLbl.Font = new System.Drawing.Font("JetBrains Mono Light", 11.78182F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.subjectNameLbl.ForeColor = System.Drawing.Color.White;
-            this.subjectNameLbl.Location = new System.Drawing.Point(894, 28);
-            this.subjectNameLbl.Name = "subjectNameLbl";
-            this.subjectNameLbl.Size = new System.Drawing.Size(210, 25);
-            this.subjectNameLbl.TabIndex = 20;
-            this.subjectNameLbl.Text = "Subject Name: name";
-            // 
             // StudentExam
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1205, 656);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(1444, 767);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.backgroundPanel);
+            this.MinimumSize = new System.Drawing.Size(1462, 811);
             this.Name = "StudentExam";
             this.Text = "StudentExam";
             this.Load += new System.EventHandler(this.StudentExam_Load);

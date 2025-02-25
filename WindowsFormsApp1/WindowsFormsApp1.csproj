@@ -33,8 +33,32 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ComponentFactory.Krypton.Docking">
+      <HintPath>E:\New folder (4)\Krypton-master(1)\Krypton-master\Bin\ComponentFactory.Krypton.Docking.dll</HintPath>
+    </Reference>
+    <Reference Include="ComponentFactory.Krypton.Navigator">
+      <HintPath>E:\New folder (4)\Krypton-master(1)\Krypton-master\Bin\ComponentFactory.Krypton.Navigator.dll</HintPath>
+    </Reference>
+    <Reference Include="ComponentFactory.Krypton.Ribbon">
+      <HintPath>E:\New folder (4)\Krypton-master(1)\Krypton-master\Bin\ComponentFactory.Krypton.Ribbon.dll</HintPath>
+    </Reference>
     <Reference Include="ComponentFactory.Krypton.Toolkit">
       <HintPath>E:\New folder (4)\Krypton-master\Krypton-master\Bin\ComponentFactory.Krypton.Toolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="ComponentFactory.Krypton.Workspace">
+      <HintPath>E:\New folder (4)\Krypton-master(1)\Krypton-master\Bin\ComponentFactory.Krypton.Workspace.dll</HintPath>
+    </Reference>
+    <Reference Include="EPPlus, Version=7.6.0.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPPlus.7.6.0\lib\net462\EPPlus.dll</HintPath>
+    </Reference>
+    <Reference Include="EPPlus.Interfaces, Version=7.5.0.0, Culture=neutral, PublicKeyToken=a694d7f3b0907a61, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPPlus.Interfaces.7.5.0\lib\net462\EPPlus.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="EPPlus.System.Drawing, Version=7.5.0.0, Culture=neutral, PublicKeyToken=2308d35469c9bac0, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPPlus.System.Drawing.7.5.0\lib\net462\EPPlus.System.Drawing.dll</HintPath>
+    </Reference>
+    <Reference Include="Krypton.Toolkit, Version=90.25.2.55, Culture=neutral, PublicKeyToken=a87e673e9ecb6e8e, processorArchitecture=MSIL">
+      <HintPath>..\packages\Krypton.Toolkit.90.25.2.55\lib\net472\Krypton.Toolkit.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=9.0.0.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.9.0.2\lib\net462\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
@@ -63,12 +87,24 @@
     <Reference Include="Microsoft.Extensions.Primitives, Version=9.0.0.2, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Extensions.Primitives.9.0.2\lib\net462\Microsoft.Extensions.Primitives.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.IO.RecyclableMemoryStream, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IO.RecyclableMemoryStream.3.0.1\lib\netstandard2.0\Microsoft.IO.RecyclableMemoryStream.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
     <Reference Include="System" />
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
     </Reference>
+    <Reference Include="System.ComponentModel.Annotations, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ComponentModel.Annotations.5.0.0\lib\net461\System.ComponentModel.Annotations.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Design" />
+    <Reference Include="System.Drawing.Common, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Drawing.Common.8.0.4\lib\net462\System.Drawing.Common.dll</HintPath>
+    </Reference>
     <Reference Include="System.IO.Pipelines, Version=9.0.0.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.IO.Pipelines.9.0.2\lib\net462\System.IO.Pipelines.dll</HintPath>
     </Reference>
@@ -82,6 +118,7 @@
     <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
+    <Reference Include="System.Security" />
     <Reference Include="System.Text.Encodings.Web, Version=9.0.0.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Text.Encodings.Web.9.0.2\lib\net462\System.Text.Encodings.Web.dll</HintPath>
     </Reference>
@@ -105,9 +142,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BusinessLogic\AddExamUCBusiness.cs" />
+    <Compile Include="BusinessLogic\AddNewQuestionsUCBusiness.cs" />
     <Compile Include="BusinessLogic\Exam\ExamManager.cs" />
+    <Compile Include="BusinessLogic\SaveExcel.cs" />
     <Compile Include="BusinessLogic\StudentBLL.cs" />
+    <Compile Include="BusinessLogic\TeacherBL.cs" />
     <Compile Include="BusinessLogic\TeacherBLL.cs" />
+    <Compile Include="BusinessLogic\ViewAllStudentsUS_BL.cs" />
     <Compile Include="DataAccess\DatabaseHelper.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -127,6 +169,12 @@
     <Compile Include="Forms\PracticeExamAnswers.Designer.cs">
       <DependentUpon>PracticeExamAnswers.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Report.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Report.Designer.cs">
+      <DependentUpon>Report.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Student.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -139,22 +187,28 @@
     <Compile Include="Forms\StudentExam.Designer.cs">
       <DependentUpon>StudentExam.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Teacher\Form1.cs">
+    <Compile Include="Forms\TeacherDashoard.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Teacher\Form1.Designer.cs">
+    <Compile Include="Forms\TeacherDashoard.Designer.cs">
+      <DependentUpon>TeacherDashoard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\admin\Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\admin\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Teacher\StudentForm.cs">
+    <Compile Include="Forms\admin\StudentForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Teacher\StudentForm.Designer.cs">
+    <Compile Include="Forms\admin\StudentForm.Designer.cs">
       <DependentUpon>StudentForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Teacher\TeacherForm.cs">
+    <Compile Include="Forms\admin\TeacherForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Teacher\TeacherForm.Designer.cs">
+    <Compile Include="Forms\admin\TeacherForm.Designer.cs">
       <DependentUpon>TeacherForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\AnswerListModel.cs" />
@@ -163,14 +217,21 @@
     <Compile Include="Models\OptionsModel.cs" />
     <Compile Include="Models\QuestionModel.cs" />
     <Compile Include="Models\StudentModel.cs" />
+    <Compile Include="Models\Subject.cs" />
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UserControls\Addquestion.cs">
+    <Compile Include="UserControls\AddExamUC.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\Addquestion.Designer.cs">
-      <DependentUpon>Addquestion.cs</DependentUpon>
+    <Compile Include="UserControls\AddExamUC.Designer.cs">
+      <DependentUpon>AddExamUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\AddNewQuestionsUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\AddNewQuestionsUC.Designer.cs">
+      <DependentUpon>AddNewQuestionsUC.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\ExamQuestions.cs">
       <SubType>UserControl</SubType>
@@ -220,11 +281,32 @@
     <Compile Include="UserControls\TeacherUC\UpdTeacherUC.Designer.cs">
       <DependentUpon>UpdTeacherUC.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\UpdateQuetionsUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UpdateQuetionsUserControl.Designer.cs">
+      <DependentUpon>UpdateQuetionsUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ViewAllStudentsUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\ViewAllStudentsUserControl.Designer.cs">
+      <DependentUpon>ViewAllStudentsUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ViewAndDeleteQuestions.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\ViewAndDeleteQuestions.Designer.cs">
+      <DependentUpon>ViewAndDeleteQuestions.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Forms\intro.resx">
       <DependentUpon>intro.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\PracticeExamAnswers.resx">
       <DependentUpon>PracticeExamAnswers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Report.resx">
+      <DependentUpon>Report.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Student.resx">
       <DependentUpon>Student.cs</DependentUpon>
@@ -232,13 +314,16 @@
     <EmbeddedResource Include="Forms\StudentExam.resx">
       <DependentUpon>StudentExam.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Teacher\Form1.resx">
+    <EmbeddedResource Include="Forms\TeacherDashoard.resx">
+      <DependentUpon>TeacherDashoard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\admin\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Teacher\StudentForm.resx">
+    <EmbeddedResource Include="Forms\admin\StudentForm.resx">
       <DependentUpon>StudentForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Teacher\TeacherForm.resx">
+    <EmbeddedResource Include="Forms\admin\TeacherForm.resx">
       <DependentUpon>TeacherForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -250,8 +335,11 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="UserControls\Addquestion.resx">
-      <DependentUpon>Addquestion.cs</DependentUpon>
+    <EmbeddedResource Include="UserControls\AddExamUC.resx">
+      <DependentUpon>AddExamUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\AddNewQuestionsUC.resx">
+      <DependentUpon>AddNewQuestionsUC.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\ExamQuestions.resx">
       <DependentUpon>ExamQuestions.cs</DependentUpon>
@@ -276,6 +364,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\TeacherUC\UpdTeacherUC.resx">
       <DependentUpon>UpdTeacherUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\UpdateQuetionsUserControl.resx">
+      <DependentUpon>UpdateQuetionsUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\ViewAllStudentsUserControl.resx">
+      <DependentUpon>ViewAllStudentsUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\ViewAndDeleteQuestions.resx">
+      <DependentUpon>ViewAndDeleteQuestions.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="appSettings.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

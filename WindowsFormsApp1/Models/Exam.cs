@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace WindowsFormsApp1.Models
 {
-    public abstract class Exam
+    public  class Exam
     {
         public int ExamID { get; set; }
 
@@ -47,8 +47,12 @@ namespace WindowsFormsApp1.Models
             QuestionAnswers = new Dictionary<int, object>(); // Prevent NullReferenceException
             NotifyExamStart(ExamName, StartTime);
         }
+        public Exam()
+        {
+            
+        }
 
-        public abstract void ShowExam();
+        // public abstract void ShowExam();
     }
 
     public class PracticeExam : Exam
@@ -59,10 +63,10 @@ namespace WindowsFormsApp1.Models
 
         }
 
-        public override void ShowExam()
-        {
+      //  public override void ShowExam()
+      //  {
             // Display Practice Exam
-        }
+        //}
     }
 
     public class FinalExam : Exam
@@ -72,9 +76,9 @@ namespace WindowsFormsApp1.Models
         {
         }
 
-        public override void ShowExam()
-        {
+     //   public override void ShowExam()
+        //{
             // Display Final Exam
-        }
+        //}
     }
 }

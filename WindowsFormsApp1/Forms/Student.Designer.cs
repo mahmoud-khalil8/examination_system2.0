@@ -60,7 +60,7 @@ namespace WindowsFormsApp1.Forms
             this.studentNameLabel.AutoSize = true;
             this.studentNameLabel.Font = new System.Drawing.Font("JetBrains Mono", 14.74545F);
             this.studentNameLabel.ForeColor = System.Drawing.Color.White;
-            this.studentNameLabel.Location = new System.Drawing.Point(130, 43);
+            this.studentNameLabel.Location = new System.Drawing.Point(171, 38);
             this.studentNameLabel.Name = "studentNameLabel";
             this.studentNameLabel.Size = new System.Drawing.Size(181, 30);
             this.studentNameLabel.TabIndex = 8;
@@ -75,7 +75,7 @@ namespace WindowsFormsApp1.Forms
             this.panel1.Controls.Add(this.studentNameLabel);
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1124, 114);
+            this.panel1.Size = new System.Drawing.Size(1444, 114);
             this.panel1.TabIndex = 8;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
@@ -83,7 +83,7 @@ namespace WindowsFormsApp1.Forms
             // 
             this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(3, 12);
+            this.pictureBox1.Location = new System.Drawing.Point(42, 12);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(123, 85);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -96,7 +96,7 @@ namespace WindowsFormsApp1.Forms
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("JetBrains Mono", 12.78182F, System.Drawing.FontStyle.Bold);
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(36, 141);
+            this.label1.Location = new System.Drawing.Point(42, 157);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(144, 26);
             this.label1.TabIndex = 10;
@@ -106,7 +106,7 @@ namespace WindowsFormsApp1.Forms
             // 
             this.noexamspic.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.noexamspic.Image = ((System.Drawing.Image)(resources.GetObject("noexamspic.Image")));
-            this.noexamspic.Location = new System.Drawing.Point(355, 177);
+            this.noexamspic.Location = new System.Drawing.Point(544, 226);
             this.noexamspic.Name = "noexamspic";
             this.noexamspic.Size = new System.Drawing.Size(391, 289);
             this.noexamspic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -120,9 +120,9 @@ namespace WindowsFormsApp1.Forms
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(230)))));
             this.panel2.Controls.Add(this.button2);
             this.panel2.Controls.Add(this.label2);
-            this.panel2.Location = new System.Drawing.Point(0, 490);
+            this.panel2.Location = new System.Drawing.Point(0, 667);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1124, 100);
+            this.panel2.Size = new System.Drawing.Size(1444, 100);
             this.panel2.TabIndex = 11;
             // 
             // button2
@@ -135,7 +135,7 @@ namespace WindowsFormsApp1.Forms
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("JetBrains Mono", 11.78182F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.button2.Location = new System.Drawing.Point(892, 3);
+            this.button2.Location = new System.Drawing.Point(1193, 5);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(183, 64);
             this.button2.TabIndex = 0;
@@ -149,7 +149,7 @@ namespace WindowsFormsApp1.Forms
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("JetBrains Mono SemiBold", 11.78182F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(55, 15);
+            this.label2.Location = new System.Drawing.Point(215, 15);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(595, 50);
             this.label2.TabIndex = 12;
@@ -185,7 +185,7 @@ namespace WindowsFormsApp1.Forms
             this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridView1.EnableHeadersVisualStyles = false;
             this.dataGridView1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
-            this.dataGridView1.Location = new System.Drawing.Point(41, 170);
+            this.dataGridView1.Location = new System.Drawing.Point(47, 213);
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
@@ -194,13 +194,13 @@ namespace WindowsFormsApp1.Forms
             this.dataGridView1.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             this.dataGridView1.RowTemplate.Height = 35;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(1034, 247);
+            this.dataGridView1.Size = new System.Drawing.Size(1276, 333);
             this.dataGridView1.TabIndex = 13;
             // 
             // startFinalBtn
             // 
             this.startFinalBtn.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.startFinalBtn.Location = new System.Drawing.Point(41, 423);
+            this.startFinalBtn.Location = new System.Drawing.Point(201, 600);
             this.startFinalBtn.Name = "startFinalBtn";
             this.startFinalBtn.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.startFinalBtn.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -266,7 +266,7 @@ namespace WindowsFormsApp1.Forms
             this.nofinallbl.AutoSize = true;
             this.nofinallbl.Font = new System.Drawing.Font("JetBrains Mono", 12.78182F, System.Drawing.FontStyle.Bold);
             this.nofinallbl.ForeColor = System.Drawing.Color.Black;
-            this.nofinallbl.Location = new System.Drawing.Point(434, 461);
+            this.nofinallbl.Location = new System.Drawing.Point(622, 549);
             this.nofinallbl.Name = "nofinallbl";
             this.nofinallbl.Size = new System.Drawing.Size(228, 26);
             this.nofinallbl.TabIndex = 14;
@@ -276,7 +276,7 @@ namespace WindowsFormsApp1.Forms
             // refreshBtn
             // 
             this.refreshBtn.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.refreshBtn.Location = new System.Drawing.Point(949, 120);
+            this.refreshBtn.Location = new System.Drawing.Point(1211, 158);
             this.refreshBtn.Name = "refreshBtn";
             this.refreshBtn.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.refreshBtn.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -340,7 +340,7 @@ namespace WindowsFormsApp1.Forms
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1124, 590);
+            this.ClientSize = new System.Drawing.Size(1444, 767);
             this.Controls.Add(this.refreshBtn);
             this.Controls.Add(this.nofinallbl);
             this.Controls.Add(this.noexamspic);
@@ -349,7 +349,7 @@ namespace WindowsFormsApp1.Forms
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);
-            this.MinimumSize = new System.Drawing.Size(1142, 634);
+            this.MinimumSize = new System.Drawing.Size(1403, 773);
             this.Name = "Student";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Student";

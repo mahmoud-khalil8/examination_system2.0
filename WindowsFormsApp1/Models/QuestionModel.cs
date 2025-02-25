@@ -17,6 +17,8 @@ namespace WindowsFormsApp1.Models
         public int? Marks { get; set; }
         public int Teacher_ID { get; set; }
         public int Exam_ID { get; set; }
+        public List<string> Options { get; set; }
+        public List<int> Option_Index { get; set; }
 
         public QuestionModel(int qid, string header, string body, string qtype, int? marks, int teacherId, int examId)
         {
@@ -30,19 +32,45 @@ namespace WindowsFormsApp1.Models
 
 
         }
+        public QuestionModel(int qid, string header, string body, string qtype, int? marks, int teacherId, int examId, List<string> options, List<int> option_Index)
+        {
+            QID = qid;
+            Header = header;
+            Body = body;
+            QType = qtype;
+            Marks = marks;
+            Teacher_ID = teacherId;
+            Exam_ID = examId;
+            Options = options;
+            Option_Index = option_Index;
+
+
+        }
+        protected QuestionModel()
+        {
+            
+        }
         public abstract void ShowOptions();
 
     }
     public class TrueFalseQuestion : QuestionModel
     {
-        public bool CorrectAnswer { get; set; } // true or false
+        public int CorrectAnswer { get; set; } // true or false
 
-        public TrueFalseQuestion(int qid, string header, string body, int? marks, int teacherId, int examId, bool correctAnswer)
+        public TrueFalseQuestion(int qid, string header, string body, int? marks, int teacherId, int examId, int correctAnswer)
             : base(qid, header, body, "TrueFalse", marks, teacherId, examId)
         {
             CorrectAnswer = correctAnswer;
         }
-
+        public TrueFalseQuestion(int qid, string header, string body, string qtype, int? marks, int teacherId, int examId, int correctAnswer, List<string> options, List<int> option_Index)
+        : base(qid, header, body, qtype, marks, teacherId, examId, options, option_Index)
+        {
+            CorrectAnswer = correctAnswer;
+        }
+        public TrueFalseQuestion()
+        {
+            
+        }
         public override void ShowOptions()
         {
             // throw new NotImplementedException();
@@ -51,13 +79,22 @@ namespace WindowsFormsApp1.Models
     public class ChooseOneQuestion : QuestionModel
     {
         public List<string> Options { get; set; } 
-        public string CorrectAnswer { get; set; } 
+        public int CorrectAnswer { get; set; } 
 
-        public ChooseOneQuestion(int qid, string header, string body, int? marks, int teacherId, int examId, List<string> options, string correctAnswer)
+        public ChooseOneQuestion(int qid, string header, string body, int? marks, int teacherId, int examId, List<string> options, int correctAnswer)
             : base(qid, header, body, "ChooseOne", marks, teacherId, examId)
         {
             Options = options;
             CorrectAnswer = correctAnswer;
+        }
+        public ChooseOneQuestion(int qid, string header, string body, string qtype, int? marks, int teacherId, int examId, int correctAnswer, List<string> options, List<int> option_Index)
+        : base(qid, header, body, qtype, marks, teacherId, examId, options, option_Index)
+        {
+            CorrectAnswer = correctAnswer;
+        }
+        public ChooseOneQuestion()
+        {
+            
         }
 
         public override void ShowOptions()
@@ -69,13 +106,23 @@ namespace WindowsFormsApp1.Models
     public class ChooseAllQuestion : QuestionModel
     {
         public List<string> Options { get; set; } // Multiple choices
-        public List<string> CorrectAnswer { get; set; } 
+        public List<int> CorrectAnswer { get; set; } 
 
-        public ChooseAllQuestion(int qid, string header, string body, int? marks, int teacherId, int examId, List<string> options, List<string> correctAnswer)
+        public ChooseAllQuestion(int qid, string header, string body, int? marks, int teacherId, int examId, List<string> options, List<int> correctAnswer)
             : base(qid, header, body, "ChooseAll", marks, teacherId, examId)
         {
             Options = options;
             CorrectAnswer = correctAnswer;
+        }
+        public ChooseAllQuestion(int qid, string header, string body, string qtype, int? marks, int teacherId, int examId, List<int> correctAnswer, List<string> options, List<int> option_Index)
+       : base(qid, header, body, qtype, marks, teacherId, examId, options, option_Index)
+        {
+            Options = options;
+            CorrectAnswer = correctAnswer;
+        }
+        public ChooseAllQuestion()
+        {
+            
         }
 
         public override void ShowOptions()

@@ -1,4 +1,4 @@
-﻿namespace WindowsFormsApp1.Forms.Teacher
+﻿namespace WindowsFormsApp1.Forms.admin
 {
     partial class TeacherForm
     {

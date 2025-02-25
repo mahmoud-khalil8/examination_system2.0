@@ -7,14 +7,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApp1.Models;
 
-namespace WindowsFormsApp1.Forms.Teacher
+namespace WindowsFormsApp1.Forms.admin
 {
     public partial class Form1 : Form
     {
-        public Form1()
+
+        UserModel admin;
+        public Form1( UserModel _admin)
         {
+            
             InitializeComponent();
+            this.admin = _admin;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -24,14 +29,14 @@ namespace WindowsFormsApp1.Forms.Teacher
 
         private void MngStdsBtn_Click(object sender, EventArgs e)
         {
-            StudentForm stdform = new StudentForm();
+            StudentForm stdform = new StudentForm( admin);
             stdform.Show();
             //this.Hide();
         }
 
         private void MngTeachersBtn_Click(object sender, EventArgs e)
         {
-            TeacherForm teacherForm = new TeacherForm();
+            TeacherForm teacherForm = new TeacherForm( admin);
             teacherForm.Show();
             //this.Hide();
         }

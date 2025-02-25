@@ -21,7 +21,7 @@ namespace WindowsFormsApp1.DataAccess
                 .SetBasePath(Directory.GetCurrentDirectory())
                 .AddJsonFile("appSettings.json", optional: true, reloadOnChange: true)
                 .Build();
-            var connectionString = config.GetSection("connectionString").Value;
+            var connectionString = config.GetSection("ConnectionString").Value;
             return connectionString;
         }
 
