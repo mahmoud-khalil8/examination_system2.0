@@ -42,14 +42,18 @@ namespace WindowsFormsApp1.BusinessLogic
         }
         public static int InsertOptions(QuestionModel q)
         {
+            
+
+
             int x = 0;
             for (int i = 0; i < q.Options.Count; i++)
             {
-                x = DatabaseHelper.ExecuteNonQuery($"insert into Ques_Options (QID,Options,Option_Index)" +
-                                                    $"values({q.QID},'{q.Options[i]}',{q.Option_Index[i]})");
+                x = DatabaseHelper.ExecuteNonQuery($"INSERT INTO Ques_Options (QID, Options, Option_Index) " +
+                                                   $"VALUES ({q.QID}, '{q.Options[i]}', {q.Option_Index[i]})");
             }
             return x;
         }
+
         public static int InsertCorrectAnswer(QuestionModel q)
         {
             if (q.GetType() == typeof(TrueFalseQuestion))

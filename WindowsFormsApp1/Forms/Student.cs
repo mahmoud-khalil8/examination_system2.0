@@ -37,7 +37,7 @@ namespace WindowsFormsApp1.Forms
             dataGridView1.Visible = true;
 
             //fill the datagridview with the exams
-            DataTable exams = BusinessLogic.ExamManager.GetAvailableExams("final");
+            DataTable exams = BusinessLogic.ExamManager.GetAvailableExams("Final Exam",student.SupervisedBy);
             
 
             if (exams.Rows.Count == 0)
@@ -208,7 +208,7 @@ namespace WindowsFormsApp1.Forms
 
         private void refreshBtn_Click(object sender, EventArgs e)
         {
-            DataTable finalExams = BusinessLogic.ExamManager.GetAvailableExams("final");
+            DataTable finalExams = BusinessLogic.ExamManager.GetAvailableExams("Final Exam",student.SupervisedBy);
 
             
 

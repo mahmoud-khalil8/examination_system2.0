@@ -618,16 +618,18 @@ namespace WindowsFormsApp1.UserControls
                 AddNewQuestionsUCBusiness.InsertOptions(trueFalseQ);
                 AddNewQuestionsUCBusiness.InsertCorrectAnswer(trueFalseQ);
             }
-            else if (questionType == "ChooseOne")
-            {
+            else if(questionType == "ChooseOne")
+{
                 chooseOneQ.Header = txtHeader.Text;
                 chooseOneQ.Body = txtBody.Text;
                 chooseOneQ.Marks = (int)numMarks.Value;
                 chooseOneQ.QType = questionType;
                 chooseOneQ.Exam_ID = TeacherDashoard.CurrentExamID;
                 chooseOneQ.Teacher_ID = userId;
+
                 chooseOneQ.Options = new List<string>();
                 chooseOneQ.Option_Index = new List<int>();
+
                 for (int i = 0; i < optionTextBoxes.Count; i++)
                 {
                     chooseOneQ.Options.Add(optionTextBoxes[i].Text);
@@ -637,12 +639,19 @@ namespace WindowsFormsApp1.UserControls
                         chooseOneQ.CorrectAnswer = i + 1;
                     }
                 }
+
                 AddNewQuestionsUCBusiness.InsertQuestion(chooseOneQ);
+
                 var qID = AddNewQuestionsUCBusiness.GetQID();
+
+                
+
                 chooseOneQ.QID = qID;
+
                 AddNewQuestionsUCBusiness.InsertOptions(chooseOneQ);
                 AddNewQuestionsUCBusiness.InsertCorrectAnswer(chooseOneQ);
             }
+
             else if (questionType == "ChooseAll")
             {
                 chooseAllQ.Header = txtHeader.Text;

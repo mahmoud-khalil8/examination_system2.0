@@ -49,7 +49,7 @@ namespace WindowsFormsApp1.Forms
                     student.Role = userInformation.Rows[0]["Role"].ToString();
                     student.FullName = userInformation.Rows[0]["FullName"].ToString();
                     student.UserName = userInformation.Rows[0]["Username"].ToString();
-
+                    student.SupervisedBy =Convert.ToInt32( userInformation.Rows[0]["supervised_by"]);
                     Student studentForm = new Student(student);
                     studentForm.Show();
                 }

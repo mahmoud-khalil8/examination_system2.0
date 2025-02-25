@@ -78,7 +78,6 @@ namespace WindowsFormsApp1.Models
     }
     public class ChooseOneQuestion : QuestionModel
     {
-        public List<string> Options { get; set; } 
         public int CorrectAnswer { get; set; } 
 
         public ChooseOneQuestion(int qid, string header, string body, int? marks, int teacherId, int examId, List<string> options, int correctAnswer)
@@ -105,7 +104,6 @@ namespace WindowsFormsApp1.Models
 
     public class ChooseAllQuestion : QuestionModel
     {
-        public List<string> Options { get; set; } // Multiple choices
         public List<int> CorrectAnswer { get; set; } 
 
         public ChooseAllQuestion(int qid, string header, string body, int? marks, int teacherId, int examId, List<string> options, List<int> correctAnswer)

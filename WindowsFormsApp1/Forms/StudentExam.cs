@@ -162,7 +162,11 @@ namespace WindowsFormsApp1.Forms
             string questionType = question["QType"].ToString();
 
             // Get question options
+
+            MessageBox.Show(question["QID"].ToString());
             DataTable options = BusinessLogic.ExamManager.getQuestionOptions(Convert.ToInt32(question["QID"]));
+
+
             if (options.Rows.Count == 0)
             {
                 throw new InvalidOperationException("No options found for the question.");
@@ -183,7 +187,8 @@ namespace WindowsFormsApp1.Forms
             {
                 string optionText = options.Rows[i]["options"].ToString();
 
-                if (questionType.ToLower() == "true/false" || questionType.ToLower() == "choose one")
+
+                if (questionType.ToLower() == "truefalse" || questionType.ToLower() == "chooseone")
                 {
                     RadioButton option = new RadioButton
                     {
@@ -197,7 +202,7 @@ namespace WindowsFormsApp1.Forms
 
                     optionsPanel.Controls.Add(option);
                 }
-                else if (questionType.ToLower() == "choose multiple")
+                else if (questionType.ToLower() == "chooseall")
                 {
                     CheckBox option = new CheckBox
                     {

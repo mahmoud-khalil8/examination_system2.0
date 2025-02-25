@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsApp1.DataAccess;
+using WindowsFormsApp1.Forms;
 using WindowsFormsApp1.Models;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
@@ -50,6 +51,7 @@ namespace WindowsFormsApp1.BusinessLogic
 
         }
         public static DataTable getQuestionOptions(int questionId) {
+            
             string query = "select * from ques_options where QID=@questionid";
             SqlParameter[] parameters =
             {
@@ -151,12 +153,13 @@ namespace WindowsFormsApp1.BusinessLogic
 
 
 
-        public static DataTable GetAvailableExams(string examType)
+        public static DataTable GetAvailableExams(string examType,int teacherId)
         {
-            string query = "SELECT *  FROM Exam WHERE ExamType = @ExamType AND Mode IN ('Queued', 'Started')";
+            string query = "SELECT *  FROM Exam WHERE ExamType = @ExamType AND Teacher_ID = @teacherId AND Mode IN ('Queued', 'Started') ";
             SqlParameter[] parameters =
             {
                new SqlParameter("@ExamType", examType)
+               , new SqlParameter( "@teacherId",teacherId)
             };
             return DatabaseHelper.ExecuteQuery(query, parameters);
         }
