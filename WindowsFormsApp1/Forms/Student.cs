@@ -108,13 +108,13 @@ namespace WindowsFormsApp1.Forms
                 startFinalBtn.Visible = true;
                 startFinalBtn.Enabled = true;
                 
-                MessageBox.Show($"Selected Exam ID: {examId}", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+              //  MessageBox.Show($"Selected Exam ID: {examId}", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
                 startFinalBtn.Enabled = false;
 
-                MessageBox.Show("Invalid selection. Please select a valid row.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+              //  MessageBox.Show("Invalid selection. Please select a valid row.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 

@@ -163,7 +163,7 @@ namespace WindowsFormsApp1.Forms
 
             // Get question options
 
-            MessageBox.Show(question["QID"].ToString());
+           // MessageBox.Show(question["QID"].ToString());
             DataTable options = BusinessLogic.ExamManager.getQuestionOptions(Convert.ToInt32(question["QID"]));
 
 
