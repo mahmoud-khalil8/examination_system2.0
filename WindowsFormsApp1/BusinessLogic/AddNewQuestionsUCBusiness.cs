@@ -15,7 +15,6 @@ namespace WindowsFormsApp1.BusinessLogic
     {
         public static DataTable GetExams(int id)
         {
-            MessageBox.Show(id.ToString());
             var x = DatabaseHelper.ExecuteQuery($"SELECT * FROM Exam where Teacher_ID ={id}");
             return x;
         }
