@@ -4,6 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using WindowsFormsApp1.DataAccess;
 using WindowsFormsApp1.Forms;
 using WindowsFormsApp1.Models;
@@ -14,6 +15,7 @@ namespace WindowsFormsApp1.BusinessLogic
     {
         public static DataTable GetExams(int id)
         {
+            MessageBox.Show(id.ToString());
             var x = DatabaseHelper.ExecuteQuery($"SELECT * FROM Exam where Teacher_ID ={id}");
             return x;
         }
@@ -97,8 +99,10 @@ namespace WindowsFormsApp1.BusinessLogic
         }
         public static int GetSumOfMarks(int id )
         {
-            var x = (int)DatabaseHelper.ExecuteQuery($"SELECT SUM(Marks) as sum FROM Questions where Teacher_ID ={id} and Exam_id = {TeacherDashoard.CurrentExamID}").Rows[0]["sum"];
-            return x;
+           
+                var result = DatabaseHelper.ExecuteQuery($"SELECT SUM(Marks) as sum FROM Questions WHERE Teacher_ID = {id} AND Exam_id = {TeacherDashoard.CurrentExamID}").Rows[0]["sum"];
+                return result != DBNull.Value ? Convert.ToInt32(result) : 0;
+
         }
         public static int UpdateQuesNum(int id)
         {

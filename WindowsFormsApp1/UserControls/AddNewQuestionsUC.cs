@@ -37,6 +37,8 @@ namespace WindowsFormsApp1.UserControls
         {
             InitializeComponent();
             var e = AddNewQuestionsUCBusiness.GetCurrentExam(userId);
+            userId = _id;
+
             if (e.Rows.Count != 0)
             {
                 DropDownMenu.Text = e.Rows[0]["ExamName"].ToString();
@@ -45,7 +47,6 @@ namespace WindowsFormsApp1.UserControls
             PopulateContextMenu(AddNewQuestionsUCBusiness.GetExams(userId));
             DropDownMenu.KryptonContextMenu = kryptonContextMenu1;
 
-            userId = _id;
         }
 
         private void SetButtonDefaultStyle(KryptonButton button)
