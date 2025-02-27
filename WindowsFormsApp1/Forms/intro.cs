@@ -23,7 +23,13 @@ namespace WindowsFormsApp1.Forms
         private void intro_Load(object sender, EventArgs e)
         {
 
-            
+            headerlbl.Text = TranslationHelper.GetTranslation("ExamTitle");
+            kryptonButton2.Text = TranslationHelper.GetTranslation("Settings");
+            label2.Text = TranslationHelper.GetTranslation("Email");
+            label4.Text = TranslationHelper.GetTranslation("Password");
+            kryptonButton1.Text = TranslationHelper.GetTranslation("Login");
+            label1.Text = TranslationHelper.GetTranslation("WelcomeMessage");
+
         }
 
         private void kryptonButton1_Click(object sender, EventArgs e)
@@ -31,6 +37,7 @@ namespace WindowsFormsApp1.Forms
 
             string email = emailtb.Text.Trim();
             string password = passwordtb.Text;
+
 
 
             DataTable userInformation = ExamManager.getStudent(email,password);
@@ -90,10 +97,18 @@ namespace WindowsFormsApp1.Forms
             else
             {
                 WrongStatement.Visible = true;
+                WrongStatement.Text = TranslationHelper.GetTranslation("WrongCredentials");
+
             }
 
 
 
+        }
+
+        private void kryptonButton2_Click(object sender, EventArgs e)
+        {
+            Settings settings = new Settings();
+            settings.Show();
         }
     }
 }

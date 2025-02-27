@@ -153,16 +153,37 @@ namespace WindowsFormsApp1.BusinessLogic
 
 
 
-        public static DataTable GetAvailableExams(string examType,int teacherId)
+        public static DataTable GetAvailableExams(string examType,int userId)
         {
-            string query = "SELECT *  FROM Exam WHERE ExamType = @ExamType AND Teacher_ID = @teacherId AND Mode IN ('Queued', 'Started') ";
+            UpdateExpiredExams();
+            string query = "SELECT *  FROM Exam join user_subject s on exam.Subject_ID=s.SubjectId  WHERE ExamType = @examType AND Mode IN ('Queued', 'Starting') and s.UserId=@userId ";
             SqlParameter[] parameters =
             {
                new SqlParameter("@ExamType", examType)
-               , new SqlParameter( "@teacherId",teacherId)
+               , new SqlParameter( "@userId",userId)
             };
             return DatabaseHelper.ExecuteQuery(query, parameters);
         }
+        public static void UpdateExpiredExams()
+        {
+            string query = @"
+        UPDATE Exam 
+        SET Mode = 'finished' 
+        WHERE Mode IN ('Queued', 'Starting') 
+        AND DATEADD(MINUTE, DATEDIFF(MINUTE, 0, duration), start_time) < GETDATE()";
+
+            DatabaseHelper.ExecuteNonQuery(query);
+        }
+        public static void startExam(string examName)
+        {
+            string query = "UPDATE Exam SET Mode = 'Starting' WHERE ExamName = @examName";
+            SqlParameter[] parameters =
+            {
+                new SqlParameter("@examName", examName)
+            };
+            DatabaseHelper.ExecuteNonQuery(query, parameters);
+        }
+
         public static DataTable checkExamTaken(int studentId, int examId)
         {
             string query = "SELECT * FROM STUD_EXAM WHERE Stud_ID = @StudentID AND Exam_ID = @ExamID";
@@ -174,9 +195,10 @@ namespace WindowsFormsApp1.BusinessLogic
             return DatabaseHelper.ExecuteQuery(query, parameters);
         }
 
-        public static DataTable getFinalExam(int examId)
+
+        public static DataTable getExam(int examId)
         {
-            string query = "SELECT * FROM Exam WHERE Exam_ID = @ExamID";
+            string query = "SELECT * FROM Exam WHERE Exam_ID = @ExamID ";
             SqlParameter[] parameters =
             {
                 new SqlParameter("@ExamID", examId)

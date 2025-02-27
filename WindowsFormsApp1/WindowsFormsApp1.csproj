@@ -149,6 +149,7 @@
     <Compile Include="BusinessLogic\StudentBLL.cs" />
     <Compile Include="BusinessLogic\TeacherBL.cs" />
     <Compile Include="BusinessLogic\TeacherBLL.cs" />
+    <Compile Include="BusinessLogic\TranslationHelper.cs" />
     <Compile Include="BusinessLogic\ViewAllStudentsUS_BL.cs" />
     <Compile Include="DataAccess\DatabaseHelper.cs" />
     <Compile Include="Form1.cs">
@@ -174,6 +175,12 @@
     </Compile>
     <Compile Include="Forms\Report.Designer.cs">
       <DependentUpon>Report.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Settings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Settings.Designer.cs">
+      <DependentUpon>Settings.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Student.cs">
       <SubType>Form</SubType>
@@ -238,6 +245,12 @@
     </Compile>
     <Compile Include="UserControls\ExamQuestions.Designer.cs">
       <DependentUpon>ExamQuestions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\PracticeExams.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\PracticeExams.Designer.cs">
+      <DependentUpon>PracticeExams.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\StdUC\AddStd.cs">
       <SubType>UserControl</SubType>
@@ -308,6 +321,9 @@
     <EmbeddedResource Include="Forms\Report.resx">
       <DependentUpon>Report.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Settings.resx">
+      <DependentUpon>Settings.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Student.resx">
       <DependentUpon>Student.cs</DependentUpon>
     </EmbeddedResource>
@@ -343,6 +359,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\ExamQuestions.resx">
       <DependentUpon>ExamQuestions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\PracticeExams.resx">
+      <DependentUpon>PracticeExams.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\StdUC\AddStd.resx">
       <DependentUpon>AddStd.cs</DependentUpon>

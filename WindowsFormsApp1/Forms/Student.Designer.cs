@@ -38,20 +38,22 @@ namespace WindowsFormsApp1.Forms
             this.studentNameLabel = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.FinalExamslbl = new System.Windows.Forms.Label();
             this.noexamspic = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.button2 = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
+            this.WarmUpMessage = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.startFinalBtn = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.nofinallbl = new System.Windows.Forms.Label();
             this.refreshBtn = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.ExamsListsPanel = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.noexamspic)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.ExamsListsPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // studentNameLabel
@@ -60,7 +62,7 @@ namespace WindowsFormsApp1.Forms
             this.studentNameLabel.AutoSize = true;
             this.studentNameLabel.Font = new System.Drawing.Font("JetBrains Mono", 14.74545F);
             this.studentNameLabel.ForeColor = System.Drawing.Color.White;
-            this.studentNameLabel.Location = new System.Drawing.Point(171, 38);
+            this.studentNameLabel.Location = new System.Drawing.Point(171, 44);
             this.studentNameLabel.Name = "studentNameLabel";
             this.studentNameLabel.Size = new System.Drawing.Size(181, 30);
             this.studentNameLabel.TabIndex = 8;
@@ -90,25 +92,26 @@ namespace WindowsFormsApp1.Forms
             this.pictureBox1.TabIndex = 9;
             this.pictureBox1.TabStop = false;
             // 
-            // label1
+            // FinalExamslbl
             // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("JetBrains Mono", 12.78182F, System.Drawing.FontStyle.Bold);
-            this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(42, 157);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(144, 26);
-            this.label1.TabIndex = 10;
-            this.label1.Text = "Final Exams";
+            this.FinalExamslbl.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.FinalExamslbl.AutoSize = true;
+            this.FinalExamslbl.Font = new System.Drawing.Font("JetBrains Mono", 12.78182F, System.Drawing.FontStyle.Bold);
+            this.FinalExamslbl.ForeColor = System.Drawing.Color.Black;
+            this.FinalExamslbl.Location = new System.Drawing.Point(37, 39);
+            this.FinalExamslbl.Name = "FinalExamslbl";
+            this.FinalExamslbl.Size = new System.Drawing.Size(144, 26);
+            this.FinalExamslbl.TabIndex = 10;
+            this.FinalExamslbl.Text = "Final Exams";
+            this.FinalExamslbl.Visible = false;
             // 
             // noexamspic
             // 
             this.noexamspic.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.noexamspic.Image = ((System.Drawing.Image)(resources.GetObject("noexamspic.Image")));
-            this.noexamspic.Location = new System.Drawing.Point(544, 226);
+            this.noexamspic.Location = new System.Drawing.Point(489, 71);
             this.noexamspic.Name = "noexamspic";
-            this.noexamspic.Size = new System.Drawing.Size(391, 289);
+            this.noexamspic.Size = new System.Drawing.Size(508, 357);
             this.noexamspic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.noexamspic.TabIndex = 10;
             this.noexamspic.TabStop = false;
@@ -119,7 +122,7 @@ namespace WindowsFormsApp1.Forms
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(230)))));
             this.panel2.Controls.Add(this.button2);
-            this.panel2.Controls.Add(this.label2);
+            this.panel2.Controls.Add(this.WarmUpMessage);
             this.panel2.Location = new System.Drawing.Point(0, 667);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1444, 100);
@@ -143,17 +146,17 @@ namespace WindowsFormsApp1.Forms
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // label2
+            // WarmUpMessage
             // 
-            this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("JetBrains Mono SemiBold", 11.78182F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(215, 15);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(595, 50);
-            this.label2.TabIndex = 12;
-            this.label2.Text = "Warm up before the real challenge! Hit ‘Start’ for a \r\nPractice Exam.";
+            this.WarmUpMessage.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.WarmUpMessage.AutoSize = true;
+            this.WarmUpMessage.Font = new System.Drawing.Font("JetBrains Mono SemiBold", 11.78182F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.WarmUpMessage.ForeColor = System.Drawing.Color.Black;
+            this.WarmUpMessage.Location = new System.Drawing.Point(215, 15);
+            this.WarmUpMessage.Name = "WarmUpMessage";
+            this.WarmUpMessage.Size = new System.Drawing.Size(595, 50);
+            this.WarmUpMessage.TabIndex = 12;
+            this.WarmUpMessage.Text = "Warm up before the real challenge! Hit ‘Start’ for a \r\nPractice Exam.";
             // 
             // dataGridView1
             // 
@@ -167,25 +170,25 @@ namespace WindowsFormsApp1.Forms
             this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(210)))), ((int)(((byte)(210)))));
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(185)))), ((int)(((byte)(171)))));
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridView1.ColumnHeadersHeight = 40;
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 10F);
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 13F);
             dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
             dataGridViewCellStyle6.Padding = new System.Windows.Forms.Padding(5);
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(220)))), ((int)(((byte)(240)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridView1.EnableHeadersVisualStyles = false;
             this.dataGridView1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
-            this.dataGridView1.Location = new System.Drawing.Point(47, 213);
+            this.dataGridView1.Location = new System.Drawing.Point(42, 90);
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
@@ -200,7 +203,7 @@ namespace WindowsFormsApp1.Forms
             // startFinalBtn
             // 
             this.startFinalBtn.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.startFinalBtn.Location = new System.Drawing.Point(201, 600);
+            this.startFinalBtn.Location = new System.Drawing.Point(196, 482);
             this.startFinalBtn.Name = "startFinalBtn";
             this.startFinalBtn.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.startFinalBtn.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -266,17 +269,18 @@ namespace WindowsFormsApp1.Forms
             this.nofinallbl.AutoSize = true;
             this.nofinallbl.Font = new System.Drawing.Font("JetBrains Mono", 12.78182F, System.Drawing.FontStyle.Bold);
             this.nofinallbl.ForeColor = System.Drawing.Color.Black;
-            this.nofinallbl.Location = new System.Drawing.Point(622, 549);
+            this.nofinallbl.Location = new System.Drawing.Point(617, 431);
             this.nofinallbl.Name = "nofinallbl";
             this.nofinallbl.Size = new System.Drawing.Size(228, 26);
             this.nofinallbl.TabIndex = 14;
             this.nofinallbl.Text = "No Final Exams yet";
             this.nofinallbl.Visible = false;
+            this.nofinallbl.Click += new System.EventHandler(this.nofinallbl_Click);
             // 
             // refreshBtn
             // 
-            this.refreshBtn.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.refreshBtn.Location = new System.Drawing.Point(1211, 158);
+            this.refreshBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.refreshBtn.Location = new System.Drawing.Point(1206, 40);
             this.refreshBtn.Name = "refreshBtn";
             this.refreshBtn.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.refreshBtn.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -335,20 +339,29 @@ namespace WindowsFormsApp1.Forms
             this.refreshBtn.Values.Text = "Refresh";
             this.refreshBtn.Click += new System.EventHandler(this.refreshBtn_Click);
             // 
+            // ExamsListsPanel
+            // 
+            this.ExamsListsPanel.Controls.Add(this.noexamspic);
+            this.ExamsListsPanel.Controls.Add(this.dataGridView1);
+            this.ExamsListsPanel.Controls.Add(this.refreshBtn);
+            this.ExamsListsPanel.Controls.Add(this.FinalExamslbl);
+            this.ExamsListsPanel.Controls.Add(this.nofinallbl);
+            this.ExamsListsPanel.Controls.Add(this.startFinalBtn);
+            this.ExamsListsPanel.Location = new System.Drawing.Point(0, 120);
+            this.ExamsListsPanel.Name = "ExamsListsPanel";
+            this.ExamsListsPanel.Size = new System.Drawing.Size(1444, 546);
+            this.ExamsListsPanel.TabIndex = 16;
+            this.ExamsListsPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.ExamsListsPanel_Paint);
+            // 
             // Student
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1444, 767);
-            this.Controls.Add(this.refreshBtn);
-            this.Controls.Add(this.nofinallbl);
-            this.Controls.Add(this.noexamspic);
-            this.Controls.Add(this.startFinalBtn);
-            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);
+            this.Controls.Add(this.ExamsListsPanel);
             this.MinimumSize = new System.Drawing.Size(1403, 773);
             this.Name = "Student";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -361,8 +374,9 @@ namespace WindowsFormsApp1.Forms
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.ExamsListsPanel.ResumeLayout(false);
+            this.ExamsListsPanel.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -370,15 +384,16 @@ namespace WindowsFormsApp1.Forms
 
         private System.Windows.Forms.Label studentNameLabel;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label FinalExamslbl;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox noexamspic;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Label WarmUpMessage;
+        public System.Windows.Forms.Button button2;
         private DataGridView dataGridView1;
         private ComponentFactory.Krypton.Toolkit.KryptonButton startFinalBtn;
         private Label nofinallbl;
         private ComponentFactory.Krypton.Toolkit.KryptonButton refreshBtn;
+        public Panel ExamsListsPanel;
     }
 }

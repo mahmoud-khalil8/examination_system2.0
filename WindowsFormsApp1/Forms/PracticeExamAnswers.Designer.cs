@@ -36,19 +36,19 @@
             this.prevBtn = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.optionsPanel = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.studentAnswerLbl = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.correctAnsLbl = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.questionLabel = new System.Windows.Forms.Label();
             this.nextBtn = new ComponentFactory.Krypton.Toolkit.KryptonButton();
-            this.studentAnswerLbl = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.panel3 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.optionsPanel.SuspendLayout();
-            this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // TotalMarksLabel
@@ -187,6 +187,38 @@
             this.optionsPanel.Size = new System.Drawing.Size(1060, 323);
             this.optionsPanel.TabIndex = 0;
             // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.panel3.Controls.Add(this.label3);
+            this.panel3.Controls.Add(this.studentAnswerLbl);
+            this.panel3.Location = new System.Drawing.Point(18, 163);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(976, 44);
+            this.panel3.TabIndex = 35;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("JetBrains Mono", 12.78182F, System.Drawing.FontStyle.Bold);
+            this.label3.ForeColor = System.Drawing.Color.Black;
+            this.label3.Location = new System.Drawing.Point(3, 9);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(168, 26);
+            this.label3.TabIndex = 33;
+            this.label3.Text = "Your Answer: ";
+            // 
+            // studentAnswerLbl
+            // 
+            this.studentAnswerLbl.AutoSize = true;
+            this.studentAnswerLbl.Font = new System.Drawing.Font("JetBrains Mono", 12.78182F, System.Drawing.FontStyle.Bold);
+            this.studentAnswerLbl.ForeColor = System.Drawing.Color.Black;
+            this.studentAnswerLbl.Location = new System.Drawing.Point(201, 9);
+            this.studentAnswerLbl.Name = "studentAnswerLbl";
+            this.studentAnswerLbl.Size = new System.Drawing.Size(84, 26);
+            this.studentAnswerLbl.TabIndex = 34;
+            this.studentAnswerLbl.Text = "answer";
+            // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.DarkSeaGreen;
@@ -292,38 +324,6 @@
             this.nextBtn.Values.Text = "Next";
             this.nextBtn.Click += new System.EventHandler(this.nextbtn_Click_1);
             // 
-            // studentAnswerLbl
-            // 
-            this.studentAnswerLbl.AutoSize = true;
-            this.studentAnswerLbl.Font = new System.Drawing.Font("JetBrains Mono", 12.78182F, System.Drawing.FontStyle.Bold);
-            this.studentAnswerLbl.ForeColor = System.Drawing.Color.Black;
-            this.studentAnswerLbl.Location = new System.Drawing.Point(201, 9);
-            this.studentAnswerLbl.Name = "studentAnswerLbl";
-            this.studentAnswerLbl.Size = new System.Drawing.Size(84, 26);
-            this.studentAnswerLbl.TabIndex = 34;
-            this.studentAnswerLbl.Text = "answer";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("JetBrains Mono", 12.78182F, System.Drawing.FontStyle.Bold);
-            this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(3, 9);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(168, 26);
-            this.label3.TabIndex = 33;
-            this.label3.Text = "Your Answer: ";
-            // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.panel3.Controls.Add(this.label3);
-            this.panel3.Controls.Add(this.studentAnswerLbl);
-            this.panel3.Location = new System.Drawing.Point(18, 163);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(976, 44);
-            this.panel3.TabIndex = 35;
-            // 
             // PracticeExamAnswers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
@@ -341,10 +341,10 @@
             this.panel1.PerformLayout();
             this.flowLayoutPanel1.ResumeLayout(false);
             this.optionsPanel.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -303,7 +303,7 @@ namespace WindowsFormsApp1.Forms
             // SubmitBtn
             // 
             this.SubmitBtn.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.SubmitBtn.Location = new System.Drawing.Point(579, 694);
+            this.SubmitBtn.Location = new System.Drawing.Point(630, 694);
             this.SubmitBtn.Name = "SubmitBtn";
             this.SubmitBtn.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.SubmitBtn.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -419,7 +419,7 @@ namespace WindowsFormsApp1.Forms
             // showAnswersBtn
             // 
             this.showAnswersBtn.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.showAnswersBtn.Location = new System.Drawing.Point(523, 713);
+            this.showAnswersBtn.Location = new System.Drawing.Point(576, 713);
             this.showAnswersBtn.Name = "showAnswersBtn";
             this.showAnswersBtn.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.showAnswersBtn.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -489,6 +489,7 @@ namespace WindowsFormsApp1.Forms
             this.Controls.Add(this.backgroundPanel);
             this.MinimumSize = new System.Drawing.Size(1462, 811);
             this.Name = "StudentExam";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "StudentExam";
             this.Load += new System.EventHandler(this.StudentExam_Load);
             this.panel1.ResumeLayout(false);

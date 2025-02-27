@@ -18,6 +18,7 @@ namespace WindowsFormsApp1.Forms
         DataTable questions;
         Exam exam;
         PracticeExam practiceExam;
+        int examId;
         string fullName;
         private Timer examTimer;
         private DateTime examEndTime;
@@ -33,6 +34,7 @@ namespace WindowsFormsApp1.Forms
             this.exam= exam;
             this.fullName = fullName;
             this.studentId = studentId;
+            this.examId = exam.ExamID;
             InitializeComponent();
         }
 
@@ -384,8 +386,8 @@ namespace WindowsFormsApp1.Forms
 
         private void ShowResults()
         {
-
-            DataTable exam = BusinessLogic.ExamManager.getUserPracticeExam(studentId);
+            
+            DataTable exam =  BusinessLogic.ExamManager.getExam(examId);
 
             if (exam.Rows.Count > 0)
             {
