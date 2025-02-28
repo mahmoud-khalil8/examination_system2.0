@@ -42,7 +42,7 @@
             this.languageComboBox.DropDownWidth = 233;
             this.languageComboBox.Location = new System.Drawing.Point(135, 107);
             this.languageComboBox.Name = "languageComboBox";
-            this.languageComboBox.Size = new System.Drawing.Size(233, 25);
+            this.languageComboBox.Size = new System.Drawing.Size(233, 30);
             this.languageComboBox.StateCommon.ComboBox.Content.Font = new System.Drawing.Font("JetBrains Mono", 11.78182F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.languageComboBox.StateCommon.ComboBox.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
             this.languageComboBox.TabIndex = 5;
@@ -52,10 +52,11 @@
             this.DateCombo.DropDownWidth = 233;
             this.DateCombo.Location = new System.Drawing.Point(555, 107);
             this.DateCombo.Name = "DateCombo";
-            this.DateCombo.Size = new System.Drawing.Size(233, 25);
+            this.DateCombo.Size = new System.Drawing.Size(233, 30);
             this.DateCombo.StateCommon.ComboBox.Content.Font = new System.Drawing.Font("JetBrains Mono", 11.78182F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DateCombo.StateCommon.ComboBox.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
             this.DateCombo.TabIndex = 6;
+            this.DateCombo.Visible = false;
             // 
             // label3
             // 
@@ -80,6 +81,7 @@
             this.label1.Size = new System.Drawing.Size(144, 26);
             this.label1.TabIndex = 10;
             this.label1.Text = "Date Format";
+            this.label1.Visible = false;
             // 
             // savebtn
             // 
