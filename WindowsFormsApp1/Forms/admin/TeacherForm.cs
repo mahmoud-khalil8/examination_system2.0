@@ -34,8 +34,9 @@ namespace WindowsFormsApp1.Forms.admin
         private void OutTchBtn_Click(object sender, EventArgs e)
         {
             //this.Hide();
-            Form1 form1 = new Form1(admin);
-            form1.Show();
+            //Form1 form1 = new Form1(admin);
+            //form1.Show();
+            this.Close();
         }
 
         private void ViewAllTchBtn_Click(object sender, EventArgs e)

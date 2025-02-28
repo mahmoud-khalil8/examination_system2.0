@@ -24,7 +24,7 @@ namespace WindowsFormsApp1.Forms.admin
             this.admin = _admin;
         }
 
-        
+
 
 
         private void ViewAllStdBtn_Click(object sender, EventArgs e)
@@ -36,6 +36,8 @@ namespace WindowsFormsApp1.Forms.admin
             removeStd1.Visible = false;
             updateStdUc1.Visible = false;
             dgvViewAll.DataSource = StudentBLL.GetAllStudents();
+
+
         }
 
         private void addStd3_Load(object sender, EventArgs e)
@@ -51,6 +53,8 @@ namespace WindowsFormsApp1.Forms.admin
             dgvViewAll.Visible = false;
             removeStd1.Visible = true;
             updateStdUc1.Visible = false;
+
+
         }
 
         private void StudentForm_Load(object sender, EventArgs e)
@@ -67,13 +71,18 @@ namespace WindowsFormsApp1.Forms.admin
             dgvViewAll.Visible = false;
             removeStd1.Visible = false;
             updateStdUc1.Visible = true;
+
+
         }
 
         private void OutStdBtn_Click(object sender, EventArgs e)
         {
             //this.Hide();
-            admin.Form1 form = new admin.Form1(admin);
-            form.Show();
+
+            //admin.Form1 form = new admin.Form1(admin);
+           // form.Show();
+            this.Close();
+
         }
 
         private void AddStdBtn_Click(object sender, EventArgs e)
@@ -83,6 +92,9 @@ namespace WindowsFormsApp1.Forms.admin
             dgvViewAll.Visible = false;
             removeStd1.Visible = false;
             updateStdUc1.Visible = false;
+
+
+
         }
 
         private void updateStdUc1_Load(object sender, EventArgs e)

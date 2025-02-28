@@ -38,8 +38,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.deleteTeacherUC1 = new WindowsFormsApp1.UserControls.TeacherUC.DeleteTeacherUC();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.deleteTeacherUC1 = new WindowsFormsApp1.UserControls.TeacherUC.DeleteTeacherUC();
             this.updTeacherUC1 = new WindowsFormsApp1.UserControls.TeacherUC.UpdTeacherUC();
             this.addTeacherUc1 = new WindowsFormsApp1.UserControls.TeacherUC.AddTeacherUc();
             this.panel1.SuspendLayout();
@@ -94,7 +94,7 @@
             this.OutTchBtn.StateTracking.Content.ShortText.Color2 = System.Drawing.Color.Black;
             this.OutTchBtn.StateTracking.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.OutTchBtn.TabIndex = 11;
-            this.OutTchBtn.Values.Text = "Log Out";
+            this.OutTchBtn.Values.Text = "Exit";
             this.OutTchBtn.Click += new System.EventHandler(this.OutTchBtn_Click);
             // 
             // UpdTchBtn
@@ -254,7 +254,7 @@
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(223, 218);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 5;
             this.pictureBox1.TabStop = false;
             // 
@@ -270,16 +270,6 @@
             this.panel2.Size = new System.Drawing.Size(1141, 785);
             this.panel2.TabIndex = 1;
             // 
-            // deleteTeacherUC1
-            // 
-            this.deleteTeacherUC1.BackColor = System.Drawing.Color.White;
-            this.deleteTeacherUC1.Location = new System.Drawing.Point(5, -3);
-            this.deleteTeacherUC1.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
-            this.deleteTeacherUC1.Name = "deleteTeacherUC1";
-            this.deleteTeacherUC1.Size = new System.Drawing.Size(1136, 785);
-            this.deleteTeacherUC1.TabIndex = 3;
-            this.deleteTeacherUC1.Load += new System.EventHandler(this.deleteTeacherUC1_Load);
-            // 
             // dataGridView1
             // 
             this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
@@ -292,6 +282,16 @@
             this.dataGridView1.Size = new System.Drawing.Size(1136, 785);
             this.dataGridView1.TabIndex = 2;
             this.dataGridView1.Visible = false;
+            // 
+            // deleteTeacherUC1
+            // 
+            this.deleteTeacherUC1.BackColor = System.Drawing.Color.White;
+            this.deleteTeacherUC1.Location = new System.Drawing.Point(5, -3);
+            this.deleteTeacherUC1.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
+            this.deleteTeacherUC1.Name = "deleteTeacherUC1";
+            this.deleteTeacherUC1.Size = new System.Drawing.Size(1136, 785);
+            this.deleteTeacherUC1.TabIndex = 3;
+            this.deleteTeacherUC1.Load += new System.EventHandler(this.deleteTeacherUC1_Load);
             // 
             // updTeacherUC1
             // 

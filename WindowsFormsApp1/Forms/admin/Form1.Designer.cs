@@ -147,6 +147,8 @@
             this.MngStdsBtn.Location = new System.Drawing.Point(90, 433);
             this.MngStdsBtn.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.MngStdsBtn.Name = "MngStdsBtn";
+            this.MngStdsBtn.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.MngStdsBtn.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.MngStdsBtn.Size = new System.Drawing.Size(247, 55);
             this.MngStdsBtn.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.MngStdsBtn.StateCommon.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -177,10 +179,10 @@
             // pictureBox2
             // 
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(444, 12);
+            this.pictureBox2.Location = new System.Drawing.Point(460, 23);
             this.pictureBox2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(998, 727);
+            this.pictureBox2.Size = new System.Drawing.Size(958, 696);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 1;
             this.pictureBox2.TabStop = false;

@@ -51,6 +51,10 @@
             this.PassTxt = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.kryptonDateTimePicker1 = new ComponentFactory.Krypton.Toolkit.KryptonDateTimePicker();
             this.ResetAddStd = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.label10 = new System.Windows.Forms.Label();
+            this.MsgLbl = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.AssSubject = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -142,7 +146,7 @@
             // 
             // SaveStdBtn
             // 
-            this.SaveStdBtn.Location = new System.Drawing.Point(249, 578);
+            this.SaveStdBtn.Location = new System.Drawing.Point(263, 678);
             this.SaveStdBtn.Name = "SaveStdBtn";
             this.SaveStdBtn.Size = new System.Drawing.Size(197, 43);
             this.SaveStdBtn.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -263,6 +267,7 @@
             // 
             // kryptonDateTimePicker1
             // 
+            this.kryptonDateTimePicker1.CalendarTodayDate = new System.DateTime(2025, 2, 26, 0, 0, 0, 0);
             this.kryptonDateTimePicker1.Location = new System.Drawing.Point(735, 174);
             this.kryptonDateTimePicker1.Name = "kryptonDateTimePicker1";
             this.kryptonDateTimePicker1.Size = new System.Drawing.Size(180, 27);
@@ -276,7 +281,7 @@
             // 
             // ResetAddStd
             // 
-            this.ResetAddStd.Location = new System.Drawing.Point(508, 578);
+            this.ResetAddStd.Location = new System.Drawing.Point(562, 678);
             this.ResetAddStd.Name = "ResetAddStd";
             this.ResetAddStd.Size = new System.Drawing.Size(197, 43);
             this.ResetAddStd.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -294,11 +299,58 @@
             this.ResetAddStd.Values.Text = "Reset";
             this.ResetAddStd.Click += new System.EventHandler(this.ResetAddStd_Click);
             // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(295, 204);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(0, 13);
+            this.label10.TabIndex = 32;
+            // 
+            // MsgLbl
+            // 
+            this.MsgLbl.AutoSize = true;
+            this.MsgLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MsgLbl.Location = new System.Drawing.Point(441, 635);
+            this.MsgLbl.Name = "MsgLbl";
+            this.MsgLbl.Size = new System.Drawing.Size(137, 18);
+            this.MsgLbl.TabIndex = 33;
+            this.MsgLbl.Text = "All data are required";
+            this.MsgLbl.Visible = false;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(18, 486);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(179, 24);
+            this.label11.TabIndex = 34;
+            this.label11.Text = "Associated Subjects";
+            // 
+            // AssSubject
+            // 
+            this.AssSubject.Location = new System.Drawing.Point(223, 481);
+            this.AssSubject.Name = "AssSubject";
+            this.AssSubject.Size = new System.Drawing.Size(180, 29);
+            this.AssSubject.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.AssSubject.StateCommon.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.AssSubject.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom)
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left)
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.AssSubject.StateCommon.Border.Rounding = 10;
+            this.AssSubject.TabIndex = 35;
+            this.AssSubject.TextChanged += new System.EventHandler(this.AssSubject_TextChanged);
+            // 
             // AddStd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.AssSubject);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.MsgLbl);
+            this.Controls.Add(this.label10);
             this.Controls.Add(this.ResetAddStd);
             this.Controls.Add(this.kryptonDateTimePicker1);
             this.Controls.Add(this.PassTxt);
@@ -350,5 +402,9 @@
         private ComponentFactory.Krypton.Toolkit.KryptonTextBox PassTxt;
         private ComponentFactory.Krypton.Toolkit.KryptonDateTimePicker kryptonDateTimePicker1;
         private ComponentFactory.Krypton.Toolkit.KryptonButton ResetAddStd;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label MsgLbl;
+        private System.Windows.Forms.Label label11;
+        private ComponentFactory.Krypton.Toolkit.KryptonTextBox AssSubject;
     }
 }

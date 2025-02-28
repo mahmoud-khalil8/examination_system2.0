@@ -23,6 +23,9 @@ namespace WindowsFormsApp1.Models
         public int SupervisedBy { get; set; }
 
 
+        public List<string> Subjects { get; set; }
+
+
 
     }
 }

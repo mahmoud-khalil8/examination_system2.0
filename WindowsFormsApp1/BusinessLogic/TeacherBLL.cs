@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Windows.Forms;
 using WindowsFormsApp1.DataAccess;
 using WindowsFormsApp1.Models;
 
@@ -59,6 +60,26 @@ namespace ADMIN.BusinessLogicLayer
 
             return DatabaseHelper.ExecuteNonQuery(query, parameters);
         }
+        public static int getTeacherId(string email)
+        {
+            string query = "SELECT UserID FROM Users WHERE Email = @Email AND Role = 'Teacher'";
+            SqlParameter[] parameters = { new SqlParameter("@Email", email) };
+            return (int)DatabaseHelper.ExecuteScalar(query, parameters);
+        }
+        //Add teacher subject
+        public static void AssignSubjectToTeacher(int teacherId, string subjectName)
+        {
+            string query = @"INSERT INTO Subject (Subject_Name, Teacher_ID) VALUES (@Subject_Name, @Teacher_ID)";
+
+            SqlParameter[] parameters =
+            {
+        new SqlParameter("@Subject_Name", subjectName),
+        new SqlParameter("@Teacher_ID", teacherId)
+    };
+
+            DatabaseHelper.ExecuteNonQuery(query, parameters);
+        }
+
 
         // Update Teacher
         public static bool UpdateTeacher(UserModel teacher)
@@ -92,10 +113,25 @@ namespace ADMIN.BusinessLogicLayer
             if (id <= 0)
                 throw new ArgumentException("Invalid User ID");
 
+            deleteteacherSubject(id);
             string query = "DELETE FROM Users WHERE UserID = @UserID AND Role='Teacher'";
             SqlParameter[] parameters = { new SqlParameter("@UserID", id) };
 
             return DatabaseHelper.ExecuteNonQuery(query, parameters) > 0;
+        }
+        public static bool deleteteacherSubject(int id)
+        {
+            string query = "DELETE FROM Subject WHERE Teacher_ID = @Teacher_ID";
+            SqlParameter[] parameters = { new SqlParameter("@Teacher_ID", id) };
+            return DatabaseHelper.ExecuteNonQuery(query, parameters) > 0;
+
+        }
+        public static int GetSubject(string subjectName)
+        {
+            string query = "SELECT count(*) FROM Subject WHERE Subject_Name = @Subject_Name";
+            SqlParameter[] parameters = { new SqlParameter("@Subject_Name", subjectName) };
+
+            return (int)DatabaseHelper.ExecuteScalar(query, parameters);
         }
     }
 }

@@ -15,6 +15,9 @@ namespace WindowsFormsApp1.UserControls.StdUC
 {
     public partial class UpdateStdUc : UserControl
     {
+        //private List<TextBox> subjectTextBoxes = new List<TextBox>();
+        //private int startY = 300; 
+        //private int spacing = 30;
         private int SelectedUserID = -1;
 
         public UpdateStdUc()
@@ -73,6 +76,7 @@ namespace WindowsFormsApp1.UserControls.StdUC
             {
                 MessageBox.Show("This student is not Found", "Not Found", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
         }
         //private void LoadGender()
         //{
@@ -146,6 +150,9 @@ namespace WindowsFormsApp1.UserControls.StdUC
             {
                 MessageBox.Show("Invalid ID format. Please enter a valid numeric ID.");
             }
+
+
+
         }
 
         private void CancelUpdBtn_Click(object sender, EventArgs e)
@@ -159,6 +166,9 @@ namespace WindowsFormsApp1.UserControls.StdUC
             PhUpdBtn.Clear();
             kryptonChDateTimePicker1.Value = DateTime.Now;
             IDUpdBtn.Clear();
+
+            //design 
+
         }
     }
 }

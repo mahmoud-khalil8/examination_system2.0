@@ -68,6 +68,9 @@ namespace WindowsFormsApp1.UserControls.StdUC
             {
                 MessageBox.Show("select student frst");
             }
+            //design 
+
+
         }
 
         private void ConfirmBtn_Click(object sender, EventArgs e)

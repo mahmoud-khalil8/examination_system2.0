@@ -9,6 +9,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApp1.BusinessLogic;
 using WindowsFormsApp1.Models;
 
 namespace WindowsFormsApp1.UserControls.TeacherUC
@@ -28,30 +29,51 @@ namespace WindowsFormsApp1.UserControls.TeacherUC
                 if (string.IsNullOrWhiteSpace(FNameChTxt.Text) ||
                     string.IsNullOrWhiteSpace(EmailChTxt.Text) ||
                     string.IsNullOrWhiteSpace(PassChTxt.Text) ||
-                    string.IsNullOrWhiteSpace(UserNameChTxt.Text)
-                   //string.IsNullOrWhiteSpace(RoleTxt.Text)
+                    string.IsNullOrWhiteSpace(UserNameChTxt.Text) ||
+                     string.IsNullOrWhiteSpace(AddChTxt.Text) ||
+                    string.IsNullOrWhiteSpace(GenderChBox.Text) ||
+                    string.IsNullOrWhiteSpace(PhoneChTxt.Text) ||
+                    string.IsNullOrWhiteSpace(AssSubject.Text)
+
                    )
                 {
-                    MessageBox.Show("All Data are required", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    // MessageBox.Show("All Data are required", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MsgLbl.Visible = true;
+                    MsgLbl.ForeColor = Color.Red;
                     return;
+                }
+                if (!BDteacher.Checked)
+                {
+                    MsgLbl.Text = "Please select a date.";
+                    MsgLbl.Visible = true;
+                    MsgLbl.ForeColor = Color.Red;
                 }
                 // Check Phone format
                 if (!Regex.IsMatch(PhoneChTxt.Text, @"^\d+$"))
                 {
-                    MessageBox.Show("Phone number must contain only numbers!", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    // MessageBox.Show("Phone number must contain only numbers!", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MsgLbl.Text = " Phone number must contain only numbers!";
+                    MsgLbl.Visible = true;
+                    MsgLbl.ForeColor = Color.Red;
                     return;
                 }
                 // check Email format
                 if (!Regex.IsMatch(EmailChTxt.Text, @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"))
                 {
-                    MessageBox.Show("Invalid email format!", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    //MessageBox.Show("Invalid email format!", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MsgLbl.Text = "Invalid email format!";
+                    MsgLbl.Visible = true;
+                    MsgLbl.ForeColor = Color.Red;
                     return;
                 }
                 //Check gender is male or female only
                 string gender = GenderChBox.Text.Trim().ToLower();
                 if (gender != "male" && gender != "female")
                 {
-                    MessageBox.Show("Gender must be either 'Male' or 'Female'!", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    //MessageBox.Show("Gender must be either 'Male' or 'Female'!", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MsgLbl.Text = "Gender must be either 'Male' or 'Female'!";
+                    MsgLbl.Visible = true;
+                    MsgLbl.ForeColor = Color.Red;
                     return;
                 }
                 UserModel newTeacher = new UserModel
@@ -63,8 +85,9 @@ namespace WindowsFormsApp1.UserControls.TeacherUC
                     Address = AddChTxt.Text.Trim(),
                     Gender = char.ToUpper(gender[0]) + gender.Substring(1),
                     BirthDate = BDteacher.Value,
-                    Phone = PhoneChTxt.Text.Trim()
-                    // Role=RoleTxt.Text.Trim(),
+                    Phone = PhoneChTxt.Text.Trim(),
+
+                    //Subjects = AssSubject.Text.Trim()
 
 
                 };
@@ -75,6 +98,9 @@ namespace WindowsFormsApp1.UserControls.TeacherUC
                 }
                 else if (result > 0)
                 {
+                    //get teacherId
+                    int teacherId = TeacherBLL.getTeacherId(EmailChTxt.Text);
+                    TeacherBLL.AssignSubjectToTeacher(teacherId, AssSubject.Text);
                     MessageBox.Show("New Teacher is added successfully", "Sucess", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
@@ -87,6 +113,8 @@ namespace WindowsFormsApp1.UserControls.TeacherUC
             {
                 MessageBox.Show($"Error: {ex.Message}\n{ex.StackTrace}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
+
         }
 
         private void ResetAddTch_Click(object sender, EventArgs e)
@@ -99,6 +127,10 @@ namespace WindowsFormsApp1.UserControls.TeacherUC
             GenderChBox.Clear();
             BDteacher.Value = DateTime.Now;
             PhoneChTxt.Clear();
+            AssSubject.Clear();
+
+
+
         }
 
         private void AddTeacherUc_Load(object sender, EventArgs e)
@@ -107,6 +139,11 @@ namespace WindowsFormsApp1.UserControls.TeacherUC
         }
 
         private void GenderChBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void AssSubject_TextChanged(object sender, EventArgs e)
         {
 
         }
