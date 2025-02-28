@@ -91,6 +91,16 @@ namespace WindowsFormsApp1.UserControls.TeacherUC
 
 
                 };
+                int subjectExist = TeacherBLL.GetSubject(AssSubject.Text);
+
+                if (subjectExist > 1)
+                {
+                    MsgLbl.Text = "This subject already exist with a teacher!";
+                    MsgLbl.Visible = true;
+                    MsgLbl.ForeColor = Color.Red;
+                    return;
+                }
+
                 int result = TeacherBLL.AddTeacher(newTeacher);
                 if (result == -1)
                 {
@@ -100,6 +110,11 @@ namespace WindowsFormsApp1.UserControls.TeacherUC
                 {
                     //get teacherId
                     int teacherId = TeacherBLL.getTeacherId(EmailChTxt.Text);
+
+                    //check if subject already exist 
+                    
+
+
                     TeacherBLL.AssignSubjectToTeacher(teacherId, AssSubject.Text);
                     MessageBox.Show("New Teacher is added successfully", "Sucess", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }

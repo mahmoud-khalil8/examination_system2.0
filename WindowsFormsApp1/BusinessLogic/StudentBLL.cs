@@ -33,7 +33,7 @@ namespace ADMIN.BusinessLogicLayer
         public static int CreateStudent(UserModel student)
         {
             //Check if Email is repeated 
-            string checkQuery = "select count(*) from Users where Email =@Email and Role = 'Student'";
+            string checkQuery = "select count(*) from Users where Email =@Email ";
 
             SqlParameter[] sqlParameters = { new SqlParameter("@Email", student.Email) };
             int emailExists = (int)DatabaseHelper.ExecuteScalar(checkQuery, sqlParameters);
