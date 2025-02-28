@@ -281,7 +281,7 @@ namespace WindowsFormsApp1.Forms
                 }
             }
 
-            if (questionType.ToLower() == "choose multiple" && studentAnswer.EndsWith(","))
+            if (questionType.ToLower() == "chooseall" && studentAnswer.EndsWith(","))
             {
                 studentAnswer = studentAnswer.TrimEnd(','); // Remove last comma
 
@@ -301,6 +301,8 @@ namespace WindowsFormsApp1.Forms
             }
             // Store the answer
 //            studentAnswers.AddOrUpdateAnswer(questionId, studentAnswer, isCorrect);
+        
+        
         }
 
         private void SubmitBtn_Click(object sender, EventArgs e)
@@ -312,11 +314,9 @@ namespace WindowsFormsApp1.Forms
             {
 
                 //save answer in database student_answer table
-                if(exam is FinalExam)
-                {
+                
 
                      BusinessLogic.ExamManager.StoreStudentAnswer(studentId, exam.ExamID, answer.Key, answer.Value.StudentAnswer, answer.Value.ISCorrect, answer.Value.Stud_Marks.Value);
-                }
                 studentAnswersString += $"Question ID: {answer.Key}, Answer: {answer.Value.StudentAnswer}, Is Correct: {answer.Value.ISCorrect}\n";
             }
           //  MessageBox.Show(studentAnswersString, "Student Answers", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -327,11 +327,10 @@ namespace WindowsFormsApp1.Forms
             int totalMarks = studentAnswers.CalculateTotalMarks();
 //            MessageBox.Show($"Exam Completed! Your Total Score: {totalMarks}", "Exam Submission", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            if(exam is FinalExam)
-            {
+           
 
              BusinessLogic.ExamManager.saveExamStudent(studentId, exam.ExamID, totalMarks);
-            }
+            
 
 
 

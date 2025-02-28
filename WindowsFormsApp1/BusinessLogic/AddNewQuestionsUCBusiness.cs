@@ -4,7 +4,6 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 using WindowsFormsApp1.DataAccess;
 using WindowsFormsApp1.Forms;
 using WindowsFormsApp1.Models;
@@ -13,19 +12,19 @@ namespace WindowsFormsApp1.BusinessLogic
 {
     internal class AddNewQuestionsUCBusiness
     {
-        public static DataTable GetExams(int id)
+        public static DataTable GetExams()
         {
-            var x = DatabaseHelper.ExecuteQuery($"SELECT * FROM Exam where Teacher_ID ={id}");
+            var x = DatabaseHelper.ExecuteQuery($"SELECT * FROM Exam where Teacher_ID ={intro.CurrentId}");
             return x;
         }
-        public static DataTable GetCurrentExam(int id )
+        public static DataTable GetCurrentExam()
         {
-            var x = DatabaseHelper.ExecuteQuery($"SELECT * FROM Exam where Teacher_ID ={id} and Exam_id = {TeacherDashoard.CurrentExamID}");
+            var x = DatabaseHelper.ExecuteQuery($"SELECT * FROM Exam where Teacher_ID ={intro.CurrentId} and Exam_id = {TeacherDashoard.CurrentExamID}");
             return x;
         }
-        public static DataTable GetExamQuestions(int id )
+        public static DataTable GetExamQuestions()
         {
-            var x = DatabaseHelper.ExecuteQuery($"SELECT * FROM Questions where Teacher_ID ={id} and Exam_id = {TeacherDashoard.CurrentExamID}");
+            var x = DatabaseHelper.ExecuteQuery($"SELECT * FROM Questions where Teacher_ID ={intro.CurrentId} and Exam_id = {TeacherDashoard.CurrentExamID}");
             return x;
         }
         public static int InsertQuestion(QuestionModel q)
@@ -41,18 +40,14 @@ namespace WindowsFormsApp1.BusinessLogic
         }
         public static int InsertOptions(QuestionModel q)
         {
-            
-
-
             int x = 0;
             for (int i = 0; i < q.Options.Count; i++)
             {
-                x = DatabaseHelper.ExecuteNonQuery($"INSERT INTO Ques_Options (QID, Options, Option_Index) " +
-                                                   $"VALUES ({q.QID}, '{q.Options[i]}', {q.Option_Index[i]})");
+                x = DatabaseHelper.ExecuteNonQuery($"insert into Ques_Options (QID,Options,Option_Index)" +
+                                                    $"values({q.QID},'{q.Options[i]}',{q.Option_Index[i]})");
             }
             return x;
         }
-
         public static int InsertCorrectAnswer(QuestionModel q)
         {
             if (q.GetType() == typeof(TrueFalseQuestion))
@@ -79,37 +74,35 @@ namespace WindowsFormsApp1.BusinessLogic
             }
             return 0;
         }
-        public static int GetNumberOfQuestionsAdded(int id )
+        public static int GetNumberOfQuestionsAdded()
         {
-            var x = (int)DatabaseHelper.ExecuteQuery($"SELECT COUNT(QID) as count FROM Questions where Teacher_ID ={id} and Exam_id = {TeacherDashoard.CurrentExamID}").Rows[0]["count"];
+            var x = (int)DatabaseHelper.ExecuteQuery($"SELECT COUNT(QID) as count FROM Questions where Teacher_ID ={intro.CurrentId} and Exam_id = {TeacherDashoard.CurrentExamID}").Rows[0]["count"];
             return x;
         }
-        public static int GetNumberOfQuestionsInExam(int id )
+        public static int GetNumberOfQuestionsInExam()
         {
-            var x = (int)DatabaseHelper.ExecuteQuery($"SELECT Ques_Num FROM Exam where Teacher_ID ={id} and Exam_id = {TeacherDashoard.CurrentExamID}").Rows[0]["Ques_Num"];
+            var x = (int)DatabaseHelper.ExecuteQuery($"SELECT Ques_Num FROM Exam where Teacher_ID ={intro.CurrentId} and Exam_id = {TeacherDashoard.CurrentExamID}").Rows[0]["Ques_Num"];
             return x;
 
         }
-        public static int UpdateTotalMarks(int id )
+        public static int UpdateTotalMarks()
         {
-            var x = DatabaseHelper.ExecuteNonQuery($"update Exam set Exam_Marks = (select sum(Marks) from Questions where Teacher_ID ={id} and Exam_id = {TeacherDashoard.CurrentExamID}) where Teacher_ID ={id} and Exam_id = {TeacherDashoard.CurrentExamID}");
+            var x = DatabaseHelper.ExecuteNonQuery($"update Exam set Exam_Marks = (select sum(Marks) from Questions where Teacher_ID ={intro.CurrentId} and Exam_id = {TeacherDashoard.CurrentExamID}) where Teacher_ID ={intro.CurrentId} and Exam_id = {TeacherDashoard.CurrentExamID}");
             return x;
         }
-        public static int GetTotalMarks(int id)
+        public static int GetTotalMarks()
         {
-            var x = (int)DatabaseHelper.ExecuteQuery($"SELECT Exam_Marks FROM Exam where Teacher_ID ={id} and Exam_id = {TeacherDashoard.CurrentExamID}").Rows[0]["Exam_Marks"];
+            var x = (int)DatabaseHelper.ExecuteQuery($"SELECT Exam_Marks FROM Exam where Teacher_ID ={intro.CurrentId} and Exam_id = {TeacherDashoard.CurrentExamID}").Rows[0]["Exam_Marks"];
             return x;
         }
-        public static int GetSumOfMarks(int id )
+        public static int GetSumOfMarks()
         {
-           
-                var result = DatabaseHelper.ExecuteQuery($"SELECT SUM(Marks) as sum FROM Questions WHERE Teacher_ID = {id} AND Exam_id = {TeacherDashoard.CurrentExamID}").Rows[0]["sum"];
-                return result != DBNull.Value ? Convert.ToInt32(result) : 0;
-
+            var x = (int)DatabaseHelper.ExecuteQuery($"SELECT SUM(Marks) as sum FROM Questions where Teacher_ID ={intro.CurrentId} and Exam_id = {TeacherDashoard.CurrentExamID}").Rows[0]["sum"];
+            return x;
         }
-        public static int UpdateQuesNum(int id)
+        public static int UpdateQuesNum()
         {
-            var x = DatabaseHelper.ExecuteNonQuery($"update Exam set Ques_Num = (select count(QID) from Questions where Teacher_ID ={id} and Exam_id = {TeacherDashoard.CurrentExamID}) where Teacher_ID ={id} and Exam_id = {TeacherDashoard.CurrentExamID}");
+            var x = DatabaseHelper.ExecuteNonQuery($"update Exam set Ques_Num = (select count(QID) from Questions where Teacher_ID ={intro.CurrentId} and Exam_id = {TeacherDashoard.CurrentExamID}) where Teacher_ID ={intro.CurrentId} and Exam_id = {TeacherDashoard.CurrentExamID}");
             return x;
         }
     }

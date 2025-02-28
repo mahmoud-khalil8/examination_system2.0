@@ -14,6 +14,7 @@ namespace WindowsFormsApp1.Forms
 {
     public partial class intro : Form
     {
+        public static int CurrentId;
         public intro()
         {
             InitializeComponent();
@@ -56,7 +57,19 @@ namespace WindowsFormsApp1.Forms
                     student.Role = userInformation.Rows[0]["Role"].ToString();
                     student.FullName = userInformation.Rows[0]["FullName"].ToString();
                     student.UserName = userInformation.Rows[0]["Username"].ToString();
-                    student.SupervisedBy =Convert.ToInt32( userInformation.Rows[0]["supervised_by"]);
+                    //checknullhere first in supervised by 
+                    if (userInformation.Rows[0]["supervised_by"] == DBNull.Value)
+                    {
+                        student.SupervisedBy = 0;
+                    }
+                    else
+                    {
+                        student.SupervisedBy = Convert.ToInt32(userInformation.Rows[0]["supervised_by"]);
+                    }
+
+
+
+                    CurrentId = student.UserID;
                     Student studentForm = new Student(student);
                     studentForm.Show();
                 }
@@ -70,6 +83,7 @@ namespace WindowsFormsApp1.Forms
                     admin.Role = userInformation.Rows[0]["Role"].ToString();
                     admin.FullName = userInformation.Rows[0]["FullName"].ToString();
                     admin.UserName = userInformation.Rows[0]["Username"].ToString();
+                    CurrentId = admin.UserID;
 
 
                     admin.Form1 form1 = new admin.Form1(admin);
@@ -85,9 +99,10 @@ namespace WindowsFormsApp1.Forms
                     teacher.Role = userInformation.Rows[0]["Role"].ToString();
                     teacher.FullName = userInformation.Rows[0]["FullName"].ToString();
                     teacher.UserName = userInformation.Rows[0]["Username"].ToString();
+                    CurrentId = teacher.UserID;
 
 
-                    TeacherDashoard teacherDashoard = new TeacherDashoard(teacher);
+                    TeacherDashoard teacherDashoard = new TeacherDashoard();
                     teacherDashoard.Show();
 
                 }

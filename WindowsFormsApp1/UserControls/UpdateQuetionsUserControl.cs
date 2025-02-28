@@ -1,17 +1,20 @@
 ﻿using ComponentFactory.Krypton.Toolkit;
+using Krypton.Toolkit;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.Tab;
 using WindowsFormsApp1.BusinessLogic;
 using WindowsFormsApp1.Forms;
 using WindowsFormsApp1.Models;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Tab;
 using KryptonCheckBox = Krypton.Toolkit.KryptonCheckBox;
 using KryptonRichTextBox = ComponentFactory.Krypton.Toolkit.KryptonRichTextBox;
 
@@ -19,10 +22,10 @@ namespace WindowsFormsApp1.UserControls
 {
     public partial class UpdateQuetionsUserControl : UserControl
     {
-        int id ;
+        int id = intro.CurrentId;
 
 
-        public UpdateQuetionsUserControl(int id )
+        public UpdateQuetionsUserControl()
         {
             InitializeComponent();
             cbexamid.SelectedIndexChanged += new EventHandler(cbexamid_SelectedIndexChanged);
@@ -33,7 +36,6 @@ namespace WindowsFormsApp1.UserControls
             index3.CheckedChanged += new EventHandler(checkbox_CheckedChanged);
             index4.CheckedChanged += new EventHandler(checkbox_CheckedChanged);
 
-            this.id = id;
             tbheader.Enter += ClearLbout;
             tbbody.Enter += ClearLbout;
             tbmark.Enter += ClearLbout;
@@ -57,7 +59,6 @@ namespace WindowsFormsApp1.UserControls
             LoadExamIDs();
         }
 
-
         private void ClearLbout(object sender, EventArgs e)
         {
             lbout.Text = "";
@@ -76,8 +77,6 @@ namespace WindowsFormsApp1.UserControls
                     if (changedCheckbox != index2) index2.Checked = false;
                     if (changedCheckbox != index3) index3.Checked = false;
                     if (changedCheckbox != index4) index4.Checked = false;
-
-
                 }
             }
         }
@@ -149,6 +148,36 @@ namespace WindowsFormsApp1.UserControls
         }
 
         private int oldQuestionMarks = 0;
+
+        private string originalHeader = "";
+        private string originalBody = "";
+        private string originalQType = "";
+        private int? originalMarks = null;
+        private List<string> originalOptions = new List<string>();
+        private List<int> originalCorrectAnswers = new List<int>();
+
+        private void StoreOriginalQuestionData()
+        {
+            originalHeader = tbheader.Text.Trim();
+            originalBody = tbbody.Text.Trim();
+            originalQType = currentQuestionType;
+            originalMarks = string.IsNullOrWhiteSpace(tbmark.Text) ? (int?)null : int.Parse(tbmark.Text);
+
+            originalOptions = new List<string>
+    {
+        tboption1.Text.Trim(),
+        tboption2.Text.Trim(),
+        tboption3.Text.Trim(),
+        tboption4.Text.Trim()
+    }.Where(opt => !string.IsNullOrEmpty(opt)).ToList();
+
+            originalCorrectAnswers = new List<int>();
+            if (index1.Checked) originalCorrectAnswers.Add(1);
+            if (index2.Checked) originalCorrectAnswers.Add(2);
+            if (index3.Checked) originalCorrectAnswers.Add(3);
+            if (index4.Checked) originalCorrectAnswers.Add(4);
+        }
+
         private void LoadQuestionDetails(int qid)
         {
             int examid = int.Parse(cbexamid.SelectedItem.ToString());
@@ -190,7 +219,7 @@ namespace WindowsFormsApp1.UserControls
                         teacherId,
                         examId,
                         (int)correctAnswer,
-                    options,
+                        options,
                         optionIndices
                     );
 
@@ -223,6 +252,7 @@ namespace WindowsFormsApp1.UserControls
                             index2.Checked = true;
                         }
                     }
+                    StoreOriginalQuestionData();
                 }
 
 
@@ -279,6 +309,8 @@ namespace WindowsFormsApp1.UserControls
                             }
                         }
                     }
+                    StoreOriginalQuestionData();
+
                 }
 
                 if (currentQuestionType == "chooseall")
@@ -337,6 +369,7 @@ namespace WindowsFormsApp1.UserControls
                                 break;
                         }
                     }
+                    StoreOriginalQuestionData();
                 }
 
             }
@@ -395,8 +428,8 @@ namespace WindowsFormsApp1.UserControls
             List<KryptonCheckBox> checkBoxes = new List<KryptonCheckBox> { index1, index2, index3, index4 };
             int checkedCount = checkBoxes.Count(cb => cb.Checked);
 
-            if (string.Equals(currentQuestionType, "True/False", StringComparison.OrdinalIgnoreCase) ||
-                string.Equals(currentQuestionType, "Choose One", StringComparison.OrdinalIgnoreCase))
+            if (string.Equals(currentQuestionType, "TrueFalse", StringComparison.OrdinalIgnoreCase) ||
+                string.Equals(currentQuestionType, "ChooseOne", StringComparison.OrdinalIgnoreCase))
             {
                 if (checkedCount != 1)
                 {
@@ -404,7 +437,7 @@ namespace WindowsFormsApp1.UserControls
                     isValid = false;
                 }
             }
-            else if (string.Equals(currentQuestionType, "Choose All", StringComparison.OrdinalIgnoreCase))
+            else if (string.Equals(currentQuestionType, "ChooseAll", StringComparison.OrdinalIgnoreCase))
             {
                 if (checkedCount < 1)
                 {
@@ -456,7 +489,6 @@ namespace WindowsFormsApp1.UserControls
             return true;
         }
 
-
         private void btnupdate_Click(object sender, EventArgs e)
         {
             try
@@ -475,14 +507,14 @@ namespace WindowsFormsApp1.UserControls
                     return;
                 }
 
+
                 int qid = int.Parse(cbqid.SelectedItem.ToString());
                 int examid = int.Parse(cbexamid.SelectedItem.ToString());
+
                 string header = tbheader.Text.Trim();
                 string body = tbbody.Text.Trim();
                 string qtype = currentQuestionType;
-
                 int? marks = string.IsNullOrWhiteSpace(tbmark.Text) ? (int?)null : int.Parse(tbmark.Text);
-
 
                 if (marks.HasValue)
                 {
@@ -496,11 +528,12 @@ namespace WindowsFormsApp1.UserControls
                 }
 
                 List<string> options = new List<string>
-                {
-                   tboption1.Text.Trim(),
-                   tboption2.Text.Trim(),
-                   tboption3.Text.Trim(),
-                   tboption4.Text.Trim()}.Where(opt => !string.IsNullOrEmpty(opt)).ToList();
+        {
+            tboption1.Text.Trim(),
+            tboption2.Text.Trim(),
+            tboption3.Text.Trim(),
+            tboption4.Text.Trim()
+        }.Where(opt => !string.IsNullOrEmpty(opt)).ToList();
 
                 List<int> correctAnswers = new List<int>();
                 if (index1.Checked) correctAnswers.Add(1);
@@ -508,7 +541,15 @@ namespace WindowsFormsApp1.UserControls
                 if (index3.Checked) correctAnswers.Add(3);
                 if (index4.Checked) correctAnswers.Add(4);
 
-                if (!TeacherBL.IsQuestionModified(qid, header, body, qtype, marks, options, correctAnswers))
+                bool isModified =
+                    !string.Equals(originalHeader, header, StringComparison.OrdinalIgnoreCase) ||
+                    !string.Equals(originalBody, body, StringComparison.OrdinalIgnoreCase) ||
+                    !string.Equals(originalQType, qtype, StringComparison.OrdinalIgnoreCase) ||
+                    originalMarks != marks ||
+                    !originalOptions.SequenceEqual(options, StringComparer.OrdinalIgnoreCase) ||
+                    !originalCorrectAnswers.SequenceEqual(correctAnswers);
+
+                if (!isModified)
                 {
                     lbout.Text = "No changes detected!";
                     lbout.ForeColor = Color.Blue;
@@ -521,6 +562,13 @@ namespace WindowsFormsApp1.UserControls
                 {
                     lbout.Text = "Question updated successfully!";
                     lbout.ForeColor = Color.Green;
+
+                    originalHeader = header;
+                    originalBody = body;
+                    originalQType = qtype;
+                    originalMarks = marks;
+                    originalOptions = new List<string>(options);
+                    originalCorrectAnswers = new List<int>(correctAnswers);
                 }
                 else
                 {
@@ -535,5 +583,9 @@ namespace WindowsFormsApp1.UserControls
             }
         }
 
+
+
     }
+
 }
+

@@ -32,10 +32,10 @@
             // 
             // Report
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(923, 667);
-            this.MinimumSize = new System.Drawing.Size(941, 711);
+            this.ClientSize = new System.Drawing.Size(1055, 759);
+            this.MinimumSize = new System.Drawing.Size(1073, 806);
             this.Name = "Report";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Report";

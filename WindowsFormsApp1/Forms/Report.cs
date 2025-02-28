@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsApp1.BusinessLogic;
 
@@ -15,15 +10,13 @@ namespace WindowsFormsApp1.Forms
     {
         public int STID { get; set; }
         public int EXID { get; set; }
-        int teacherId { get; set; }
 
-        public Report(int studentId, int examId,int _teacherId)
+        public Report(int studentId, int examId)
         {
             STID = studentId;
             EXID = examId;
             InitializeComponent();
 
-            teacherId = _teacherId;
             this.Text = "Exam Details";
             this.Size = new System.Drawing.Size(900, 700);
             this.AutoScroll = true;
@@ -33,7 +26,7 @@ namespace WindowsFormsApp1.Forms
             DataTable studentInfo = ViewAllStudentsUS_BL.GetFullName(EXID, STID);
             DataTable examName = ViewAllStudentsUS_BL.GetExamName(EXID, STID);
             DataTable examType = ViewAllStudentsUS_BL.GetExamType(EXID, STID);
-            DataTable subjectName = ViewAllStudentsUS_BL.GetSubjectName(EXID, STID,teacherId);
+            DataTable subjectName = ViewAllStudentsUS_BL.GetSubjectName(EXID, STID);
             DataTable totalMarks = ViewAllStudentsUS_BL.GetTotalMarks(EXID, STID);
             DataTable studentMarks = ViewAllStudentsUS_BL.GetStudentMarks(EXID, STID);
             DataTable questionsData = ViewAllStudentsUS_BL.GetQuestionsAndCorrectAnswer(EXID, STID);

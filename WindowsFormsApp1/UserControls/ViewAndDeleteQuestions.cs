@@ -14,11 +14,10 @@ namespace WindowsFormsApp1.UserControls
 {
     public partial class ViewAndDeleteQuestions : UserControl
     {
-        int id ;
-        public ViewAndDeleteQuestions(int id)
+        int id = intro.CurrentId;
+        public ViewAndDeleteQuestions()
         {
             InitializeComponent();
-            this.id = id;
 
             dgv.Enter += ClearLbout;
             cbexamid.Enter += ClearLbout;
@@ -154,3 +153,5 @@ namespace WindowsFormsApp1.UserControls
 
     }
 }
+
+

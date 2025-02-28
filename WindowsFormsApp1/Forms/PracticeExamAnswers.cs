@@ -148,7 +148,7 @@ namespace WindowsFormsApp1.Forms
             }
            
 
-            if (questionType.Equals("choose multiple", StringComparison.OrdinalIgnoreCase))
+            if (questionType.Equals("chooseall", StringComparison.OrdinalIgnoreCase))
             {
                 List<string> correctAnswers = new List<string>();
 

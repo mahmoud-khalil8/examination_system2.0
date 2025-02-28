@@ -58,7 +58,7 @@ namespace WindowsFormsApp1.Models
     public class PracticeExam : Exam
     {
         public PracticeExam(TimeSpan time, int numberOfQuestions, string mode, string examName, string examType, int examID, int marks, int subjectId, int teacherId, DateTime startTime)
-            : base(time, numberOfQuestions, mode, examName, "practiceExam", examID, marks, subjectId, teacherId, startTime)
+            : base(time, numberOfQuestions, mode, examName, "practicalExam", examID, marks, subjectId, teacherId, startTime)
         {
 
         }

@@ -1,22 +1,19 @@
-﻿using ComponentFactory.Krypton.Toolkit;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using ComponentFactory.Krypton.Toolkit;
 using WindowsFormsApp1.BusinessLogic;
 using WindowsFormsApp1.Forms;
 using WindowsFormsApp1.Models;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
 
 namespace WindowsFormsApp1.UserControls
 {
     public partial class AddNewQuestionsUC : UserControl
     {
-
         private int optionCount = 2;
         private List<KryptonTextBox> optionTextBoxes = new List<KryptonTextBox>();
         private List<KryptonCheckBox> correctAnswerCheckboxes = new List<KryptonCheckBox>();
@@ -32,21 +29,17 @@ namespace WindowsFormsApp1.UserControls
         ChooseOneQuestion chooseOneQ = new ChooseOneQuestion();
         ChooseAllQuestion chooseAllQ = new ChooseAllQuestion();
 
-        int userId;
-        public AddNewQuestionsUC(int _id)
+        public AddNewQuestionsUC()
         {
             InitializeComponent();
-            var e = AddNewQuestionsUCBusiness.GetCurrentExam(userId);
-            userId = _id;
-
+            var e = AddNewQuestionsUCBusiness.GetCurrentExam();
             if (e.Rows.Count != 0)
             {
                 DropDownMenu.Text = e.Rows[0]["ExamName"].ToString();
                 UpdateMarks();
             }
-            PopulateContextMenu(AddNewQuestionsUCBusiness.GetExams(userId));
+            PopulateContextMenu(AddNewQuestionsUCBusiness.GetExams());
             DropDownMenu.KryptonContextMenu = kryptonContextMenu1;
-
         }
 
         private void SetButtonDefaultStyle(KryptonButton button)
@@ -228,10 +221,10 @@ namespace WindowsFormsApp1.UserControls
         private void NumMarks_ValueChanged(object sender, EventArgs e)
         {
             if (!isUserInput) return;
-            var exam = AddNewQuestionsUCBusiness.GetCurrentExam(userId);
+            var exam = AddNewQuestionsUCBusiness.GetCurrentExam();
             if (exam.Rows.Count == 0) return;
             var examMarks = Convert.ToInt32(exam.Rows[0]["Exam_Marks"]);
-            var questions = AddNewQuestionsUCBusiness.GetExamQuestions(userId);
+            var questions = AddNewQuestionsUCBusiness.GetExamQuestions();
             for (int i = 0; i < questions.Rows.Count; i++)
             {
                 sumOfQuestionsAdded += Convert.ToInt32(questions.Rows[i]["Marks"]);
@@ -289,17 +282,17 @@ namespace WindowsFormsApp1.UserControls
         }
         private void ValidateNumberOfQuestion()
         {
-            var NOQA = AddNewQuestionsUCBusiness.GetNumberOfQuestionsAdded(userId);
-            var NOQ = AddNewQuestionsUCBusiness.GetNumberOfQuestionsInExam(userId);
-            var TM = AddNewQuestionsUCBusiness.GetTotalMarks(userId);
-            var SM = AddNewQuestionsUCBusiness.GetSumOfMarks(userId);
+            var NOQA = AddNewQuestionsUCBusiness.GetNumberOfQuestionsAdded();
+            var NOQ = AddNewQuestionsUCBusiness.GetNumberOfQuestionsInExam();
+            var TM = AddNewQuestionsUCBusiness.GetTotalMarks();
+            var SM = AddNewQuestionsUCBusiness.GetSumOfMarks();
             if (NOQA >= NOQ)
             {
                 MessageBox.Show("You cannot add more questions than the total number of questions in the exam.", "Limit Reached", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
                 // Disable specific controls (textboxes, buttons, checkboxes, radio buttons, numeric up-downs)
                 DisableSpecificControls();
-                AddNewQuestionsUCBusiness.UpdateTotalMarks(userId);
+                AddNewQuestionsUCBusiness.UpdateTotalMarks();
                 UpdateMarks();
 
             }
@@ -307,7 +300,7 @@ namespace WindowsFormsApp1.UserControls
             {
                 MessageBox.Show("You cannot add more marks than the total marks of the exam.", "Limit Reached", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 DisableSpecificControls();
-                AddNewQuestionsUCBusiness.UpdateQuesNum(userId);
+                AddNewQuestionsUCBusiness.UpdateQuesNum();
                 UpdateMarks();
             }
             else
@@ -582,9 +575,9 @@ namespace WindowsFormsApp1.UserControls
         }
         private void UpdateMarks()
         {
-            var exam = AddNewQuestionsUCBusiness.GetCurrentExam(userId);
+            var exam = AddNewQuestionsUCBusiness.GetCurrentExam();
             var examMarks = exam.Rows[0]["Exam_Marks"].ToString();
-            var questions = AddNewQuestionsUCBusiness.GetExamQuestions(userId);
+            var questions = AddNewQuestionsUCBusiness.GetExamQuestions();
             for (int i = 0; i < questions.Rows.Count; i++)
             {
                 sumOfQuestionsAdded += Convert.ToInt32(questions.Rows[i]["Marks"]);
@@ -601,7 +594,7 @@ namespace WindowsFormsApp1.UserControls
                 trueFalseQ.Marks = (int)numMarks.Value;
                 trueFalseQ.QType = questionType;
                 trueFalseQ.Exam_ID = TeacherDashoard.CurrentExamID;
-                trueFalseQ.Teacher_ID = userId;
+                trueFalseQ.Teacher_ID = intro.CurrentId;
                 trueFalseQ.Options = new List<string> { "True", "False" };
                 trueFalseQ.Option_Index = new List<int> { 1, 2 };
                 if (rbtnTrue.Checked)
@@ -618,18 +611,16 @@ namespace WindowsFormsApp1.UserControls
                 AddNewQuestionsUCBusiness.InsertOptions(trueFalseQ);
                 AddNewQuestionsUCBusiness.InsertCorrectAnswer(trueFalseQ);
             }
-            else if(questionType == "ChooseOne")
-{
+            else if (questionType == "ChooseOne")
+            {
                 chooseOneQ.Header = txtHeader.Text;
                 chooseOneQ.Body = txtBody.Text;
                 chooseOneQ.Marks = (int)numMarks.Value;
                 chooseOneQ.QType = questionType;
                 chooseOneQ.Exam_ID = TeacherDashoard.CurrentExamID;
-                chooseOneQ.Teacher_ID = userId;
-
+                chooseOneQ.Teacher_ID = intro.CurrentId;
                 chooseOneQ.Options = new List<string>();
                 chooseOneQ.Option_Index = new List<int>();
-
                 for (int i = 0; i < optionTextBoxes.Count; i++)
                 {
                     chooseOneQ.Options.Add(optionTextBoxes[i].Text);
@@ -639,19 +630,12 @@ namespace WindowsFormsApp1.UserControls
                         chooseOneQ.CorrectAnswer = i + 1;
                     }
                 }
-
                 AddNewQuestionsUCBusiness.InsertQuestion(chooseOneQ);
-
                 var qID = AddNewQuestionsUCBusiness.GetQID();
-
-                
-
                 chooseOneQ.QID = qID;
-
                 AddNewQuestionsUCBusiness.InsertOptions(chooseOneQ);
                 AddNewQuestionsUCBusiness.InsertCorrectAnswer(chooseOneQ);
             }
-
             else if (questionType == "ChooseAll")
             {
                 chooseAllQ.Header = txtHeader.Text;
@@ -659,7 +643,7 @@ namespace WindowsFormsApp1.UserControls
                 chooseAllQ.Marks = (int)numMarks.Value;
                 chooseAllQ.QType = questionType;
                 chooseAllQ.Exam_ID = TeacherDashoard.CurrentExamID;
-                chooseAllQ.Teacher_ID = userId;
+                chooseAllQ.Teacher_ID = intro.CurrentId;
                 chooseAllQ.Options = new List<string>();
                 chooseAllQ.Option_Index = new List<int>();
                 chooseAllQ.CorrectAnswer = new List<int>();
@@ -686,7 +670,7 @@ namespace WindowsFormsApp1.UserControls
             new KryptonTextBox() { Location = new Point(x, y), Width = width, StateCommon = { Content = { Font = new Font("Segoe UI", 12) }, Border = { Rounding = 15, Width = 1 } } };
 
         private KryptonButton CreateStyledButton(string text, int x, int y) =>
-            new KryptonButton() { Text = text, Location = new Point(x, y), Width = 120, StateCommon = { Content = { ShortText = { Font = new Font("Segoe UI", 8) } }, Border = { Rounding = 15, Width = 1 } } };
+            new KryptonButton() { Text = text, Location = new Point(x, y), Width = 120, StateCommon = { Content = { ShortText = { Font = new Font("Segoe UI", 7) } }, Border = { Rounding = 15, Width = 1 } } };
 
         private void DropDownMenu_Click(object sender, EventArgs e)
         {

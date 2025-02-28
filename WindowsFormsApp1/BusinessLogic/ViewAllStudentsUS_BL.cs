@@ -15,14 +15,14 @@ namespace WindowsFormsApp1.BusinessLogic
     {
         public static DataTable GetStudentData(int teacherId)
         {
-            string query = @"SELECT u.UserID as [Student ID],u.FullName as [Student Name],sx.Student_Marks as [Student Marks],e.Exam_ID as [Exam ID],e.ExamName as [Exam Name],e.Exam_Marks as [Exam Mark],e.ExamType as [Exam Type],e.Ques_Num as [Numbers Of Questions]
+            string query = @"SELECT u.UserID as [Student ID],u.FullName as [Student Name],sx.Student_Marks as [Student Marks],e.Exam_ID as [Exam ID],s.Subject_Name as [Subject],e.Exam_Marks as [Exam Mark],e.ExamType as [Exam Type],e.Ques_Num as [Numbers Of Questions]
                              From Users u INNER JOIN STUD_EXAM sx
                              ON u.UserID = sx.Stud_ID
                              INNER JOIN Exam e
                              ON e.Exam_ID=sx.Exam_ID
                              INNER JOIN Subject s
                              ON s.Sub_ID=e.Subject_ID
-                             WHERE u.supervised_by=@teacherId AND u.Role='Student'"
+                             WHERE e.teacher_Id=@teacherId AND u.Role='Student'"
             ;
 
             SqlParameter[] parameters =
@@ -34,14 +34,14 @@ namespace WindowsFormsApp1.BusinessLogic
 
         public static DataTable GetStudentDataByName(int teacherId, string StudName)
         {
-            string query = @"SELECT u.UserID as [Student ID],u.FullName as [Student Name],sx.Student_Marks as [Student Marks],e.Exam_ID as [Exam ID],e.ExamName as [Exam Name],e.Exam_Marks as [Exam Mark],e.ExamType as [Exam Type],e.Ques_Num as [Numbers Of Questions]
+            string query = @"SELECT u.UserID as [Student ID],u.FullName as [Student Name],sx.Student_Marks as [Student Marks],e.Exam_ID as [Exam ID],s.Subject_Name as [Subject],e.Exam_Marks as [Exam Mark],e.ExamType as [Exam Type],e.Ques_Num as [Numbers Of Questions]
                              From Users u INNER JOIN STUD_EXAM sx
                              ON u.UserID = sx.Stud_ID
                              INNER JOIN Exam e
                              ON e.Exam_ID=sx.Exam_ID
                              INNER JOIN Subject s
                              ON s.Sub_ID=e.Subject_ID
-                             WHERE u.supervised_by=@teacherId AND u.Role='Student' AND u.FullName=@StudName"
+                             WHERE e.teacher_Id=@teacherId AND u.Role='Student' AND u.FullName=@StudName"
             ;
 
             SqlParameter[] parameters =
@@ -64,33 +64,94 @@ namespace WindowsFormsApp1.BusinessLogic
             return DatabaseHelper.ExecuteQuery(query, parameters);
         }
 
-        public static DataTable GetTopFive(int TeacherId)
+        public static DataTable GetSubjectName(int teacherId)
         {
-            string query = @" SELECT Top(5) u.UserID as [Student ID],u.FullName as [Student Name],sx.Student_Marks as [Student Marks],e.Exam_ID as [Exam ID],e.ExamName as [Exam Name],e.Exam_Marks as [Exam Mark],e.ExamType as [Exam Type],e.Ques_Num as [Numbers Of Questions]
-                              From Users u INNER JOIN STUD_EXAM sx
-                              ON u.UserID = sx.Stud_ID
-                              INNER JOIN Exam e
-                              ON e.Exam_ID=sx.Exam_ID
-                              Inner join Subject s
-                              ON s.Sub_ID=e.Subject_ID
-                              WHERE u.supervised_by=@TeacherId AND u.Role='Student'
-                              Group By e.Exam_ID,u.UserID,u.FullName,sx.Student_Marks,e.ExamName,e.Exam_Marks,e.Ques_Num,e.ExamType
-                              order by e.Exam_ID";
+            string query = @"SELECT DISTINCT s.Subject_Name FROM Subject s WHERE s.Teacher_ID=@teacherId"
+            ;
 
-            SqlParameter[] parameters = {
-                new SqlParameter("@TeacherId", TeacherId)
-                  };
+            SqlParameter[] parameters =
+            {
+                new SqlParameter("@teacherId", teacherId),
+            };
             return DatabaseHelper.ExecuteQuery(query, parameters);
         }
+
+        public static DataTable GetStudentDataBySubject(int teacherId, string SubjectName)
+        {
+            string query = @"SELECT u.UserID as [Student ID],u.FullName as [Student Name],sx.Student_Marks as [Student Marks],e.Exam_ID as [Exam ID],s.Subject_Name as [Subject],e.Exam_Marks as [Exam Mark],e.ExamType as [Exam Type],e.Ques_Num as [Numbers Of Questions]
+                             From Users u INNER JOIN STUD_EXAM sx
+                             ON u.UserID = sx.Stud_ID
+                             INNER JOIN Exam e
+                             ON e.Exam_ID=sx.Exam_ID
+                             INNER JOIN Subject s
+                             ON s.Sub_ID=e.Subject_ID
+                             WHERE u.supervised_by=@teacherId AND u.Role='Student' AND s.Subject_Name=@SubjectName"
+            ;
+
+            SqlParameter[] parameters =
+            {
+                new SqlParameter("@teacherId", teacherId),
+                new SqlParameter("@SubjectName", SubjectName)
+            };
+            return DatabaseHelper.ExecuteQuery(query, parameters);
+        }
+
+        public static DataTable GetStudentDataByNameAndSubject(int teacherId, string studentName, string subjectName)
+        {
+            string query = @"SELECT u.UserID as [Student ID],u.FullName as [Student Name],sx.Student_Marks as [Student Marks],e.Exam_ID as [Exam ID],s.Subject_Name as [Subject],e.Exam_Marks as [Exam Mark],e.ExamType as [Exam Type],e.Ques_Num as [Numbers Of Questions]
+                             FROM Users u 
+                             INNER JOIN STUD_EXAM sx ON u.UserID = sx.Stud_ID
+                             INNER JOIN Exam e ON e.Exam_ID = sx.Exam_ID
+                             INNER JOIN Subject s ON s.Sub_ID = e.Subject_ID
+                             WHERE u.supervised_by = @teacherId 
+                             AND u.Role = 'Student' 
+                             AND u.FullName = @studentName 
+                             AND s.Subject_Name = @subjectName";
+
+            SqlParameter[] parameters =
+            {
+        new SqlParameter("@teacherId", teacherId),
+        new SqlParameter("@studentName", studentName),
+        new SqlParameter("@subjectName", subjectName)
+    };
+
+            return DatabaseHelper.ExecuteQuery(query, parameters);
+        }
+
+        public static DataTable GetTopFive(int teacherId, string subjectName = null)
+        {
+            string query = @"SELECT TOP(5) u.UserID as [Student ID],u.FullName as [Student Name],sx.Student_Marks as [Student Marks],e.Exam_ID as [Exam ID],s.Subject_Name as [Subject],e.Exam_Marks as [Exam Mark],e.ExamType as [Exam Type],e.Ques_Num as [Numbers Of Questions]
+                             FROM Users u INNER JOIN STUD_EXAM sx 
+                             ON u.UserID = sx.Stud_ID
+                             INNER JOIN Exam e 
+                             ON e.Exam_ID = sx.Exam_ID
+                             INNER JOIN Subject s 
+                             ON s.Sub_ID = e.Subject_ID
+                             WHERE u.supervised_by = @teacherId AND u.Role = 'Student' " + (string.IsNullOrEmpty(subjectName) ? "" : " AND s.Subject_Name = @subjectName ") +
+                           @"GROUP BY e.Exam_ID, u.UserID, u.FullName, sx.Student_Marks, s.Subject_Name, e.Exam_Marks, e.Ques_Num, e.ExamType ORDER BY sx.Student_Marks DESC";
+
+            List<SqlParameter> parameters = new List<SqlParameter>
+    {
+        new SqlParameter("@teacherId", teacherId)
+    };
+
+            if (!string.IsNullOrEmpty(subjectName))
+            {
+                parameters.Add(new SqlParameter("@subjectName", subjectName));
+            }
+
+            return DatabaseHelper.ExecuteQuery(query, parameters.ToArray());
+        }
+
         //------------------------------------------------------------------------------------------------
         public static DataTable GetFullName(int examID, int studentID)
         {
             var fullName = DatabaseHelper.ExecuteQuery($"select FullName from Users where UserID = {studentID}");
             return fullName;
         }
-        public static DataTable GetSubjectName(int examID, int studentID,int teacherId)
+        public static DataTable GetSubjectName(int examID, int studentID)
         {
-            var subjectName = DatabaseHelper.ExecuteQuery($"select Subject_Name from Subject s,Exam e where e.Subject_ID = s.Sub_ID and s.Teacher_ID = {teacherId} and e.Exam_ID = {examID}");
+            var subjectName = DatabaseHelper.ExecuteQuery($"select Subject_Name from Subject s,Exam e where e.Subject_ID = s.Sub_ID and s.Teacher_ID = {intro.CurrentId} and e.Exam_ID = {examID}");
             return subjectName;
         }
         public static DataTable GetTotalMarks(int examID, int studentID)

@@ -35,5 +35,10 @@ namespace WindowsFormsApp1.BusinessLogic
             var dt = DatabaseHelper.ExecuteQuery($"select top(1) * from Exam where Teacher_ID = {e.TeacherId} order by Exam_ID desc");
             return dt;
         }
+        internal static DataTable GetSubjects(int currentId)
+        {
+            var dt = DatabaseHelper.ExecuteQuery($"select Subject_Name from Subject where Teacher_ID = {currentId}");
+            return dt;
+        }
     }
 }

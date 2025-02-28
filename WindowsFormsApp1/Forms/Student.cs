@@ -78,6 +78,9 @@ namespace WindowsFormsApp1.Forms
                 dataGridView1.ReadOnly = true;
 
             }
+            PracticeExam.ExamStarted -= OnExamStarted;
+            FinalExam.ExamStarted -= OnExamStarted;
+
             PracticeExam.ExamStarted += OnExamStarted;
             FinalExam.ExamStarted += OnExamStarted;
         }

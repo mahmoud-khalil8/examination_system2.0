@@ -1,14 +1,14 @@
-﻿using ComponentFactory.Krypton.Toolkit;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Xml.Linq;
+using ComponentFactory.Krypton.Toolkit;
 using WindowsFormsApp1.BusinessLogic;
 using WindowsFormsApp1.Forms;
 using WindowsFormsApp1.Models;
@@ -19,8 +19,7 @@ namespace WindowsFormsApp1.UserControls
     {
         Exam exam = new Exam();
         Subject Subject = new Subject();
-        int userId;
-        public AddExamUC(int id)
+        public AddExamUC()
         {
             InitializeComponent();
             StartTimeTXB.MinDate = DateTime.Now;
@@ -28,10 +27,11 @@ namespace WindowsFormsApp1.UserControls
             kryptonContextMenuItem3.Click += kryptonContextMenuItem_Click;
             NumberOfQuestionsTXB.KeyPress += kryptonTextBox1_KeyPress;
             MarkTXB.KeyPress += kryptonTextBox1_KeyPress;
-
-            userId = id;
-
-
+            SubjectTXB.Items.AddRange(AddExamUCBusiness.GetSubjects(intro.CurrentId).Rows.Cast<DataRow>().Select(x => x["Subject_Name"].ToString()).ToArray());
+            DropDownMenu.Items.AddRange(new string[] { "Final Exam", "Practical Exam" });
+            SubjectTXB.DropDownStyle = ComboBoxStyle.DropDownList;
+            DropDownMenu.DropDownStyle = ComboBoxStyle.DropDownList;
+            DropDownMenu.Text = "Exam Type";
 
         }
         private void kryptonContextMenuItem_Click(object sender, EventArgs e)
@@ -67,7 +67,7 @@ namespace WindowsFormsApp1.UserControls
 
         private void AddExamBTN_Click(object sender, EventArgs e)
         {
-            if (DropDownMenu.Text == "Exam Type")
+            if (DropDownMenu.Text == "Exam Type" || string.IsNullOrWhiteSpace(DropDownMenu.Text))
             {
                 MessageBox.Show("Please select an exam type from the dropdown menu.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -104,20 +104,20 @@ namespace WindowsFormsApp1.UserControls
             else
             {
                 Subject.SubName = SubjectTXB.Text;
-                Subject.TeacherID = userId;
+                Subject.TeacherID = intro.CurrentId;
                 exam.ExamName = SubjectTXB.Text;
                 exam.NumberOfQuestions = Convert.ToInt32(NumberOfQuestionsTXB.Text);
                 exam.Marks = Convert.ToInt32(MarkTXB.Text);
                 exam.Time = TimeSpan.Parse(DurationTXB.Text);
                 exam.StartTime = StartTimeTXB.Value;
                 exam.ExamType = DropDownMenu.Text;
-                exam.TeacherId = userId;
+                exam.TeacherId = intro.CurrentId;
 
-                var table = AddExamUCBusiness.GetSubject(Subject.SubName, Subject.TeacherID);
-                if (table.Rows.Count == 0)
-                {
-                    AddExamUCBusiness.InsertSubject(Subject.TeacherID, Subject.SubName);
-                }
+                //var table = AddExamUCBusiness.GetSubject(Subject.SubName, Subject.TeacherID);
+                //if (table.Rows.Count == 0)
+                //{
+                //    AddExamUCBusiness.InsertSubject(Subject.TeacherID , Subject.SubName);   
+                //}
                 var subjectID = AddExamUCBusiness.GetSubject(Subject.SubName, Subject.TeacherID).Rows[0]["Sub_ID"];
                 exam.SubjectId = Convert.ToInt32(subjectID);
                 var NoOfRowsAffected = AddExamUCBusiness.InsertExam(exam);
@@ -150,6 +150,16 @@ namespace WindowsFormsApp1.UserControls
         }
 
         private void MarkTXB_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void DropDownMenu_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            DropDownMenu.Text = DropDownMenu.SelectedItem.ToString();
+        }
+
+        private void SubjectTXB_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

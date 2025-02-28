@@ -38,8 +38,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.deleteTeacherUC1 = new WindowsFormsApp1.UserControls.TeacherUC.DeleteTeacherUC();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.updTeacherUC1 = new WindowsFormsApp1.UserControls.TeacherUC.UpdTeacherUC();
             this.addTeacherUc1 = new WindowsFormsApp1.UserControls.TeacherUC.AddTeacherUc();
             this.panel1.SuspendLayout();
@@ -75,8 +75,8 @@
             this.OutTchBtn.StateCommon.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.OutTchBtn.StateCommon.Border.Color1 = System.Drawing.Color.Transparent;
             this.OutTchBtn.StateCommon.Border.Color2 = System.Drawing.Color.Transparent;
-            this.OutTchBtn.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom)
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left)
+            this.OutTchBtn.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
             this.OutTchBtn.StateCommon.Border.Rounding = 10;
             this.OutTchBtn.StateCommon.Content.ShortText.Color1 = System.Drawing.Color.White;
@@ -86,8 +86,8 @@
             this.OutTchBtn.StateTracking.Back.Color2 = System.Drawing.Color.White;
             this.OutTchBtn.StateTracking.Border.Color1 = System.Drawing.Color.Transparent;
             this.OutTchBtn.StateTracking.Border.Color2 = System.Drawing.Color.Transparent;
-            this.OutTchBtn.StateTracking.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom)
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left)
+            this.OutTchBtn.StateTracking.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
             this.OutTchBtn.StateTracking.Border.Rounding = 10;
             this.OutTchBtn.StateTracking.Content.ShortText.Color1 = System.Drawing.Color.Black;
@@ -107,8 +107,8 @@
             this.UpdTchBtn.StateCommon.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.UpdTchBtn.StateCommon.Border.Color1 = System.Drawing.Color.Transparent;
             this.UpdTchBtn.StateCommon.Border.Color2 = System.Drawing.Color.Transparent;
-            this.UpdTchBtn.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom)
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left)
+            this.UpdTchBtn.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
             this.UpdTchBtn.StateCommon.Border.Rounding = 10;
             this.UpdTchBtn.StateCommon.Content.ShortText.Color1 = System.Drawing.Color.White;
@@ -116,8 +116,8 @@
             this.UpdTchBtn.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.UpdTchBtn.StateTracking.Back.Color1 = System.Drawing.Color.White;
             this.UpdTchBtn.StateTracking.Back.Color2 = System.Drawing.Color.White;
-            this.UpdTchBtn.StateTracking.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom)
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left)
+            this.UpdTchBtn.StateTracking.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
             this.UpdTchBtn.StateTracking.Border.Rounding = 10;
             this.UpdTchBtn.StateTracking.Content.ShortText.Color1 = System.Drawing.Color.Black;
@@ -137,8 +137,8 @@
             this.DeleTchBtn.StateCommon.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.DeleTchBtn.StateCommon.Border.Color1 = System.Drawing.Color.Transparent;
             this.DeleTchBtn.StateCommon.Border.Color2 = System.Drawing.Color.Transparent;
-            this.DeleTchBtn.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom)
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left)
+            this.DeleTchBtn.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
             this.DeleTchBtn.StateCommon.Border.Rounding = 10;
             this.DeleTchBtn.StateCommon.Content.ShortText.Color1 = System.Drawing.Color.White;
@@ -148,8 +148,8 @@
             this.DeleTchBtn.StateTracking.Back.Color2 = System.Drawing.Color.White;
             this.DeleTchBtn.StateTracking.Border.Color1 = System.Drawing.Color.Transparent;
             this.DeleTchBtn.StateTracking.Border.Color2 = System.Drawing.Color.Transparent;
-            this.DeleTchBtn.StateTracking.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom)
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left)
+            this.DeleTchBtn.StateTracking.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
             this.DeleTchBtn.StateTracking.Border.Rounding = 10;
             this.DeleTchBtn.StateTracking.Content.ShortText.Color1 = System.Drawing.Color.Black;
@@ -169,8 +169,8 @@
             this.ViewAllTchBtn.StateCommon.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.ViewAllTchBtn.StateCommon.Border.Color1 = System.Drawing.Color.Transparent;
             this.ViewAllTchBtn.StateCommon.Border.Color2 = System.Drawing.Color.Transparent;
-            this.ViewAllTchBtn.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom)
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left)
+            this.ViewAllTchBtn.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
             this.ViewAllTchBtn.StateCommon.Border.Rounding = 10;
             this.ViewAllTchBtn.StateCommon.Content.ShortText.Color1 = System.Drawing.Color.White;
@@ -180,8 +180,8 @@
             this.ViewAllTchBtn.StateTracking.Back.Color2 = System.Drawing.Color.White;
             this.ViewAllTchBtn.StateTracking.Border.Color1 = System.Drawing.Color.Transparent;
             this.ViewAllTchBtn.StateTracking.Border.Color2 = System.Drawing.Color.Transparent;
-            this.ViewAllTchBtn.StateTracking.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom)
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left)
+            this.ViewAllTchBtn.StateTracking.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
             this.ViewAllTchBtn.StateTracking.Border.Rounding = 10;
             this.ViewAllTchBtn.StateTracking.Content.ShortText.Color1 = System.Drawing.Color.Black;
@@ -201,8 +201,8 @@
             this.AddTchBtn.StateCommon.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.AddTchBtn.StateCommon.Border.Color1 = System.Drawing.Color.Transparent;
             this.AddTchBtn.StateCommon.Border.Color2 = System.Drawing.Color.Transparent;
-            this.AddTchBtn.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom)
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left)
+            this.AddTchBtn.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
             this.AddTchBtn.StateCommon.Border.Rounding = 10;
             this.AddTchBtn.StateCommon.Content.ShortText.Color1 = System.Drawing.Color.White;
@@ -212,8 +212,8 @@
             this.AddTchBtn.StatePressed.Back.Color2 = System.Drawing.Color.White;
             this.AddTchBtn.StatePressed.Border.Color1 = System.Drawing.Color.Transparent;
             this.AddTchBtn.StatePressed.Border.Color2 = System.Drawing.Color.Transparent;
-            this.AddTchBtn.StatePressed.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom)
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left)
+            this.AddTchBtn.StatePressed.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
             this.AddTchBtn.StatePressed.Border.Rounding = 10;
             this.AddTchBtn.StatePressed.Content.ShortText.Color1 = System.Drawing.Color.Black;
@@ -223,8 +223,8 @@
             this.AddTchBtn.StateTracking.Back.Color2 = System.Drawing.Color.White;
             this.AddTchBtn.StateTracking.Border.Color1 = System.Drawing.Color.Transparent;
             this.AddTchBtn.StateTracking.Border.Color2 = System.Drawing.Color.Transparent;
-            this.AddTchBtn.StateTracking.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom)
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left)
+            this.AddTchBtn.StateTracking.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
             this.AddTchBtn.StateTracking.Border.Rounding = 10;
             this.AddTchBtn.StateTracking.Content.ShortText.Color1 = System.Drawing.Color.Black;
@@ -254,7 +254,7 @@
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(223, 218);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 5;
             this.pictureBox1.TabStop = false;
             // 
@@ -270,6 +270,16 @@
             this.panel2.Size = new System.Drawing.Size(1141, 785);
             this.panel2.TabIndex = 1;
             // 
+            // deleteTeacherUC1
+            // 
+            this.deleteTeacherUC1.BackColor = System.Drawing.Color.White;
+            this.deleteTeacherUC1.Location = new System.Drawing.Point(5, -3);
+            this.deleteTeacherUC1.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
+            this.deleteTeacherUC1.Name = "deleteTeacherUC1";
+            this.deleteTeacherUC1.Size = new System.Drawing.Size(1136, 785);
+            this.deleteTeacherUC1.TabIndex = 3;
+            this.deleteTeacherUC1.Load += new System.EventHandler(this.deleteTeacherUC1_Load);
+            // 
             // dataGridView1
             // 
             this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
@@ -282,16 +292,6 @@
             this.dataGridView1.Size = new System.Drawing.Size(1136, 785);
             this.dataGridView1.TabIndex = 2;
             this.dataGridView1.Visible = false;
-            // 
-            // deleteTeacherUC1
-            // 
-            this.deleteTeacherUC1.BackColor = System.Drawing.Color.White;
-            this.deleteTeacherUC1.Location = new System.Drawing.Point(5, -3);
-            this.deleteTeacherUC1.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
-            this.deleteTeacherUC1.Name = "deleteTeacherUC1";
-            this.deleteTeacherUC1.Size = new System.Drawing.Size(1136, 785);
-            this.deleteTeacherUC1.TabIndex = 3;
-            this.deleteTeacherUC1.Load += new System.EventHandler(this.deleteTeacherUC1_Load);
             // 
             // updTeacherUC1
             // 

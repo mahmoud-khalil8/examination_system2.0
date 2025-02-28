@@ -9,24 +9,25 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsApp1.BusinessLogic;
 using WindowsFormsApp1.Forms;
+using WindowsFormsApp1.Models;
 
 namespace WindowsFormsApp1.UserControls
 {
     public partial class ViewAllStudentsUserControl : UserControl
     {
-        int id ;
+        int id = intro.CurrentId;
 
 
         public static int studid;
         public static int examid;
 
-        public ViewAllStudentsUserControl(int id)
+        public ViewAllStudentsUserControl()
         {
             InitializeComponent();
 
-            this.id = id;
             dgv.Enter += ClearLbout;
             cbstud.Enter += ClearLbout;
+            cbsubject.Enter += ClearLbout;
         }
 
         private void ClearLbout(object sender, EventArgs e)
@@ -34,90 +35,109 @@ namespace WindowsFormsApp1.UserControls
             lbout.Text = "";
         }
 
+        DataTable table = new DataTable();
 
         private void ViewAllStudentsUserControl_Load(object sender, EventArgs e)
         {
             cbstud.Items.Clear();
-            cbstud.Items.Add("All Students");
-            cbstud.Items.Add("Top Five");
+            cbstud.Items.AddRange(new object[] { "All Students", "Top Five" });
 
             table = ViewAllStudentsUS_BL.GetStudentsName(id);
-
-            if (table != null && table.Rows.Count > 0)
+            if (table?.Rows.Count > 0)
             {
                 foreach (DataRow row in table.Rows)
                 {
                     cbstud.Items.Add(row[0].ToString());
                 }
             }
-
             cbstud.SelectedIndex = 0;
+
+            cbsubject.Items.Clear();
+            cbsubject.Items.Add("All Subjects");
+
+            table = ViewAllStudentsUS_BL.GetSubjectName(id);
+            if (table?.Rows.Count > 0)
+            {
+                foreach (DataRow row in table.Rows)
+                {
+                    cbsubject.Items.Add(row[0].ToString());
+                }
+            }
+            cbsubject.SelectedIndex = 0;
         }
-        DataTable table = new DataTable();
 
         private void cbstud_SelectedIndexChanged(object sender, EventArgs e)
         {
+            FilterData();
+        }
 
+        private void cbsubject_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            FilterData();
+        }
+
+        private void FilterData()
+        {
             lbout.Text = "";
             lbout.ForeColor = Color.Black;
 
-            if (cbstud.Items.Count == 0)
+            if (cbstud.Items.Count == 0 || cbsubject.Items.Count == 0)
             {
-                lbout.Text = "The Student ID list is empty!";
-                lbout.ForeColor = Color.Red;
+                ShowMessage("The lists are empty!", Color.Red);
                 return;
             }
 
+            string studentName = cbstud.SelectedItem?.ToString() ?? "All Students";
+            string subjectName = cbsubject.SelectedItem?.ToString() ?? "All Subjects";
 
-            if (cbstud.SelectedIndex == 0)
+            if (studentName == "All Students" && subjectName == "All Subjects")
             {
-                table = ViewAllStudentsUS_BL.GetStudentData(id);
-
-                if (table != null && table.Rows.Count > 0)
-                {
-                    dgv.DataSource = table;
-                }
-                else
-                {
-                    dgv.DataSource = null;
-                    lbout.Text = "No Students Found For All Exams.";
-                    lbout.ForeColor = Color.Blue;
-                }
-                return;
+                LoadData(ViewAllStudentsUS_BL.GetStudentData(id), "No Students Found For All Exams.");
             }
-            if (cbstud.SelectedIndex == 1)
+            else if (studentName == "Top Five")
             {
-                table = ViewAllStudentsUS_BL.GetTopFive(id);
-
-                if (table != null && table.Rows.Count > 0)
+                if (subjectName == "All Subjects")
                 {
-                    dgv.DataSource = table;
+                    LoadData(ViewAllStudentsUS_BL.GetTopFive(id), "No Students Found For All Exams.");
                 }
                 else
                 {
-                    dgv.DataSource = null;
-                    lbout.Text = "No Students Found For All Exams.";
-                    lbout.ForeColor = Color.Blue;
+                    LoadData(ViewAllStudentsUS_BL.GetTopFive(id, subjectName), "No Students Found For This Subject.");
                 }
-                return;
             }
-
-            string StudentName = cbstud.SelectedItem.ToString();
-            table = ViewAllStudentsUS_BL.GetStudentDataByName(id, StudentName);
-            if (cbstud.SelectedIndex > 1)
+            else if (studentName != "All Students" && subjectName == "All Subjects")
             {
-                if (table != null && table.Rows.Count > 0)
-                {
-                    dgv.DataSource = table;
-                }
-                else
-                {
-                    dgv.DataSource = null;
-                    lbout.Text = "No Students found.";
-                    lbout.ForeColor = Color.Blue;
-                }
+                LoadData(ViewAllStudentsUS_BL.GetStudentDataByName(id, studentName), "No Students found.");
+            }
+            else if (studentName == "All Students" && subjectName != "All Subjects")
+            {
+                LoadData(ViewAllStudentsUS_BL.GetStudentDataBySubject(id, subjectName), "No Students found for this subject.");
+            }
+            else if (studentName != "All Students" && subjectName != "All Subjects")
+            {
+                LoadData(ViewAllStudentsUS_BL.GetStudentDataByNameAndSubject(id, studentName, subjectName), "No Students found for this name and subject.");
             }
         }
+
+        private void LoadData(DataTable data, string noDataMessage)
+        {
+            if (data?.Rows.Count > 0)
+            {
+                dgv.DataSource = data;
+            }
+            else
+            {
+                dgv.DataSource = null;
+                ShowMessage(noDataMessage, Color.Blue);
+            }
+        }
+
+        private void ShowMessage(string message, Color color)
+        {
+            lbout.Text = message;
+            lbout.ForeColor = color;
+        }
+
 
         private void btndetails_Click(object sender, EventArgs e)
         {
@@ -128,7 +148,7 @@ namespace WindowsFormsApp1.UserControls
                 studid = Convert.ToInt32(selectedRow.Cells["Student ID"].Value);
                 examid = Convert.ToInt32(selectedRow.Cells["Exam ID"].Value);
 
-                Report report = new Report(studid, examid,id);
+                Report report = new Report(studid, examid);
                 report.Show();
             }
             else
@@ -161,5 +181,7 @@ namespace WindowsFormsApp1.UserControls
             }
 
         }
+
+
     }
 }

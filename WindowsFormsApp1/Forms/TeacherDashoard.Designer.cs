@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TeacherDashoard));
             this.kryptonPanel1 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.lbteacgername = new System.Windows.Forms.Label();
             this.linklblogout = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
@@ -62,7 +63,6 @@
             this.kryptonPanel1.Size = new System.Drawing.Size(311, 803);
             this.kryptonPanel1.StateCommon.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.kryptonPanel1.TabIndex = 0;
-            this.kryptonPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.kryptonPanel1_Paint);
             // 
             // lbteacgername
             // 
@@ -75,7 +75,6 @@
             this.lbteacgername.TabIndex = 3;
             this.lbteacgername.Text = "Teacher Name";
             this.lbteacgername.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.lbteacgername.Click += new System.EventHandler(this.lbteacgername_Click);
             // 
             // linklblogout
             // 
@@ -479,6 +478,7 @@
             // 
             this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(82, 32);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(141, 127);
@@ -510,6 +510,7 @@
             this.panalchange.Size = new System.Drawing.Size(827, 801);
             this.panalchange.StateCommon.Color1 = System.Drawing.Color.White;
             this.panalchange.StateCommon.Color2 = System.Drawing.Color.White;
+            this.panalchange.StateCommon.Image = ((System.Drawing.Image)(resources.GetObject("panalchange.StateCommon.Image")));
             this.panalchange.StateCommon.ImageStyle = ComponentFactory.Krypton.Toolkit.PaletteImageStyle.Stretch;
             this.panalchange.TabIndex = 1;
             this.panalchange.Paint += new System.Windows.Forms.PaintEventHandler(this.panalchange_Paint);
@@ -520,8 +521,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
             this.ClientSize = new System.Drawing.Size(1138, 803);
-            this.Controls.Add(this.panalchange);
             this.Controls.Add(this.kryptonPanel1);
+            this.Controls.Add(this.panalchange);
             this.MinimumSize = new System.Drawing.Size(1156, 847);
             this.Name = "TeacherDashoard";
             this.ShowIcon = false;

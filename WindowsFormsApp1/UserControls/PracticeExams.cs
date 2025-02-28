@@ -38,7 +38,7 @@ namespace WindowsFormsApp1.UserControls
                 MessageBox.Show("Student ID is not set");
                 return;
             }
-            DataTable exams = BusinessLogic.ExamManager.GetAvailableExams("practice exam", studentId);
+            DataTable exams = BusinessLogic.ExamManager.GetAvailableExams("practical exam", studentId);
 
             if (exams.Rows.Count == 0)
             {

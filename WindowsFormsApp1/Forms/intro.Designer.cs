@@ -40,10 +40,10 @@ namespace WindowsFormsApp1.Forms
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.WrongStatement = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.kryptonButton2 = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.headerlbl = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.kryptonButton2 = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -69,12 +69,11 @@ namespace WindowsFormsApp1.Forms
             this.label1.Font = new System.Drawing.Font("JetBrains Mono", 13.74545F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.label1.Location = new System.Drawing.Point(146, 318);
+            this.label1.MaximumSize = new System.Drawing.Size(500, 0);
             this.label1.Name = "label1";
-            //this.label1.Size = new System.Drawing.Size(467, 54);
+            this.label1.Size = new System.Drawing.Size(467, 54);
             this.label1.TabIndex = 0;
             this.label1.Text = "Welcome to the Examination System! \r\nPlease log in to continue";
-            label1.MaximumSize = new Size(500, 0); 
-            label1.AutoSize = true;
             // 
             // emailtb
             // 
@@ -216,42 +215,6 @@ namespace WindowsFormsApp1.Forms
             this.panel1.Size = new System.Drawing.Size(1360, 114);
             this.panel1.TabIndex = 7;
             // 
-            // headerlbl
-            // 
-            this.headerlbl.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.headerlbl.AutoSize = true;
-            this.headerlbl.Font = new System.Drawing.Font("JetBrains Mono", 17.74545F, System.Drawing.FontStyle.Bold);
-            this.headerlbl.ForeColor = System.Drawing.Color.White;
-            this.headerlbl.Location = new System.Drawing.Point(507, 37);
-            this.headerlbl.Name = "headerlbl";
-            this.headerlbl.Size = new System.Drawing.Size(323, 37);
-            this.headerlbl.TabIndex = 8;
-            this.headerlbl.Text = "Examination system\r\n";
-            // 
-            // label2
-            // 
-            this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("JetBrains Mono", 11.78182F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(146, 449);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(67, 25);
-            this.label2.TabIndex = 9;
-            this.label2.Text = "Email";
-            // 
-            // label4
-            // 
-            this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("JetBrains Mono", 11.78182F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(146, 502);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(100, 25);
-            this.label4.TabIndex = 10;
-            this.label4.Text = "password";
-            // 
             // kryptonButton2
             // 
             this.kryptonButton2.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -313,6 +276,42 @@ namespace WindowsFormsApp1.Forms
             this.kryptonButton2.TabIndex = 11;
             this.kryptonButton2.Values.Text = "Preferences";
             this.kryptonButton2.Click += new System.EventHandler(this.kryptonButton2_Click);
+            // 
+            // headerlbl
+            // 
+            this.headerlbl.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.headerlbl.AutoSize = true;
+            this.headerlbl.Font = new System.Drawing.Font("JetBrains Mono", 17.74545F, System.Drawing.FontStyle.Bold);
+            this.headerlbl.ForeColor = System.Drawing.Color.White;
+            this.headerlbl.Location = new System.Drawing.Point(507, 37);
+            this.headerlbl.Name = "headerlbl";
+            this.headerlbl.Size = new System.Drawing.Size(323, 37);
+            this.headerlbl.TabIndex = 8;
+            this.headerlbl.Text = "Examination system\r\n";
+            // 
+            // label2
+            // 
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("JetBrains Mono", 11.78182F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.Black;
+            this.label2.Location = new System.Drawing.Point(146, 449);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(67, 25);
+            this.label2.TabIndex = 9;
+            this.label2.Text = "Email";
+            // 
+            // label4
+            // 
+            this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("JetBrains Mono", 11.78182F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.Black;
+            this.label4.Location = new System.Drawing.Point(146, 502);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(100, 25);
+            this.label4.TabIndex = 10;
+            this.label4.Text = "password";
             // 
             // intro
             // 

@@ -201,7 +201,6 @@ namespace WindowsFormsApp1.BusinessLogic
         {
             string query = "SELECT Header, Body, QType, Marks FROM Questions WHERE QID = @QID";
             SqlParameter[] parameters = { new SqlParameter("@QID", qid) };
-
             DataTable dt = DatabaseHelper.ExecuteQuery(query, parameters);
 
             if (dt.Rows.Count == 0)
@@ -209,11 +208,16 @@ namespace WindowsFormsApp1.BusinessLogic
 
             DataRow row = dt.Rows[0];
 
+            string dbHeader = row["Header"].ToString().Trim();
+            string dbBody = row["Body"].ToString().Trim();
+            string dbQType = row["QType"].ToString().Trim();
+            int? dbMarks = row["Marks"] != DBNull.Value ? (int?)Convert.ToInt32(row["Marks"]) : null;
+
             bool isModified =
-                row["Header"].ToString() != header ||
-                row["Body"].ToString() != body ||
-                row["QType"].ToString() != qtype ||
-                (row["Marks"] != DBNull.Value ? Convert.ToInt32(row["Marks"]) : (int?)null) != marks ||
+                dbHeader != header.Trim() ||
+                dbBody != body.Trim() ||
+                dbQType != qtype.Trim() ||
+                dbMarks != marks ||
                 AreOptionsModified(qid, options) ||
                 AreCorrectAnswersModified(qid, correctAnswers);
 
@@ -226,20 +230,28 @@ namespace WindowsFormsApp1.BusinessLogic
             SqlParameter[] parameters = { new SqlParameter("@QID", qid) };
             DataTable dt = DatabaseHelper.ExecuteQuery(query, parameters);
 
-            List<string> dbOptions = dt.AsEnumerable().Select(row => row["Options"].ToString().Trim()).ToList();
+            List<string> dbOptions = dt.AsEnumerable()
+                                       .Select(row => row["Options"].ToString().Trim())
+                                       .ToList();
 
-            return !dbOptions.SequenceEqual(options);
+            List<string> inputOptions = options.Select(opt => opt.Trim()).ToList();
+
+            return !dbOptions.SequenceEqual(inputOptions);
         }
-
         private static bool AreCorrectAnswersModified(int qid, List<int> correctAnswers)
         {
             string query = "SELECT CorrectAnswer FROM Question_CorrectAns WHERE QID = @QID ORDER BY CorrectAnswer";
             SqlParameter[] parameters = { new SqlParameter("@QID", qid) };
             DataTable dt = DatabaseHelper.ExecuteQuery(query, parameters);
 
-            List<int> dbCorrectAnswers = dt.AsEnumerable().Select(row => Convert.ToInt32(row["CorrectAnswer"])).ToList();
+            List<int> dbCorrectAnswers = dt.AsEnumerable()
+                                           .Select(row => Convert.ToInt32(row["CorrectAnswer"]))
+                                           .OrderBy(ans => ans)
+                                           .ToList();
 
-            return !dbCorrectAnswers.SequenceEqual(correctAnswers);
+            List<int> inputCorrectAnswers = correctAnswers.OrderBy(ans => ans).ToList();
+
+            return !dbCorrectAnswers.SequenceEqual(inputCorrectAnswers);
         }
     }
 }

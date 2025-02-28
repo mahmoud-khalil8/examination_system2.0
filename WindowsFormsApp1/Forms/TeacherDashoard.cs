@@ -9,27 +9,20 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsApp1.BusinessLogic;
-using WindowsFormsApp1.Models;
 using WindowsFormsApp1.UserControls;
 
 namespace WindowsFormsApp1.Forms
 {
     public partial class TeacherDashoard : Form
     {
-        int id ;
+        int id = intro.CurrentId;
 
-        UserModel teacher;
-        
         public static int CurrentExamID = 0;
 
-        public TeacherDashoard(UserModel teacher)
+        public TeacherDashoard()
         {
             InitializeComponent();
-
-            this.teacher = teacher;
-            id=teacher.UserID;
         }
-        
         private void SetButtonDefaultStyle(KryptonButton button)
         {
             button.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(49, 0, 0);
@@ -139,13 +132,13 @@ namespace WindowsFormsApp1.Forms
         private void btnaddexam_Click(object sender, EventArgs e)
         {
             changeStyle(sender);
-            AddExamUC addExamUC = new AddExamUC(id);
+            AddExamUC addExamUC = new AddExamUC();
             ChangePanel(addExamUC);
         }
         private void btnaddquestion_Click(object sender, EventArgs e)
         {
             changeStyle(sender);
-            AddNewQuestionsUC addQuestionUC = new AddNewQuestionsUC(id);
+            AddNewQuestionsUC addQuestionUC = new AddNewQuestionsUC();
             ChangePanel(addQuestionUC);
         }
 
@@ -154,7 +147,7 @@ namespace WindowsFormsApp1.Forms
             changeStyle(sender);
 
 
-            UpdateQuetionsUserControl update = new UpdateQuetionsUserControl(id);
+            UpdateQuetionsUserControl update = new UpdateQuetionsUserControl();
             ChangePanel(update);
 
         }
@@ -163,7 +156,7 @@ namespace WindowsFormsApp1.Forms
         {
             changeStyle(sender);
 
-            ViewAndDeleteQuestions update = new ViewAndDeleteQuestions(id);
+            ViewAndDeleteQuestions update = new ViewAndDeleteQuestions();
             ChangePanel(update);
         }
 
@@ -171,7 +164,7 @@ namespace WindowsFormsApp1.Forms
         {
             changeStyle(sender);
 
-            ViewAllStudentsUserControl update = new ViewAllStudentsUserControl(id);
+            ViewAllStudentsUserControl update = new ViewAllStudentsUserControl();
             ChangePanel(update);
         }
 
@@ -181,16 +174,6 @@ namespace WindowsFormsApp1.Forms
         }
 
         private void panalchange_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void lbteacgername_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void kryptonPanel1_Paint(object sender, PaintEventArgs e)
         {
 
         }

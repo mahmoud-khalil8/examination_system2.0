@@ -70,17 +70,26 @@ namespace WindowsFormsApp1.BusinessLogic
             }
             else if (correctAnswers.Rows.Count > 1)
             {
-                // Multi-choice question
+                // Remove the trailing comma, if any, before splitting
+                if (studentAnswer.EndsWith(","))
+                {
+                    studentAnswer = studentAnswer.TrimEnd(',');
+                }
+
+                // Create sets with trimmed and lowercased answers for case-insensitive comparison
                 HashSet<string> correctSet = new HashSet<string>(
-                    correctAnswers.AsEnumerable().Select(row => row["correctAnswer"].ToString().Trim())
+                    correctAnswers.AsEnumerable()
+                    .Select(row => row["correctAnswer"].ToString().Trim().ToLower())
                 );
 
                 HashSet<string> studentSet = new HashSet<string>(
-                    studentAnswer.Split(',').Select(answer => answer.Trim())
+                    studentAnswer.Split(',')
+                    .Select(answer => answer.Trim().ToLower())
                 );
-
+                MessageBox.Show(correctSet.SetEquals(studentSet).ToString());
                 return correctSet.SetEquals(studentSet);
             }
+
 
             return false;
 
