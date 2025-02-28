@@ -86,7 +86,6 @@ namespace WindowsFormsApp1.BusinessLogic
                     studentAnswer.Split(',')
                     .Select(answer => answer.Trim().ToLower())
                 );
-                MessageBox.Show(correctSet.SetEquals(studentSet).ToString());
                 return correctSet.SetEquals(studentSet);
             }
 

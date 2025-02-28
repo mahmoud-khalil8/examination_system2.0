@@ -22,7 +22,7 @@ namespace WindowsFormsApp1.BusinessLogic
                              ON e.Exam_ID=sx.Exam_ID
                              INNER JOIN Subject s
                              ON s.Sub_ID=e.Subject_ID
-                             WHERE e.teacher_Id=@teacherId AND u.Role='Student'"
+                             WHERE e.Teacher_ID=@teacherId AND u.Role='Student'"
             ;
 
             SqlParameter[] parameters =
@@ -41,7 +41,7 @@ namespace WindowsFormsApp1.BusinessLogic
                              ON e.Exam_ID=sx.Exam_ID
                              INNER JOIN Subject s
                              ON s.Sub_ID=e.Subject_ID
-                             WHERE e.teacher_Id=@teacherId AND u.Role='Student' AND u.FullName=@StudName"
+                             WHERE e.Teacher_ID=@teacherId AND u.Role='Student' AND u.FullName=@StudName"
             ;
 
             SqlParameter[] parameters =
@@ -54,7 +54,7 @@ namespace WindowsFormsApp1.BusinessLogic
 
         public static DataTable GetStudentsName(int teacherId)
         {
-            string query = @"SELECT distinct u.FullName FROM Users u WHERE u.supervised_by=@teacherId AND u.Role='Student'"
+            string query = @"SELECT distinct u.FullName FROM Users u inner join STUD_EXAM se on se.Stud_ID= u.UserID inner join Exam e on e.Exam_ID = se.Exam_ID WHERE e.Teacher_ID=@teacherId AND u.Role='Student'"
             ;
 
             SqlParameter[] parameters =
@@ -85,7 +85,7 @@ namespace WindowsFormsApp1.BusinessLogic
                              ON e.Exam_ID=sx.Exam_ID
                              INNER JOIN Subject s
                              ON s.Sub_ID=e.Subject_ID
-                             WHERE u.supervised_by=@teacherId AND u.Role='Student' AND s.Subject_Name=@SubjectName"
+                             WHERE e.Teacher_ID=@teacherId AND u.Role='Student' AND s.Subject_Name=@SubjectName"
             ;
 
             SqlParameter[] parameters =
@@ -103,7 +103,7 @@ namespace WindowsFormsApp1.BusinessLogic
                              INNER JOIN STUD_EXAM sx ON u.UserID = sx.Stud_ID
                              INNER JOIN Exam e ON e.Exam_ID = sx.Exam_ID
                              INNER JOIN Subject s ON s.Sub_ID = e.Subject_ID
-                             WHERE u.supervised_by = @teacherId 
+                             WHERE e.Teacher_ID = @teacherId 
                              AND u.Role = 'Student' 
                              AND u.FullName = @studentName 
                              AND s.Subject_Name = @subjectName";
@@ -127,7 +127,7 @@ namespace WindowsFormsApp1.BusinessLogic
                              ON e.Exam_ID = sx.Exam_ID
                              INNER JOIN Subject s 
                              ON s.Sub_ID = e.Subject_ID
-                             WHERE u.supervised_by = @teacherId AND u.Role = 'Student' " + (string.IsNullOrEmpty(subjectName) ? "" : " AND s.Subject_Name = @subjectName ") +
+                             WHERE e.Teacher_ID = @teacherId AND u.Role = 'Student' " + (string.IsNullOrEmpty(subjectName) ? "" : " AND s.Subject_Name = @subjectName ") +
                            @"GROUP BY e.Exam_ID, u.UserID, u.FullName, sx.Student_Marks, s.Subject_Name, e.Exam_Marks, e.Ques_Num, e.ExamType ORDER BY sx.Student_Marks DESC";
 
             List<SqlParameter> parameters = new List<SqlParameter>

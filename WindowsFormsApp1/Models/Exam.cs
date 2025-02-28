@@ -16,6 +16,7 @@ namespace WindowsFormsApp1.Models
         public int SubjectId { get; set; }
         public int TeacherId { get; set; }
         public DateTime StartTime { get; set; }
+        public static bool SuppressExamStartedEvent { get; set; } = false;
 
 
         public delegate void ExamStartHandler(string examName, DateTime startTime);
@@ -26,7 +27,11 @@ namespace WindowsFormsApp1.Models
         // Method to trigger the event
         public static void NotifyExamStart(string examName, DateTime startTime)
         {
-            ExamStarted?.Invoke(examName, startTime);
+
+            if (!SuppressExamStartedEvent)
+            {
+                ExamStarted?.Invoke(examName, startTime);
+            }
         }
 
         // Use Dictionary<int, object> to avoid object key issues (int -> QuestionID)

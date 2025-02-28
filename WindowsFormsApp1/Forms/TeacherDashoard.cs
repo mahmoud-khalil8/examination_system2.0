@@ -177,5 +177,14 @@ namespace WindowsFormsApp1.Forms
         {
 
         }
+
+        private void linklblogout_Paint(object sender, PaintEventArgs e)
+        {
+        }
+
+        private void logoutbtn_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

@@ -97,8 +97,12 @@ namespace WindowsFormsApp1.BusinessLogic
         }
         public static int GetSumOfMarks()
         {
-            var x = (int)DatabaseHelper.ExecuteQuery($"SELECT SUM(Marks) as sum FROM Questions where Teacher_ID ={intro.CurrentId} and Exam_id = {TeacherDashoard.CurrentExamID}").Rows[0]["sum"];
-            return x;
+            var x = DatabaseHelper.ExecuteQuery($"SELECT SUM(Marks) as sum FROM Questions where Teacher_ID ={intro.CurrentId} and Exam_id = {TeacherDashoard.CurrentExamID}");
+            if (x.Rows[0]["sum"] == DBNull.Value)
+            {
+                return 0;
+            }
+            return Convert.ToInt32(x.Rows[0]["sum"]);
         }
         public static int UpdateQuesNum()
         {

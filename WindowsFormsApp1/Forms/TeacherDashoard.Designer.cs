@@ -32,7 +32,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TeacherDashoard));
             this.kryptonPanel1 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.lbteacgername = new System.Windows.Forms.Label();
-            this.linklblogout = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.btnallstudents = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.btnviewdeleteq = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.btnupdatequestion = new ComponentFactory.Krypton.Toolkit.KryptonButton();
@@ -41,6 +40,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.kryptonPalette1 = new ComponentFactory.Krypton.Toolkit.KryptonPalette(this.components);
             this.panalchange = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
+            this.logoutbtn = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -49,8 +49,8 @@
             // 
             // kryptonPanel1
             // 
+            this.kryptonPanel1.Controls.Add(this.logoutbtn);
             this.kryptonPanel1.Controls.Add(this.lbteacgername);
-            this.kryptonPanel1.Controls.Add(this.linklblogout);
             this.kryptonPanel1.Controls.Add(this.btnallstudents);
             this.kryptonPanel1.Controls.Add(this.btnviewdeleteq);
             this.kryptonPanel1.Controls.Add(this.btnupdatequestion);
@@ -75,17 +75,6 @@
             this.lbteacgername.TabIndex = 3;
             this.lbteacgername.Text = "Teacher Name";
             this.lbteacgername.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // linklblogout
-            // 
-            this.linklblogout.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.linklblogout.Location = new System.Drawing.Point(0, 776);
-            this.linklblogout.Name = "linklblogout";
-            this.linklblogout.Size = new System.Drawing.Size(311, 27);
-            this.linklblogout.StateCommon.ShortText.Color1 = System.Drawing.Color.White;
-            this.linklblogout.StateCommon.ShortText.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.linklblogout.TabIndex = 2;
-            this.linklblogout.Values.Text = "Log Out";
             // 
             // btnallstudents
             // 
@@ -515,6 +504,83 @@
             this.panalchange.TabIndex = 1;
             this.panalchange.Paint += new System.Windows.Forms.PaintEventHandler(this.panalchange_Paint);
             // 
+            // logoutbtn
+            // 
+            this.logoutbtn.Location = new System.Drawing.Point(0, 753);
+            this.logoutbtn.Name = "logoutbtn";
+            this.logoutbtn.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.logoutbtn.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.logoutbtn.OverrideDefault.Back.ColorAngle = 45F;
+            this.logoutbtn.OverrideDefault.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.logoutbtn.OverrideDefault.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.logoutbtn.OverrideDefault.Border.ColorAngle = 45F;
+            this.logoutbtn.OverrideDefault.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.logoutbtn.OverrideDefault.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
+            this.logoutbtn.OverrideDefault.Content.ShortText.Color1 = System.Drawing.Color.White;
+            this.logoutbtn.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
+            this.logoutbtn.Size = new System.Drawing.Size(229, 47);
+            this.logoutbtn.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.logoutbtn.StateCommon.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.logoutbtn.StateCommon.Back.ColorAngle = 45F;
+            this.logoutbtn.StateCommon.Back.ColorStyle = ComponentFactory.Krypton.Toolkit.PaletteColorStyle.Solid;
+            this.logoutbtn.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.logoutbtn.StateCommon.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.logoutbtn.StateCommon.Border.ColorAngle = 45F;
+            this.logoutbtn.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.logoutbtn.StateCommon.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
+            this.logoutbtn.StateCommon.Border.Rounding = 20;
+            this.logoutbtn.StateCommon.Border.Width = 1;
+            this.logoutbtn.StateCommon.Content.ShortText.Color1 = System.Drawing.Color.White;
+            this.logoutbtn.StateCommon.Content.ShortText.Color2 = System.Drawing.Color.White;
+            this.logoutbtn.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.logoutbtn.StateNormal.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.logoutbtn.StateNormal.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.logoutbtn.StateNormal.Back.ColorAngle = 45F;
+            this.logoutbtn.StateNormal.Back.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
+            this.logoutbtn.StateNormal.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.logoutbtn.StateNormal.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.logoutbtn.StateNormal.Border.ColorAngle = 45F;
+            this.logoutbtn.StateNormal.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.logoutbtn.StateNormal.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
+            this.logoutbtn.StateNormal.Border.Rounding = 20;
+            this.logoutbtn.StateNormal.Border.Width = 1;
+            this.logoutbtn.StateNormal.Content.ShortText.Color1 = System.Drawing.Color.White;
+            this.logoutbtn.StateNormal.Content.ShortText.Color2 = System.Drawing.Color.White;
+            this.logoutbtn.StatePressed.Back.Color1 = System.Drawing.Color.White;
+            this.logoutbtn.StatePressed.Back.Color2 = System.Drawing.Color.White;
+            this.logoutbtn.StatePressed.Back.ColorAngle = 135F;
+            this.logoutbtn.StatePressed.Border.Color1 = System.Drawing.Color.White;
+            this.logoutbtn.StatePressed.Border.Color2 = System.Drawing.Color.White;
+            this.logoutbtn.StatePressed.Border.ColorAngle = 135F;
+            this.logoutbtn.StatePressed.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.logoutbtn.StatePressed.Border.Rounding = 20;
+            this.logoutbtn.StatePressed.Border.Width = 1;
+            this.logoutbtn.StatePressed.Content.ShortText.Color1 = System.Drawing.Color.Black;
+            this.logoutbtn.StateTracking.Back.Color1 = System.Drawing.Color.White;
+            this.logoutbtn.StateTracking.Back.Color2 = System.Drawing.Color.White;
+            this.logoutbtn.StateTracking.Back.ColorAngle = 45F;
+            this.logoutbtn.StateTracking.Border.Color1 = System.Drawing.Color.White;
+            this.logoutbtn.StateTracking.Border.Color2 = System.Drawing.Color.White;
+            this.logoutbtn.StateTracking.Border.ColorAngle = 45F;
+            this.logoutbtn.StateTracking.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.logoutbtn.StateTracking.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
+            this.logoutbtn.StateTracking.Border.Rounding = 20;
+            this.logoutbtn.StateTracking.Border.Width = 1;
+            this.logoutbtn.StateTracking.Content.ShortText.Color1 = System.Drawing.Color.Black;
+            this.logoutbtn.TabIndex = 4;
+            this.logoutbtn.Values.Text = "Logout";
+            this.logoutbtn.Click += new System.EventHandler(this.logoutbtn_Click);
+            // 
             // TeacherDashoard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
@@ -531,7 +597,6 @@
             this.Load += new System.EventHandler(this.TeacherDashboard_Load);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
             this.kryptonPanel1.ResumeLayout(false);
-            this.kryptonPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panalchange)).EndInit();
             this.ResumeLayout(false);
@@ -544,12 +609,12 @@
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnviewdeleteq;
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnupdatequestion;
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnaddquestion;
-        private ComponentFactory.Krypton.Toolkit.KryptonLabel linklblogout;
         private System.Windows.Forms.PictureBox pictureBox1;
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnallstudents;
         private ComponentFactory.Krypton.Toolkit.KryptonPalette kryptonPalette1;
         private ComponentFactory.Krypton.Toolkit.KryptonPanel panalchange;
         private ComponentFactory.Krypton.Toolkit.KryptonButton UpdateQuetionsUserControl;
         private System.Windows.Forms.Label lbteacgername;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton logoutbtn;
     }
 }

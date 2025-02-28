@@ -402,7 +402,7 @@ namespace WindowsFormsApp1.Forms
                 int subjectId = Convert.ToInt32(row["subject_id"]);
                 int teacherId = Convert.ToInt32(row["teacher_id"]);
                 DateTime startTime = Convert.ToDateTime(row["start_time"]);
-
+                Exam.SuppressExamStartedEvent = true;
                 // Create PracticeExam instance
                 practiceExam = new PracticeExam(examDuration, numberOfQuestions, mode, examName, examType, examID, marks, subjectId, teacherId, startTime);
 
