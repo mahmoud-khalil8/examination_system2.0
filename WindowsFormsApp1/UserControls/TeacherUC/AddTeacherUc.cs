@@ -91,6 +91,13 @@ namespace WindowsFormsApp1.UserControls.TeacherUC
 
 
                 };
+
+
+
+
+
+
+
                 int subjectExist = TeacherBLL.GetSubject(AssSubject.Text);
 
                 if (subjectExist > 1)
@@ -101,6 +108,12 @@ namespace WindowsFormsApp1.UserControls.TeacherUC
                     return;
                 }
 
+
+
+
+
+
+
                 int result = TeacherBLL.AddTeacher(newTeacher);
                 if (result == -1)
                 {
@@ -108,11 +121,17 @@ namespace WindowsFormsApp1.UserControls.TeacherUC
                 }
                 else if (result > 0)
                 {
+
+
+
+
+
                     //get teacherId
                     int teacherId = TeacherBLL.getTeacherId(EmailChTxt.Text);
 
                     //check if subject already exist 
                     
+
 
 
                     TeacherBLL.AssignSubjectToTeacher(teacherId, AssSubject.Text);

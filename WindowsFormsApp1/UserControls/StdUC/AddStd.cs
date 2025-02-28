@@ -90,6 +90,12 @@ namespace WindowsFormsApp1.UserControls.StdUC
                     {
                         subjects.Add(txt.Text.Trim());
                     }
+
+
+
+
+
+
                     int res = TeacherBLL.GetSubject(txt.Text.Trim());
                     if (res == 0)
                     {
@@ -98,6 +104,13 @@ namespace WindowsFormsApp1.UserControls.StdUC
                         MsgLbl.ForeColor = Color.Red;
                         return;
                     }
+
+
+
+
+
+
+
                 }
 
                 if (subjects.Count == 0)

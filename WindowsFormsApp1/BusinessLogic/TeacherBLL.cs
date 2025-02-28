@@ -126,6 +126,13 @@ namespace ADMIN.BusinessLogicLayer
             return DatabaseHelper.ExecuteNonQuery(query, parameters) > 0;
 
         }
+
+
+
+
+
+
+
         public static int GetSubject(string subjectName)
         {
             string query = "SELECT count(*) FROM Subject WHERE Subject_Name = @Subject_Name";
@@ -133,5 +140,10 @@ namespace ADMIN.BusinessLogicLayer
 
             return (int)DatabaseHelper.ExecuteScalar(query, parameters);
         }
+
+
+
+
+
     }
 }
