@@ -27,10 +27,4 @@ It provides an efficient platform for managing exams, students, and teachers, wi
 - ADO.NET
 - SQL Server
 
-📝 TODOs
--  Improve the **UI design** for a better user experience.  
--  Implement a **login system** for role-based authentication.  
--  Add a **dashboard** with statistics.  
--  Implement **auto-grading** for exams.  
-
 
